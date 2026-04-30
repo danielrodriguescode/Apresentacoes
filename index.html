@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apresentações — Daniel Rodrigues</title>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --fg: #1a1a1a;
+      --muted: #6b6b6b;
+      --accent: #0066cc;
+      --border: #e5e5e5;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+      line-height: 1.6;
+    }
+    h1 {
+      font-size: 2rem;
+      margin: 0 0 0.5rem;
+    }
+    .subtitle {
+      color: var(--muted);
+      margin: 0 0 2.5rem;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    li {
+      border-bottom: 1px solid var(--border);
+    }
+    li:first-child { border-top: 1px solid var(--border); }
+    a {
+      display: block;
+      padding: 1rem 0;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 1.05rem;
+    }
+    a:hover { text-decoration: underline; }
+    .date {
+      display: block;
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-top: 0.15rem;
+    }
+    footer {
+      margin-top: 3rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    footer a { display: inline; padding: 0; }
+  </style>
+</head>
+<body>
+  <h1>Apresentações</h1>
+  <p class="subtitle">Coleção de apresentações em HTML.</p>
+
+  <ul>
+    <li>
+      <a href="researchbridge_presentation_2.html">
+        ResearchBridge — v2
+        <span class="date">Abril 2026</span>
+      </a>
+    </li>
+    <li>
+      <a href="researchbridge_presentation.html">
+        ResearchBridge — v1
+        <span class="date">Março 2026</span>
+      </a>
+    </li>
+  </ul>
+
+  <footer>
+    <a href="https://github.com/danielrodriguescode/Apresentacoes">Repositório no GitHub</a>
+  </footer>
+</body>
+</html>
