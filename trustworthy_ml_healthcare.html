@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy, Bias &amp; Drift meets Standards-based Interoperability</title>
+
+  <!-- Reveal.js core -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Custom styles (inlined so the file is self-contained) -->
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700&display=swap');
+
+/* ===========================================
+   CSS VARIABLES
+   =========================================== */
+:root {
+  --background-color: #FBFCFD;              /* Main slide background */
+  --section-divider-bg: #0E2A3B;            /* Deep navy divider for contrast */
+
+  /* Typography - ALWAYS use pt for font sizes */
+  --heading-font: "Poppins", "Source Sans Pro", Helvetica, sans-serif;
+  --body-font: "Inter", "Source Sans Pro", Helvetica, sans-serif;
+  --base-font-size: 32px;
+  --text-size: 16pt;
+  --h1-size: 48pt;
+  --h2-size: 34pt;
+  --h3-size: 22pt;
+  --footnote-size: 11pt;
+
+  /* Colors - clinical data + AI theme */
+  --primary-color: #0E2A3B;
+  --secondary-color: #277884;
+  --accent-color: #FE7F2D;
+  --text-color: #1C2A33;
+  --muted-color: #5C6B73;
+  --line-color: #277884;
+
+  /* Seminar-specific identity colors */
+  --s1-color: #1F5673;
+  --s1-soft: #E8F0F4;
+  --s2-color: #2A9D8F;
+  --s2-soft: #E3F2EF;
+
+  /* Layout */
+  --slide-padding: 60px;
+  --slide-padding-top: 40px;
+  --content-gap: 22px;
+
+  --box-radius: 10px;
+}
+
+/* ===========================================
+   BASE STYLES - Override reveal.js defaults
+   =========================================== */
+.reveal {
+  font-family: var(--body-font);
+  font-size: var(--base-font-size);
+}
+.reveal strong,
+.reveal b { font-weight: bold; }
+
+.reveal-viewport { background-color: var(--background-color); }
+
+.reveal-viewport.is-section-divider .slide-background.present {
+  background-color: var(--section-divider-bg) !important;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  font-family: var(--heading-font);
+  text-transform: none;
+  color: var(--text-color);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.reveal h1 { font-size: var(--h1-size); }
+.reveal h2 { font-size: var(--h2-size); margin-bottom: 0; }
+.reveal h3 { font-size: var(--h3-size); }
+
+.reveal p,
+.reveal li,
+.reveal td,
+.reveal th,
+.reveal blockquote {
+  font-size: var(--text-size);
+  color: var(--text-color);
+  line-height: 1.5;
+}
+
+/* ===========================================
+   LISTS
+   =========================================== */
+.reveal ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 15px 0;
+}
+.reveal ul li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 10px;
+}
+.reveal ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 8px;
+  height: 8px;
+  background: var(--text-color);
+  border-radius: 50%;
+}
+.reveal ul ul li::before {
+  background: var(--muted-color);
+  width: 6px;
+  height: 6px;
+}
+.reveal blockquote p { font-size: inherit; }
+
+/* ===========================================
+   SLIDE LAYOUT
+   =========================================== */
+.reveal .slides section {
+  height: 100%;
+  display: flex !important;
+  flex-direction: column !important;
+  padding: var(--slide-padding-top) var(--slide-padding) var(--slide-padding) var(--slide-padding) !important;
+  box-sizing: border-box;
+  text-align: left;
+}
+.reveal .slides section.stack { padding: 0 !important; }
+
+.reveal .slides section > .content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: var(--content-gap);
+  text-align: left;
+}
+
+.reveal .slides section > .footnote {
+  position: absolute;
+  bottom: 15px;
+  left: var(--slide-padding);
+  right: var(--slide-padding);
+  font-size: var(--footnote-size);
+  color: var(--muted-color);
+}
+
+/* ===========================================
+   SECTION DIVIDERS - Centered title slides
+   =========================================== */
+.reveal .slides section.section-divider {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center;
+}
+.reveal .slides section.section-divider h1 {
+  font-size: 56pt;
+  text-align: center;
+}
+.reveal .slides section.section-divider p {
+  font-size: 20pt;
+  color: var(--muted-color);
+}
+
+/* ===========================================
+   TEXT SIZE UTILITIES
+   =========================================== */
+.text-lg { font-size: 18pt !important; }
+.text-xl { font-size: 20pt !important; }
+.text-2xl { font-size: 24pt !important; }
+.text-3xl { font-size: 28pt !important; }
+.text-4xl { font-size: 32pt !important; }
+
+.text-muted { color: var(--muted-color) !important; }
+.text-center { text-align: center !important; }
+.text-uppercase { text-transform: uppercase; letter-spacing: 0.1em; }
+.font-light { font-weight: 300; }
+.font-bold { font-weight: 600; }
+
+/* ===========================================
+   BLOCKQUOTES
+   =========================================== */
+.reveal blockquote {
+  border-left: 4px solid var(--primary-color);
+  padding-left: 20px;
+  margin: 20px 0;
+  font-style: italic;
+  background: none;
+  box-shadow: none;
+  width: 100%;
+  max-width: none;
+}
+.reveal blockquote cite {
+  display: block;
+  margin-top: 10px;
+  font-style: normal;
+  color: var(--muted-color);
+}
+
+/* ===========================================
+   CUSTOM COMPONENTS for this deck
+   =========================================== */
+
+/* Headings get a teal accent + thin underline on content slides */
+.reveal .slides section > h2 {
+  color: var(--primary-color);
+  flex-shrink: 0;
+  margin: 0;
+  padding-bottom: 12px;
+  border-bottom: 3px solid var(--secondary-color);
+}
+
+/* Section dividers on dark navy */
+.reveal .slides section.section-divider h1,
+.reveal .slides section.section-divider h2,
+.reveal .slides section.section-divider p { color: #FFFFFF; }
+.reveal .slides section.section-divider .kicker {
+  color: var(--accent-color);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 16pt;
+  margin-bottom: 8px;
+}
+
+/* Card component */
+.card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8EC;
+  border-radius: var(--box-radius);
+  padding: 18px 22px;
+  box-shadow: 0 2px 10px rgba(14, 42, 59, 0.06);
+}
+.card h3 { margin-top: 0; color: var(--primary-color); }
+
+/* Seminar-tinted cards */
+.card-s1 { border-top: 5px solid var(--s1-color); }
+.card-s1 h3 { color: var(--s1-color); }
+.card-s2 { border-top: 5px solid var(--s2-color); }
+.card-s2 h3 { color: var(--s2-color); }
+
+.s1 { color: var(--s1-color); }
+.s2 { color: var(--s2-color); }
+
+/* Pill / tag */
+.pill {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 999px;
+  font-size: 12pt;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+.pill-s1 { background: var(--s1-soft); color: var(--s1-color); }
+.pill-s2 { background: var(--s2-soft); color: var(--s2-color); }
+.pill-accent { background: #FDE8D8; color: #C2570F; }
+
+/* Pipeline step boxes */
+.step {
+  background: var(--s2-soft);
+  border-radius: var(--box-radius);
+  padding: 12px 10px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--s2-color);
+  font-size: 13pt;
+  line-height: 1.25;
+}
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-color);
+  font-size: 20pt;
+}
+
+/* Challenge boxes for seminar 1 (privacy/bias/drift) */
+.challenge {
+  border-radius: var(--box-radius);
+  padding: 16px 18px;
+  background: var(--s1-soft);
+  border-left: 5px solid var(--s1-color);
+}
+.challenge h3 { margin: 0 0 6px 0; color: var(--s1-color); }
+.challenge p { margin: 0; }
+
+/* Icon circle */
+.icon-badge {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24pt;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.card ul li, .challenge ul li { margin-bottom: 6px; }
+
+.highlight { color: var(--accent-color); font-weight: 600; }
+
+/* Comparison table */
+.reveal table.cmp { width: 100%; border-collapse: collapse; }
+.reveal table.cmp th, .reveal table.cmp td {
+  padding: 12px 16px; text-align: left; vertical-align: top;
+  border-bottom: 1px solid #E2E8EC; font-size: 15pt;
+}
+.reveal table.cmp thead th { font-size: 15pt; color: #fff; }
+.reveal table.cmp thead th.h-s1 { background: var(--s1-color); }
+.reveal table.cmp thead th.h-s2 { background: var(--s2-color); }
+.reveal table.cmp thead th.h-dim { background: var(--primary-color); }
+.reveal table.cmp td.dim { font-weight: 600; color: var(--primary-color); background: #F1F5F7; }
+
+.footnote-fixed {
+  position: absolute; bottom: 16px; left: var(--slide-padding); right: var(--slide-padding);
+  font-size: var(--footnote-size); color: var(--muted-color);
+}
+  </style>
+
+  <!-- Chart.js for data visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <section id="title" class="section-divider" data-state="is-section-divider">
+        <p class="kicker">PhD Seminar Synthesis</p>
+        <h1 style="margin: 0 0 18px 0; line-height: 1.15;">Trustworthy Machine Learning<br>on Healthcare Data</h1>
+        <p style="font-size: 22pt; color: #fff; max-width: 1000px;"><strong style="color: var(--accent-color);">Privacy, Bias &amp; Drift</strong> in national health AI models and&nbsp;<strong style="color: var(--accent-color);">Standards-based Interoperability</strong> pipelines</p>
+        <p style="font-size: 15pt; margin-top: 36px; color: #ABC4CF;">Synthesis of two seminars &middot; Allan Tucker (2022) &amp; Anil Sinaci (2023)</p>
+      </section>
+
+      <section id="slide-2">
+        <h2>The Two Seminars at a Glance</h2>
+        <div class="content">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px; flex: 1;">
+            <div class="card card-s1">
+              <p><span class="pill pill-s1">Seminar 1 &middot; 15 Mar 2022</span></p>
+              <h3 style="font-size: 21pt;">Privacy, Bias &amp; Drift in AI Models of National Healthcare Data</h3>
+              <p class="text-muted" style="font-size: 14pt;"><strong>Allan Tucker</strong> &mdash; Brunel University London, Intelligent Data Analytics (IDA) group</p>
+              <p style="font-size: 15pt;">A <strong>model-side</strong> view: how the <em>statistical</em> dangers of real health data threaten reliable AI and how to manage them.</p>
+            </div>
+            <div class="card card-s2">
+              <p><span class="pill pill-s2">Seminar 2 &middot; 14 Mar 2023</span></p>
+              <h3 style="font-size: 21pt;">Standards-based Health Data Interoperability Pipeline for Machine Learning</h3>
+              <p class="text-muted" style="font-size: 14pt;"><strong>Anil Sinaci</strong> &mdash; SRDC / TOPHI</p>
+              <p style="font-size: 15pt;">A <strong>data-engineering</strong> view: how to turn messy hospital records into <em>standardised, AI-ready</em> datasets with a reproducible pipeline.</p>
+            </div>
+          </div>
+          <p class="text-center text-muted" style="font-size: 15pt; margin-top: 6px;">Two complementary answers to the same question: <span class="highlight">how do we build AI we can trust on sensitive health data?</span></p>
+        </div>
+      </section>
+
+      <section id="divider-1" class="section-divider" data-state="is-section-divider">
+        <p class="kicker">Seminar 1 &middot; Allan Tucker</p>
+        <h1>Privacy, Bias &amp; Drift</h1>
+        <p style="font-size: 20pt;">Managing the statistical hazards of national healthcare data</p>
+      </section>
+
+      <section>
+        <section id="slide-4-1">
+          <h2>Seminar 1 &mdash; Overview</h2>
+          <div class="content">
+            <p>National health datasets (e.g. <strong>CPRD</strong>, <strong>MIMIC</strong>) are a goldmine for AI, but three forces undermine the models we train on them. Tucker's work, rooted in <strong>probabilistic graphical models</strong> and <strong>generative AI</strong>, tackles each in turn.</p>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 14px;">
+              <div class="challenge">
+                <h3><i class="fa-solid fa-user-shield"></i> Privacy</h3>
+                <p>Can we share useful data without exposing real patients?</p>
+              </div>
+              <div class="challenge">
+                <h3><i class="fa-solid fa-scale-unbalanced"></i> Bias</h3>
+                <p>Are the data and the models fair and transparent?</p>
+              </div>
+              <div class="challenge">
+                <h3><i class="fa-solid fa-arrow-trend-down"></i> Drift</h3>
+                <p>Do models stay valid as populations change over time?</p>
+              </div>
+            </div>
+            <p class="text-muted text-center" style="font-size:14pt; margin-top:14px;">IDA group, Brunel University London &middot; AI applied across healthcare, biology &amp; the environment</p>
+          </div>
+        </section>
+        <section id="slide-4-2">
+          <h2>Privacy &mdash; Synthetic Data as a Solution</h2>
+          <div class="content">
+            <div style="display:grid; grid-template-columns: 1.1fr 1fr; gap: 28px; flex:1;">
+              <div>
+                <p>Rather than sharing real records, <strong>generate realistic synthetic data</strong> that preserves statistical structure:</p>
+                <ul>
+                  <li><strong>Generative Adversarial Networks (GANs)</strong> &amp; probabilistic graphical models</li>
+                  <li>Validated for <strong>fidelity</strong> on CPRD &amp; time-series MIMIC data</li>
+                  <li>Causal structure recovered via the <strong>FCI algorithm</strong></li>
+                  <li>Stress-tested with <strong>simulated attacks</strong> &mdash; matching synthetic records back to real patients</li>
+                </ul>
+              </div>
+              <div class="card" style="align-self:center; background: var(--s1-soft); border:none;">
+                <h3 style="margin-top:0;"><i class="fa-solid fa-arrows-left-right"></i> The core trade-off</h3>
+                <p style="margin-bottom:8px;"><strong>Utility &harr; Privacy</strong></p>
+                <p style="font-size:14pt; margin:0;">More privacy protection &rarr; less detail. The hardest cases are <strong>rare diseases</strong> and richly-featured patients, where anonymity and usefulness pull hardest against each other.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="slide-4-3">
+          <h2>Bias &amp; Concept Drift</h2>
+          <div class="content">
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 28px; flex:1;">
+              <div class="challenge">
+                <h3><i class="fa-solid fa-scale-unbalanced"></i> Dealing with Bias</h3>
+                <ul style="margin-top:6px;">
+                  <li>Sampling bias &amp; prejudice get baked into models</li>
+                  <li>Not just <em>rebalancing</em> hard datasets &mdash; also exposing <strong>unwarranted links</strong> &amp; the semantics of <strong>latent variables</strong></li>
+                  <li>Mitigation via <strong>boosting</strong>; demands <strong>transparency</strong></li>
+                  <li>Synthetic data can inherit &mdash; or amplify &mdash; bias</li>
+                </ul>
+              </div>
+              <div class="challenge" style="background:#FDEEE2; border-left-color: var(--accent-color);">
+                <h3 style="color:#C2570F;"><i class="fa-solid fa-arrow-trend-down"></i> Concept Drift</h3>
+                <ul style="margin-top:6px;">
+                  <li>Health data is <strong>dynamic</strong> &mdash; populations and practice shift</li>
+                  <li>A model trained once silently <strong>decays</strong></li>
+                  <li><strong>Drift Detection (DDM)</strong> tested on cardiovascular disease</li>
+                  <li>Must monitor &amp; capture <strong>changing subpopulations</strong></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section id="divider-2" class="section-divider" data-state="is-section-divider">
+        <p class="kicker">Seminar 2 &middot; Anil Sinaci</p>
+        <h1>Standards-based Interoperability</h1>
+        <p style="font-size: 20pt;">A FHIR-powered pipeline that turns hospital data into AI-ready datasets</p>
+      </section>
+
+      <section>
+        <section id="slide-6-1">
+          <h2>Seminar 2 &mdash; The Interoperability Pipeline</h2>
+          <div class="content">
+            <p>The challenge: every hospital stores data differently, so ML projects re-invent data wrangling each time. The solution is a <strong>repeatable, standards-based pipeline</strong> that runs <em>on hospital premises</em>.</p>
+            <div style="display:grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr; gap:10px; align-items:center; margin-top:18px;">
+              <div class="step">Hospital<br>IT Systems</div>
+              <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+              <div class="step">Common Data Model<br><span style="font-weight:400; font-size:11pt;">HL7 FHIR</span></div>
+              <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+              <div class="step">Feature<br>Extraction</div>
+              <div class="arrow"><i class="fa-solid fa-arrow-right"></i></div>
+              <div class="step">AI-ready<br>Datasets</div>
+            </div>
+            <div style="display:grid; grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr; gap:10px; margin-top:8px;">
+              <p class="text-muted text-center" style="font-size:11pt;">source systems</p>
+              <p></p>
+              <p class="text-muted text-center" style="font-size:11pt;"><strong>toFHIR</strong> transform</p>
+              <p></p>
+              <p class="text-muted text-center" style="font-size:11pt;"><strong>onFHIR-feast</strong></p>
+              <p></p>
+              <p class="text-muted text-center" style="font-size:11pt;">&rarr; AI / use case</p>
+            </div>
+            <p class="text-center" style="margin-top:14px;"><span class="pill pill-accent">Data stays on-premises and only privacy-preserved models leave</span></p>
+          </div>
+        </section>
+        <section id="slide-6-2">
+          <h2>The Building Blocks: HL7 FHIR, toFHIR &amp; onFHIR-feast</h2>
+          <div class="content">
+            <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:20px; flex:1;">
+              <div class="card card-s2">
+                <h3 style="font-size:18pt;"><i class="fa-solid fa-fire"></i> HL7 FHIR + CDM</h3>
+                <p style="font-size:14pt;">A standard, <strong>machine-processable</strong> common data model. <strong>FHIR Profiling</strong> (e.g. an Echocardiogram profile), code systems, value sets &amp; units make the data self-describing.</p>
+              </div>
+              <div class="card card-s2">
+                <h3 style="font-size:18pt;"><i class="fa-solid fa-right-left"></i> toFHIR</h3>
+                <p style="font-size:14pt;">A <strong>mapping language</strong> that transforms SQL / source data into FHIR resources &mdash; configurable <strong>without custom development</strong>, with rich, human-readable metadata.</p>
+              </div>
+              <div class="card card-s2">
+                <h3 style="font-size:18pt;"><i class="fa-solid fa-layer-group"></i> onFHIR-feast</h3>
+                <p style="font-size:14pt;">A <strong>feature store</strong> (like SageMaker / Hopsworks) defining <strong>reusable features</strong> via FHIR Search &amp; FHIR Path &mdash; from population &rarr; time-series &rarr; one tabular dataset.</p>
+              </div>
+            </div>
+            <p class="text-muted text-center" style="font-size:14pt; margin-top:6px;">Built on a <strong>Secure Health Data Repository</strong> (onFHIR) hosting the standardised data</p>
+          </div>
+        </section>
+        <section id="slide-6-3">
+          <h2>Federated ML &amp; FAIR Principles</h2>
+          <div class="content">
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:28px; flex:1;">
+              <div>
+                <h3 class="s2"><i class="fa-solid fa-network-wired"></i> Federated Machine Learning</h3>
+                <ul>
+                  <li>Originated in the <strong>FAIR4Health</strong> project</li>
+                  <li>Extract a dataset at <strong>each deployment site</strong></li>
+                  <li>Train <strong>local models</strong>, transfer only model updates to the centre</li>
+                  <li>Aggregate into a <strong>boosted global model</strong> &mdash; raw data never moves</li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="s2"><i class="fa-solid fa-check-double"></i> Conforming to FAIR</h3>
+                <ul>
+                  <li><strong>F</strong>indable, <strong>A</strong>ccessible, <strong>I</strong>nteroperable, <strong>R</strong>eusable</li>
+                  <li><span class="highlight">Decouples</span> AI algorithms from the data</li>
+                  <li>A <strong>repeatable, testable</strong> data-prep pipeline</li>
+                  <li>Reusable features &amp; datasets across projects and phases (training vs online)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section id="divider-3" class="section-divider" data-state="is-section-divider">
+        <p class="kicker">Bringing the two together</p>
+        <h1>Convergence &amp; Divergence</h1>
+        <p style="font-size: 20pt;">Two halves of one trustworthy-AI lifecycle</p>
+      </section>
+
+      <section id="slide-8">
+        <h2>Points of Convergence</h2>
+        <div class="content">
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px 30px; flex:1;">
+            <div class="card"><h3 style="font-size:18pt;"><i class="fa-solid fa-hospital"></i> Same domain &amp; goal</h3><p style="font-size:14pt;">Both target <strong>ML on sensitive national/clinical health data</strong>, aiming for AI that is reliable and trustworthy in practice.</p></div>
+            <div class="card"><h3 style="font-size:18pt;"><i class="fa-solid fa-user-shield"></i> Privacy is central</h3><p style="font-size:14pt;">Both keep patients protected &mdash; Tucker via <strong>synthetic data</strong>, Sinaci via <strong>federated learning</strong> &amp; on-premises data.</p></div>
+            <div class="card"><h3 style="font-size:18pt;"><i class="fa-solid fa-network-wired"></i> Federated mindset</h3><p style="font-size:14pt;">Neither moves raw data to a central store; insight (synthetic data or model updates) travels instead of records.</p></div>
+            <div class="card"><h3 style="font-size:18pt;"><i class="fa-solid fa-recycle"></i> Real data, reusable</h3><p style="font-size:14pt;">Grounded in real datasets (CPRD, MIMIC; FHIR hospital data) and a shared push for <strong>generalizable, reusable</strong> outputs.</p></div>
+          </div>
+          <p class="text-center" style="margin-top:8px;"><span class="highlight">Together they cover the full journey from raw records to a deployed, trustworthy model.</span></p>
+        </div>
+      </section>
+
+      <section id="slide-9">
+        <h2>Where They Differ</h2>
+        <div class="content">
+          <table class="cmp">
+            <thead>
+              <tr>
+                <th class="h-dim">Dimension</th>
+                <th class="h-s1">Tucker &mdash; Privacy, Bias &amp; Drift</th>
+                <th class="h-s2">Sinaci &mdash; Interoperability Pipeline</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="dim">Focus</td><td>Model &amp; statistics side</td><td>Data engineering &amp; infrastructure side</td></tr>
+              <tr><td class="dim">Core question</td><td><em>What goes wrong</em> with models &amp; distributions?</td><td><em>How to supply</em> clean, standardised data?</td></tr>
+              <tr><td class="dim">Privacy via</td><td>Synthetic data generation (GANs, PGMs)</td><td>Federated ML + data kept on-premises</td></tr>
+              <tr><td class="dim">Key tools</td><td>GANs, probabilistic graphical models, FCI, DDM</td><td>HL7 FHIR, toFHIR, onFHIR-feast, FAIR</td></tr>
+              <tr><td class="dim">Emphasis</td><td>Risks &amp; guardrails: bias, drift, re-identification</td><td>Standards, reproducibility, reusability</td></tr>
+              <tr><td class="dim">Lifecycle stage</td><td>Downstream &mdash; validating &amp; monitoring models</td><td>Upstream &mdash; preparing the data</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="slide-10">
+        <h2>How They Fit Together</h2>
+        <div class="content">
+          <p class="text-center text-muted" style="font-size:15pt; margin: 0 0 18px 0;">The two seminars are <strong>consecutive stages</strong> of one trustworthy-AI lifecycle.</p>
+          <div style="display:grid; grid-template-columns: 1fr auto 1fr; gap:24px; align-items:stretch;">
+            <div class="card card-s2">
+              <p><span class="pill pill-s2">Upstream &middot; Sinaci</span></p>
+              <h3>Get the data right</h3>
+              <p style="font-size:14pt;">Standardise, transform &amp; extract features into a <strong>reproducible, FAIR, AI-ready</strong> pipeline that protects data by design.</p>
+            </div>
+            <div class="arrow" style="font-size:34pt;"><i class="fa-solid fa-arrow-right"></i></div>
+            <div class="card card-s1">
+              <p><span class="pill pill-s1">Downstream &middot; Tucker</span></p>
+              <h3>Keep the model honest</h3>
+              <p style="font-size:14pt;">On that data, <strong>validate privacy</strong>, <strong>detect &amp; mitigate bias</strong>, and <strong>monitor concept drift</strong> over time.</p>
+            </div>
+          </div>
+          <p class="text-center" style="margin-top:28px;"><span class="highlight">Good plumbing without governance is unsafe; governance without good data is impossible.</span></p>
+        </div>
+      </section>
+
+      <section id="slide-11">
+        <h2>Main Takeaways</h2>
+        <div class="content">
+          <ul class="text-lg">
+            <li><i class="fa-solid fa-circle-check s2"></i> &nbsp;<strong>Standards are the foundation.</strong> FHIR-based interoperability (toFHIR, onFHIR-feast) makes health-ML data reproducible, reusable and decoupled from any single algorithm.</li>
+            <li><i class="fa-solid fa-circle-check s1"></i> &nbsp;<strong>Clean data is necessary but not sufficient.</strong> Even well-engineered data carries privacy risk, bias and drift that must be actively managed.</li>
+            <li><i class="fa-solid fa-circle-check" style="color:var(--accent-color);"></i> &nbsp;<strong>Privacy can be engineered.</strong> Synthetic data and federated learning let us extract value while raw patient records stay protected.</li>
+            <li><i class="fa-solid fa-circle-check s1"></i> &nbsp;<strong>Models are never &ldquo;done&rdquo;.</strong> Bias and concept drift demand transparency and continuous monitoring after deployment.</li>
+            <li><i class="fa-solid fa-circle-check" style="color:var(--accent-color);"></i> &nbsp;<strong>Trustworthy health AI = pipeline + governance.</strong> Sinaci builds the road; Tucker keeps the journey safe.</li>
+          </ul>
+        </div>
+        <div class="footnote-fixed">Synthesis of seminars by Allan Tucker (Brunel University London, 2022) and Anil Sinaci (SRDC/TOPHI, 2023).</div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/chart/plugin.js"></script>
+  <script>
+    Reveal.initialize({
+      width: 1280,
+      height: 720,
+      margin: 0,
+      controls: true,
+      progress: true,
+      slideNumber: false,
+      hash: true,
+      transition: 'slide',
+      center: false,
+      plugins: [ RevealChart ],
+      chart: {
+        defaults: Object.assign({
+          color: 'rgba(0, 0, 0, 0.8)',
+          borderColor: 'rgba(0, 0, 0, 0.8)',
+          devicePixelRatio: 2
+        }, window.location.search.includes('export') ? { animation: false } : {})
+      }
+    });
+  </script>
+</body>
+</html>
