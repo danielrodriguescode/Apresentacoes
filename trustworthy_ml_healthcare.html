@@ -354,13 +354,13 @@
             <div class="card card-s1" style="display:flex; flex-direction:column; justify-content:center; gap:14px; padding: 24px 26px;">
               <p style="margin:0;"><span class="pill pill-s1">Seminar 1 &middot; 15 Mar 2022</span></p>
               <h3 style="font-size: 21pt; margin:0;">Privacy, Bias &amp; Drift in AI Models of National Healthcare Data</h3>
-              <p class="text-muted" style="font-size: 14pt; margin:0;"><strong>Allan Tucker</strong> &mdash; Brunel University London, Intelligent Data Analytics (IDA) group</p>
+              <p class="text-muted" style="font-size: 14pt; margin:0;"><strong>Allan Tucker</strong> &middot; Brunel University London, Intelligent Data Analytics (IDA) group</p>
               <p style="font-size: 15pt; margin:0;">A <strong>model-side</strong> view: how the <em>statistical</em> dangers of real health data threaten reliable AI and how to manage them.</p>
             </div>
             <div class="card card-s2" style="display:flex; flex-direction:column; justify-content:center; gap:14px; padding: 24px 26px;">
               <p style="margin:0;"><span class="pill pill-s2">Seminar 2 &middot; 14 Mar 2023</span></p>
               <h3 style="font-size: 21pt; margin:0;">Standards-based Health Data Interoperability Pipeline for Machine Learning</h3>
-              <p class="text-muted" style="font-size: 14pt; margin:0;"><strong>Anil Sinaci</strong> &mdash; SRDC / TOPHI</p>
+              <p class="text-muted" style="font-size: 14pt; margin:0;"><strong>Anil Sinaci</strong> &middot; SRDC / TOPHI</p>
               <p style="font-size: 15pt; margin:0;">A <strong>data-engineering</strong> view: how to turn messy hospital records into <em>standardised, AI-ready</em> datasets with a reproducible pipeline.</p>
             </div>
           </div>
@@ -376,9 +376,9 @@
 
       <section>
         <section id="slide-4-1">
-          <h2>Seminar 1 &mdash; Overview</h2>
+          <h2>Seminar 1: Overview</h2>
           <div class="content" style="justify-content: center; gap: 24px;">
-            <p style="margin:0;">National health datasets (e.g. <strong>CPRD</strong>, <strong>MIMIC</strong>) are a goldmine for AI, but <strong>three forces</strong> undermine the models we train on them: <strong class="s1">privacy</strong>, <strong class="s1">bias</strong> and <strong class="s1">concept drift</strong>. Tucker's work, rooted in <strong>probabilistic graphical models</strong> and <strong>generative AI</strong>, tackles each in turn:</p>
+            <p style="margin:0;">National health datasets (e.g. <strong>CPRD</strong>, <strong>MIMIC</strong>) are a goldmine for AI, but <strong>three forces</strong> undermine the models we train on them: <strong class="s1">privacy</strong>, <strong class="s1">bias</strong> and <strong class="s1">concept drift</strong>. Tucker's work, rooted in <strong>statistical modelling</strong> and <strong>generative AI</strong>, tackles each in turn:</p>
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; flex:1;">
               <div class="challenge" style="display:flex; flex-direction:column; justify-content:center; gap:10px;">
                 <h3 style="font-size:21pt;"><i class="fa-solid fa-user-shield"></i> 1. Privacy</h3>
@@ -400,16 +400,16 @@
           </div>
         </section>
         <section id="slide-4-2">
-          <h2>Privacy &mdash; Synthetic Data as a Solution</h2>
+          <h2>Privacy: Synthetic Data as a Solution</h2>
           <div class="content">
             <div style="display:grid; grid-template-columns: 1.1fr 1fr; gap: 28px; flex:1;">
               <div>
                 <p>Rather than sharing real records, <strong>generate realistic synthetic data</strong> that preserves statistical structure:</p>
                 <ul>
-                  <li><strong>Generative Adversarial Networks (GANs)</strong> &amp; probabilistic graphical models</li>
-                  <li>Validated for <strong>fidelity</strong> on CPRD &amp; time-series MIMIC data</li>
-                  <li>Causal structure recovered via the <strong>FCI algorithm</strong></li>
-                  <li>Stress-tested with <strong>simulated attacks</strong> &mdash; matching synthetic records back to real patients</li>
+                  <li><strong>Generative Adversarial Networks (GANs)</strong> and other generative models</li>
+                  <li>Checked to confirm it is <strong>realistic</strong> on real CPRD &amp; MIMIC data</li>
+                  <li>Keeps the real <strong>relationships between variables</strong>, not just individual values</li>
+                  <li>Stress-tested with <strong>simulated attacks</strong> that try to match synthetic records back to real patients</li>
                 </ul>
               </div>
               <div class="card" style="align-self:center; background: var(--s1-soft); border:none;">
@@ -428,15 +428,15 @@
                 <h3><i class="fa-solid fa-scale-unbalanced"></i> Dealing with Bias</h3>
                 <ul style="margin-top:6px;">
                   <li>Sampling bias &amp; prejudice get baked into models</li>
-                  <li>Not just <em>rebalancing</em> hard datasets &mdash; also exposing <strong>unwarranted links</strong> &amp; the semantics of <strong>latent variables</strong></li>
-                  <li>Mitigation via <strong>boosting</strong>; demands <strong>transparency</strong></li>
-                  <li>Synthetic data can inherit &mdash; or amplify &mdash; bias</li>
+                  <li>Not just <em>rebalancing</em> difficult datasets, but also revealing <strong>hidden, unjustified patterns</strong> the model has learned</li>
+                  <li>Can be corrected, but demands <strong>transparency</strong></li>
+                  <li>Synthetic data can inherit, or even amplify, bias</li>
                 </ul>
               </div>
               <div class="challenge" style="background:#FDEEE2; border-left-color: var(--accent-color);">
                 <h3 style="color:#C2570F;"><i class="fa-solid fa-arrow-trend-down"></i> Concept Drift</h3>
                 <ul style="margin-top:6px;">
-                  <li>Health data is <strong>dynamic</strong> &mdash; populations and practice shift</li>
+                  <li>Health data is <strong>dynamic</strong>: populations and practice shift</li>
                   <li>A model trained once silently <strong>decays</strong></li>
                   <li><strong>Drift Detection (DDM)</strong> tested on cardiovascular disease</li>
                   <li>Must monitor &amp; capture <strong>changing subpopulations</strong></li>
@@ -455,7 +455,7 @@
 
       <section>
         <section id="slide-6-1">
-          <h2>Seminar 2 &mdash; The Interoperability Pipeline</h2>
+          <h2>Seminar 2: The Interoperability Pipeline</h2>
           <div class="content" style="justify-content: center; gap: 30px;">
             <p style="margin:0; font-size:17pt;">The challenge: every hospital stores data differently, so ML projects re-invent data wrangling each time. The solution is a <strong>repeatable, standards-based pipeline</strong> that runs <em>on hospital premises</em>.</p>
             <div>
@@ -495,7 +495,7 @@
               </div>
               <div class="card card-s2">
                 <h3 style="font-size:18pt;"><i class="fa-solid fa-layer-group"></i> onFHIR-feast</h3>
-                <p style="font-size:14pt;">A <strong>feature store</strong> (like SageMaker / Hopsworks) defining <strong>reusable features</strong> via FHIR Search &amp; FHIR Path, going from population &rarr; time-series &rarr; one tabular dataset.</p>
+                <p style="font-size:14pt;">A <strong>feature store</strong> (like SageMaker / Hopsworks) defining <strong>reusable features</strong> with standard FHIR queries, going from population &rarr; time-series &rarr; one final data table.</p>
               </div>
             </div>
             <p class="text-muted text-center" style="font-size:14pt; margin-top:6px;">Built on a <strong>Secure Health Data Repository</strong> (onFHIR) hosting the standardised data</p>
@@ -555,17 +555,17 @@
             <thead>
               <tr>
                 <th class="h-dim">Dimension</th>
-                <th class="h-s1">Tucker &mdash; Privacy, Bias &amp; Drift</th>
-                <th class="h-s2">Sinaci &mdash; Interoperability Pipeline</th>
+                <th class="h-s1">Tucker: Privacy, Bias &amp; Drift</th>
+                <th class="h-s2">Sinaci: Interoperability Pipeline</th>
               </tr>
             </thead>
             <tbody>
               <tr><td class="dim">Focus</td><td>Model &amp; statistics side</td><td>Data engineering &amp; infrastructure side</td></tr>
               <tr><td class="dim">Core question</td><td><em>What goes wrong</em> with models &amp; distributions?</td><td><em>How to supply</em> clean, standardised data?</td></tr>
-              <tr><td class="dim">Privacy via</td><td>Synthetic data generation (GANs, PGMs)</td><td>Federated ML + data kept on-premises</td></tr>
-              <tr><td class="dim">Key tools</td><td>GANs, probabilistic graphical models, FCI, DDM</td><td>HL7 FHIR, toFHIR, onFHIR-feast, FAIR</td></tr>
+              <tr><td class="dim">Privacy via</td><td>Synthetic data generation (GANs)</td><td>Federated ML + data kept on-premises</td></tr>
+              <tr><td class="dim">Key tools</td><td>Generative models (GANs), drift detection</td><td>HL7 FHIR, toFHIR, onFHIR-feast, FAIR</td></tr>
               <tr><td class="dim">Emphasis</td><td>Risks &amp; guardrails: bias, drift, re-identification</td><td>Standards, reproducibility, reusability</td></tr>
-              <tr><td class="dim">Lifecycle stage</td><td>Downstream &mdash; validating &amp; monitoring models</td><td>Upstream &mdash; preparing the data</td></tr>
+              <tr><td class="dim">Lifecycle stage</td><td>Downstream: validating &amp; monitoring models</td><td>Upstream: preparing the data</td></tr>
             </tbody>
           </table>
         </div>
