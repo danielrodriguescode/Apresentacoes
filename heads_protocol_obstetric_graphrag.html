@@ -1,0 +1,898 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hybrid Retrieval for Trustworthy CDSS in Obstetrics</title>
+
+  <!-- Reveal.js core -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Custom styles (inlined for single-file portability) -->
+  <style>
+/* HEADS PhD Protocol — Hybrid Retrieval for Trustworthy CDSS in Obstetrics
+ * Palette: deep petrol/teal (clinical trust) + warm coral (maternal health)
+ * Infographic build with animated entrances and a knowledge-graph motif.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --background-color: #FAF8F5;
+  --section-divider-bg: #0B2E33;
+
+  --heading-font: "Fraunces", Georgia, serif;
+  --body-font: "Inter", Helvetica, sans-serif;
+  --base-font-size: 32px;
+  --text-size: 16pt;
+  --h1-size: 44pt;
+  --h2-size: 32pt;
+  --h3-size: 21pt;
+  --footnote-size: 11pt;
+
+  --primary-color: #11636E;
+  --primary-dark: #0B2E33;
+  --secondary-color: #E0654E;
+  --coral-bright: #F47A5F;
+  --accent-gold: #D9A441;
+  --accent-mint: #5FB6A8;
+  --text-color: #1E2A2C;
+  --muted-color: #5E7074;
+  --line-color: #C9D4D3;
+  --surface: #FFFFFF;
+  --surface-tint: #EEF3F2;
+  --dark-text: #F2EFEA;
+  --dark-muted: #93AEAC;
+
+  --slide-padding: 60px;
+  --slide-padding-top: 40px;
+  --content-gap: 22px;
+  --box-radius: 14px;
+}
+
+/* ===========================================
+   BASE
+   =========================================== */
+.reveal { font-family: var(--body-font); font-size: var(--base-font-size); }
+.reveal strong, .reveal b { font-weight: 700; color: var(--primary-dark); }
+.reveal em { font-style: italic; }
+
+.reveal-viewport { background-color: var(--background-color); }
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+  font-family: var(--heading-font);
+  text-transform: none;
+  color: var(--primary-dark);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+.reveal h1 { font-size: var(--h1-size); }
+.reveal h2 { font-size: var(--h2-size); margin-bottom: 0; }
+.reveal h3 { font-size: var(--h3-size); }
+
+.reveal p, .reveal li, .reveal td, .reveal th, .reveal blockquote {
+  font-size: var(--text-size);
+  color: var(--text-color);
+  line-height: 1.45;
+}
+
+/* Slide title with accent underline + small marker */
+.reveal .slides section > h2 {
+  flex-shrink: 0;
+  margin: 0;
+  padding-bottom: 12px;
+  position: relative;
+}
+.reveal .slides section > h2::after {
+  content: '';
+  position: absolute; left: 0; bottom: 0;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--secondary-color) 0%, var(--secondary-color) 64px, var(--line-color) 64px, var(--line-color) 100%);
+}
+
+/* ===========================================
+   LISTS
+   =========================================== */
+.reveal ul { list-style: none; padding-left: 0; margin: 10px 0; }
+.reveal ul li { position: relative; padding-left: 26px; margin-bottom: 8px; }
+.reveal ul li::before {
+  content: '';
+  position: absolute; left: 0; top: 0.5em;
+  width: 9px; height: 9px;
+  background: var(--secondary-color);
+  border-radius: 2px;
+  transform: rotate(45deg);
+}
+.reveal ul ul li::before { background: var(--muted-color); width: 6px; height: 6px; }
+.reveal blockquote p { font-size: inherit; }
+
+/* ===========================================
+   SLIDE LAYOUT
+   =========================================== */
+.reveal .slides section {
+  height: 100%;
+  display: flex !important;
+  flex-direction: column !important;
+  padding: var(--slide-padding-top) var(--slide-padding) var(--slide-padding) var(--slide-padding) !important;
+  box-sizing: border-box;
+  text-align: left;
+}
+.reveal .slides section.stack { padding: 0 !important; }
+.reveal .slides section > .content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: var(--content-gap);
+  text-align: left;
+}
+.reveal .slides section > .footnote {
+  position: absolute; bottom: 14px;
+  left: var(--slide-padding); right: var(--slide-padding);
+  font-size: var(--footnote-size); color: var(--muted-color);
+}
+
+/* ===========================================
+   DARK SLIDES
+   =========================================== */
+.reveal .slides section.dark h1,
+.reveal .slides section.dark h2,
+.reveal .slides section.dark h3,
+.reveal .slides section.dark p,
+.reveal .slides section.dark li,
+.reveal .slides section.dark td,
+.reveal .slides section.dark th { color: var(--dark-text); }
+.reveal .slides section.dark strong { color: #FFFFFF; }
+.reveal .slides section.dark .footnote { color: var(--dark-muted); }
+.reveal .slides section.dark > h2::after {
+  background: linear-gradient(90deg, var(--coral-bright) 0%, var(--coral-bright) 64px, rgba(255,255,255,0.18) 64px, rgba(255,255,255,0.18) 100%);
+}
+.reveal .slides section.dark ul li::before { background: var(--coral-bright); }
+
+/* ===========================================
+   SECTION DIVIDERS
+   =========================================== */
+.reveal .slides section.section-divider {
+  display: flex !important; flex-direction: column !important;
+  justify-content: center !important; align-items: flex-start !important;
+  text-align: left;
+}
+.reveal .slides section.section-divider h1,
+.reveal .slides section.section-divider h2,
+.reveal .slides section.section-divider p { color: var(--dark-text); }
+.reveal .slides section.section-divider h1 { font-size: 52pt; text-align: left; border: none; }
+.reveal .slides section.section-divider p { font-size: 19pt; color: var(--dark-muted); max-width: 78%; margin-top: 16px; z-index:2; }
+
+/* ===========================================
+   TEXT UTILITIES
+   =========================================== */
+.text-sm { font-size: 13pt !important; }
+.text-lg { font-size: 18pt !important; }
+.text-xl { font-size: 20pt !important; }
+.text-2xl { font-size: 24pt !important; }
+.text-3xl { font-size: 28pt !important; }
+.text-4xl { font-size: 34pt !important; }
+.text-muted { color: var(--muted-color) !important; }
+.text-center { text-align: center !important; }
+.text-coral { color: var(--secondary-color) !important; }
+.text-teal { color: var(--primary-color) !important; }
+.text-gold { color: var(--accent-gold) !important; }
+
+/* Eyebrow / kicker */
+.kicker {
+  color: var(--secondary-color);
+  font-family: var(--body-font);
+  font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  font-size: 13pt; margin: 0 0 6px 0;
+}
+.section-divider .kicker { font-size: 15pt; color: var(--coral-bright); z-index:2; }
+.dark .kicker { color: var(--coral-bright); }
+
+/* ===========================================
+   BLOCKQUOTES
+   =========================================== */
+.reveal blockquote {
+  border-left: 4px solid var(--secondary-color);
+  padding-left: 22px; margin: 14px 0; font-style: italic;
+  background: none; box-shadow: none; width: 100%; max-width: none;
+}
+
+/* ===========================================
+   CARDS & COMPONENTS
+   =========================================== */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line-color);
+  border-radius: var(--box-radius);
+  padding: 18px 20px;
+  box-shadow: 0 6px 18px rgba(11,46,51,0.06);
+}
+.card h3 { margin-top: 0; margin-bottom: 8px; }
+.card p, .card li { font-size: 14.5pt; }
+.card-accent { border-top: 4px solid var(--secondary-color); }
+.dark .card { background: rgba(255,255,255,0.055); border-color: rgba(255,255,255,0.15); box-shadow:none; }
+
+/* Icon tile */
+.iconc {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 46px; height: 46px; border-radius: 12px;
+  background: var(--surface-tint); color: var(--primary-color);
+  font-size: 19pt; margin-bottom: 10px;
+}
+.dark .iconc { background: rgba(255,255,255,0.08); color: var(--coral-bright); }
+
+/* Big stat number */
+.stat .num {
+  font-family: var(--heading-font); font-weight: 700;
+  font-size: 46pt; color: var(--secondary-color); line-height: 1; display: block;
+}
+.stat .lbl { font-size: 13pt; color: var(--muted-color); display: block; margin-top: 6px; }
+.dark .stat .lbl { color: var(--dark-muted); }
+
+/* Pills */
+.pill {
+  display: inline-block; background: var(--surface-tint);
+  color: var(--primary-color); border: 1px solid var(--line-color);
+  border-radius: 999px; padding: 6px 16px; font-size: 14pt; font-weight: 500;
+  margin: 5px 5px 0 0;
+}
+
+/* Highlight box */
+.highlight {
+  background: var(--surface-tint); border-radius: var(--box-radius);
+  padding: 18px 22px; border-left: 5px solid var(--secondary-color);
+}
+.dark .highlight { background: rgba(255,255,255,0.06); }
+
+/* ===========================================
+   INFOGRAPHIC: PIPELINE FLOW
+   =========================================== */
+.flow { display: flex; align-items: stretch; gap: 8px; justify-content: center; margin-top: 6px; }
+.fnode {
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px; padding: 12px 10px; text-align: center; flex: 1;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.fnode .pn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--coral-bright); color: #06181B; font-weight: 700; font-size: 12pt;
+  margin: 0 auto 7px auto; font-family: var(--body-font);
+}
+.fnode h3 { font-size: 14pt; margin: 0 0 3px 0; color: var(--dark-text); }
+.fnode p { font-size: 10.5pt; margin: 0; color: var(--dark-muted); line-height: 1.3; }
+.fnode.q { background: rgba(224,101,78,0.16); border-color: rgba(244,122,95,0.5); flex: 0.85; }
+.fnode.gen { background: rgba(95,182,168,0.15); border-color: rgba(95,182,168,0.5); }
+.farrow { display: flex; align-items: center; color: var(--coral-bright); font-size: 18pt; }
+.lanes { display: flex; flex-direction: column; gap: 8px; flex: 1.15; }
+.lane { border-radius: 12px; padding: 9px 10px; text-align: center; border: 1px solid; }
+.lane h3 { font-size: 13pt; margin: 0; }
+.lane p { font-size: 10pt; margin: 2px 0 0 0; }
+.lane-graph { background: rgba(17,99,110,0.30); border-color: rgba(95,182,168,0.55); }
+.lane-graph h3, .lane-graph p { color: var(--dark-text); }
+.lane-vec { background: rgba(217,164,65,0.16); border-color: rgba(217,164,65,0.55); }
+.lane-vec h3, .lane-vec p { color: var(--dark-text); }
+.foundation {
+  margin-top: 14px; border-radius: 12px; padding: 11px 16px; text-align: center;
+  background: rgba(255,255,255,0.04); border: 1px dashed rgba(255,255,255,0.28);
+}
+.foundation p { margin: 0; font-size: 12.5pt; color: var(--dark-muted); }
+.foundation strong { color: #fff; }
+
+/* ===========================================
+   INFOGRAPHIC: PICO FLOW
+   =========================================== */
+.pico { display: flex; align-items: stretch; gap: 6px; margin-top: 8px; }
+.pico-step {
+  flex: 1; background: var(--surface); border: 1px solid var(--line-color);
+  border-radius: 12px; padding: 14px 16px; position: relative;
+}
+.pico-step .pl {
+  font-family: var(--heading-font); font-weight: 700; font-size: 26pt;
+  color: var(--secondary-color); line-height: 1; display: block; margin-bottom: 4px;
+}
+.pico-step p { font-size: 13.5pt; margin: 0; }
+.pico-arrow { display: flex; align-items: center; color: var(--secondary-color); font-size: 18pt; }
+
+/* ===========================================
+   INFOGRAPHIC: STUDY CHAIN
+   =========================================== */
+.chain { display: flex; align-items: center; gap: 0; margin: 0 0 6px 0; }
+.chain .step {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 50%;
+  font-family: var(--heading-font); font-weight: 700; font-size: 15pt;
+  background: var(--surface); border: 2px solid var(--line-color);
+  color: var(--muted-color); flex-shrink: 0;
+}
+.chain .step.done { background: var(--primary-color); border-color: var(--primary-color); color: #fff; }
+.chain .step.active {
+  background: var(--secondary-color); border-color: var(--secondary-color); color: #fff;
+  width: 50px; height: 50px; font-size: 18pt;
+  box-shadow: 0 0 0 5px rgba(224,101,78,0.18);
+}
+.chain .link { height: 3px; width: 42px; background: var(--line-color); flex-shrink: 1; }
+.chain .link.done { background: var(--primary-color); }
+
+/* ===========================================
+   INFOGRAPHIC: GANTT TIMELINE
+   =========================================== */
+.gantt { margin-top: 14px; position: relative; }
+.gantt-axis { display: grid; grid-template-columns: 245px 1fr; align-items: end; margin-bottom: 6px; }
+.gantt-years { display: grid; grid-template-columns: repeat(3,1fr); position: relative; }
+.gantt-years span {
+  font-size: 11.5pt; font-weight: 600; color: var(--muted-color);
+  text-align: center; border-left: 1px solid var(--line-color); padding-bottom: 4px;
+}
+.gantt-row { display: grid; grid-template-columns: 245px 1fr; align-items: center; height: 34px; }
+.gantt-row .tlabel { font-size: 11.5pt; color: var(--text-color); padding-right: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.gantt-track { position: relative; height: 100%; border-left: 1px solid var(--line-color);
+  background-image: repeating-linear-gradient(90deg, transparent, transparent calc(33.33% - 1px), var(--line-color) calc(33.33% - 1px), var(--line-color) 33.33%);
+}
+.gantt-bar {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  height: 18px; border-radius: 9px; background: var(--primary-color);
+  animation: growBar 0.9s cubic-bezier(.2,.8,.2,1) both;
+  transform-origin: left center;
+}
+.gantt-bar.alt { background: var(--accent-mint); }
+.gantt-bar.write { background: var(--accent-gold); }
+.gantt-milestones { position: relative; height: 24px; margin-left: 245px; margin-bottom: 14px; }
+.gantt-ms {
+  position: absolute; transform: translateX(-50%);
+  font-size: 10pt; color: var(--secondary-color); font-weight: 700; text-align: center;
+  white-space: nowrap;
+}
+.gantt-ms .dia { display:block; width: 11px; height: 11px; background: var(--secondary-color);
+  transform: rotate(45deg); margin: 0 auto 3px auto; }
+
+/* ===========================================
+   KNOWLEDGE-GRAPH MOTIF (divider/title bg)
+   =========================================== */
+.net-bg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; overflow: hidden; pointer-events: none; opacity: 0.9; }
+.net-bg svg { width: 100%; height: 100%; }
+.net-edge { stroke: #5FB6A8; stroke-width: 1.2; opacity: 0.14; }
+.net-node {
+  fill: #5FB6A8; --glow: #5FB6A8; opacity: 0.15;
+  transform-box: fill-box; transform-origin: center;
+  animation: nodeBlink 6s linear infinite;
+}
+.net-node.coral { fill: #F47A5F; --glow: #F47A5F; }
+.section-divider > *:not(.net-bg), .dark > *:not(.net-bg) { position: relative; z-index: 2; }
+
+/* ===========================================
+   ANIMATIONS
+   =========================================== */
+@keyframes growBar { from { width: 0 !important; } }
+@keyframes nodeBlink {
+  0%   { opacity: 0.15; transform: scale(1);   filter: drop-shadow(0 0 2px transparent); }
+  6%   { opacity: 1;    transform: scale(1.8); filter: drop-shadow(0 0 11px var(--glow)); }
+  17%  { opacity: 0.15; transform: scale(1);   filter: drop-shadow(0 0 2px transparent); }
+  100% { opacity: 0.15; transform: scale(1);   filter: drop-shadow(0 0 2px transparent); }
+}
+@keyframes barRise {
+  from { height: 0; }
+}
+
+/* Entrance animation for elements on the active slide */
+.reveal .slides section.present .rise { animation: riseIn 0.7s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes riseIn { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+.reveal .slides section.present .rise.d1 { animation-delay: 0.10s; }
+.reveal .slides section.present .rise.d2 { animation-delay: 0.20s; }
+.reveal .slides section.present .rise.d3 { animation-delay: 0.30s; }
+.reveal .slides section.present .rise.d4 { animation-delay: 0.40s; }
+.reveal .slides section.present .rise.d5 { animation-delay: 0.50s; }
+.reveal .slides section.present .rise.d6 { animation-delay: 0.60s; }
+
+/* Vertical comparison bars (hallucination) */
+.barwrap { display: flex; align-items: flex-end; gap: 40px; height: 300px; }
+.barcol { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+.barcol .bar {
+  width: 120px; border-radius: 12px 12px 0 0;
+  display: flex; align-items: flex-start; justify-content: center; padding-top: 12px;
+  font-family: var(--heading-font); font-weight: 700; font-size: 26pt; color: #fff;
+}
+.reveal .slides section.present .barcol .bar { animation: barRise 1.1s cubic-bezier(.2,.8,.2,1) both; }
+.barcol .cap { margin-top: 12px; font-size: 13pt; color: var(--dark-muted); text-align: center; }
+  </style>
+
+  <!-- Chart.js for data visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- 1 · TITLE -->
+      <section id="title" class="dark" data-background-color="#0B2E33">
+        <div class="net-bg">
+          <svg viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice">
+            <line class="net-edge" x1="180" y1="140" x2="420" y2="240"/>
+            <line class="net-edge" x1="420" y1="240" x2="300" y2="470"/>
+            <line class="net-edge" x1="420" y1="240" x2="700" y2="180"/>
+            <line class="net-edge" x1="700" y1="180" x2="980" y2="300"/>
+            <line class="net-edge" x1="980" y1="300" x2="1120" y2="520"/>
+            <line class="net-edge" x1="700" y1="180" x2="860" y2="540"/>
+            <line class="net-edge" x1="300" y1="470" x2="560" y2="600"/>
+            <line class="net-edge" x1="860" y1="540" x2="560" y2="600"/>
+            <line class="net-edge" x1="980" y1="300" x2="700" y2="180"/>
+            <circle class="net-node" cx="180" cy="140" r="7" style="animation-delay:0s"/>
+            <circle class="net-node coral" cx="420" cy="240" r="10" style="animation-delay:.75s"/>
+            <circle class="net-node" cx="700" cy="180" r="9" style="animation-delay:1.5s"/>
+            <circle class="net-node coral" cx="980" cy="300" r="8" style="animation-delay:2.25s"/>
+            <circle class="net-node" cx="1120" cy="520" r="6" style="animation-delay:3s"/>
+            <circle class="net-node" cx="860" cy="540" r="7" style="animation-delay:3.75s"/>
+            <circle class="net-node coral" cx="560" cy="600" r="9" style="animation-delay:4.5s"/>
+            <circle class="net-node" cx="300" cy="470" r="6" style="animation-delay:5.25s"/>
+          </svg>
+        </div>
+        <p class="kicker rise">Doctoral Programme HEADS · FMUP</p>
+        <h1 class="rise d1">Hybrid Retrieval for Trustworthy Clinical Decision Support in Obstetrics</h1>
+        <p class="rise d2" style="margin-top:18px; font-size:18pt; color:#7FB3AC; font-style:italic; max-width:none;">A provenance-aware graph-RAG pipeline for obstetric guidelines</p>
+        <div class="rise d3" style="margin-top:40px;">
+          <p style="font-size:18pt; color:var(--dark-text); margin:0;"><strong style="color:#fff;">Daniel Rodrigues</strong> &nbsp;·&nbsp; PhD candidate</p>
+          <p style="font-size:13pt; color:#7FA09D; margin:10px 0 0 0;">Thesis protocol &nbsp;·&nbsp; Sep 2026 – Aug 2029 &nbsp;·&nbsp; 36 months</p>
+        </div>
+      </section>
+
+      <!-- 2 · THE PROBLEM -->
+      <section id="slide-2">
+        <h2>Obstetric care is unforgiving of error</h2>
+        <div class="content">
+          <div style="display:grid; grid-template-columns:0.9fr 1.1fr; gap:30px; align-items:stretch;">
+            <div class="card rise" style="display:flex; flex-direction:column; justify-content:center; text-align:center;">
+              <div style="font-size:30pt; color:var(--secondary-color);"><i class="fa-solid fa-person-pregnant"></i></div>
+              <p class="stat" style="margin:6px 0 0 0;"><span class="num">2</span><span class="lbl">patients in every decision — mother <em>and</em> fetus</span></p>
+              <p style="font-size:13pt; color:var(--muted-color); margin-top:14px;">Deterioration is rapid; small delays carry disproportionate consequences.</p>
+            </div>
+            <div>
+              <p class="kicker rise d1">The evidence base</p>
+              <div style="display:flex; gap:10px; margin:8px 0 4px 0;">
+                <span class="pill rise d1" style="background:#fff;">NICE</span>
+                <span class="pill rise d2" style="background:#fff;">FIGO</span>
+                <span class="pill rise d3" style="background:#fff;">RCOG</span>
+                <span class="rise d4" style="align-self:center; color:var(--secondary-color); font-size:20pt;"><i class="fa-solid fa-bolt"></i></span>
+              </div>
+              <ul class="text-lg" style="margin-top:14px;">
+                <li class="rise d2"><strong>Fragmented</strong> — extensive, periodically revised, independently maintained.</li>
+                <li class="rise d3"><strong>Sometimes contradictory</strong> — divergent recommendations across bodies.</li>
+                <li class="rise d4"><strong>Poorly supported</strong> — most point-of-care questions go unanswered; tools don't reconcile conflict.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footnote">Del Fiol et al., 2014 · Santo et al., 2017 · NICE 2019 · Poon et al., 2019 · RCOG 2011</div>
+      </section>
+
+      <!-- 3 · WHY LLMs ALONE FAIL -->
+      <section id="slide-3" class="dark" data-background-color="#0B2E33">
+        <h2>LLMs alone are unsafe</h2>
+        <div class="content">
+          <div style="display:grid; grid-template-columns:1.25fr 1fr; gap:40px; align-items:center;">
+            <div>
+              <p class="text-lg rise">Large language models answer in natural language but fail clinicians when used unaided:</p>
+              <ul class="text-lg">
+                <li class="rise d1">They <strong>hallucinate</strong> and can't trace an answer to a source.</li>
+                <li class="rise d2">They reason weakly over the <strong>multi-step, conditional</strong> logic of guidelines.</li>
+                <li class="rise d3">Dense (embedding-only) RAG captures surface similarity — not the <strong>structured relations</strong> behind clinical reasoning.</li>
+              </ul>
+              <div class="highlight rise d4" style="margin-top:14px;">
+                <p style="margin:0; font-size:14.5pt;">Grounding LLMs in ontologies and knowledge graphs sharply reduces hallucination in clinical QA.</p>
+              </div>
+            </div>
+            <div>
+              <p class="kicker text-center" style="margin-bottom:14px;">Hallucination rate</p>
+              <div class="barwrap" style="justify-content:center;">
+                <div class="barcol">
+                  <div class="bar" style="height:92%; background:linear-gradient(180deg,#3C5A5F,#274449);">63%</div>
+                  <span class="cap">Baseline<br>RAG</span>
+                </div>
+                <div class="barcol">
+                  <div class="bar" style="height:14%; background:linear-gradient(180deg,#F47A5F,#E0654E); animation-delay:.35s;">1.7%</div>
+                  <span class="cap">Ontology +<br>graph</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footnote">Ali et al., 2026 · Gao et al., 2025 · Buonocore et al., 2026 · Cormack et al., 2009</div>
+      </section>
+
+      <!-- 4 · THE GAP -->
+      <section id="slide-4">
+        <h2>No obstetric graph-RAG exists</h2>
+        <div class="content">
+          <p class="text-lg rise">Graph-based retrieval is proving decisive in adjacent areas — but obstetric guideline knowledge is untouched.</p>
+          <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:18px;">
+            <div class="card rise d1" style="text-align:center;">
+              <div class="iconc" style="margin:0 auto 10px auto;"><i class="fa-solid fa-list-check"></i></div>
+              <h3 style="font-size:16pt;">Triage</h3>
+              <p style="color:var(--accent-mint); font-weight:700; margin-top:6px;"><i class="fa-solid fa-check"></i> covered</p>
+            </div>
+            <div class="card rise d2" style="text-align:center;">
+              <div class="iconc" style="margin:0 auto 10px auto;"><i class="fa-solid fa-file-medical"></i></div>
+              <h3 style="font-size:16pt;">EHR patient QA</h3>
+              <p style="color:var(--accent-mint); font-weight:700; margin-top:6px;"><i class="fa-solid fa-check"></i> covered</p>
+            </div>
+            <div class="card rise d3" style="text-align:center;">
+              <div class="iconc" style="margin:0 auto 10px auto;"><i class="fa-solid fa-bone"></i></div>
+              <h3 style="font-size:16pt;">Other domains</h3>
+              <p style="color:var(--accent-mint); font-weight:700; margin-top:6px;"><i class="fa-solid fa-check"></i> covered</p>
+            </div>
+            <div class="card card-accent rise d4" style="text-align:center; border:2px solid var(--secondary-color); background:var(--surface-tint);">
+              <div class="iconc" style="margin:0 auto 10px auto; background:var(--secondary-color); color:#fff;"><i class="fa-solid fa-person-pregnant"></i></div>
+              <h3 style="font-size:16pt;">Obstetrics</h3>
+              <p class="text-coral" style="font-weight:700; margin-top:6px;"><i class="fa-solid fa-xmark"></i> the gap</p>
+            </div>
+          </div>
+          <div class="highlight rise d5" style="margin-top:20px;">
+            <p style="margin:0; font-size:14.5pt;">No structured representation reconciles multiple obstetric guideline bodies to <strong>detect contradictions</strong>, and none couples retrieval with explicit <strong>safety escalation</strong>.</p>
+          </div>
+        </div>
+        <div class="footnote">Nearest systems: Buonocore et al. (rheumatology) · Thio et al. (EHR) · Chehab et al. (computable guidelines)</div>
+      </section>
+
+      <!-- 5 · AIM & PICO -->
+      <section id="slide-5">
+        <h2>Aim and research question</h2>
+        <div class="content">
+          <div class="highlight rise" style="margin-bottom:20px;">
+            <p style="margin:0; font-size:16pt;">Design, build and rigorously evaluate a <strong>graph-RAG</strong> decision-support pipeline for obstetric guidelines that grounds answers in a <strong>provenance-aware</strong> knowledge graph, fuses graph and dense retrieval, <strong>cites sources</strong>, detects <strong>contradictions</strong>, and raises <strong>escalation flags</strong>.</p>
+          </div>
+          <p class="kicker rise d1">PICO question</p>
+          <div class="pico">
+            <div class="pico-step rise d1"><span class="pl">P</span><p>Clinicians answering obstetric guideline questions</p></div>
+            <div class="pico-arrow rise d2"><i class="fa-solid fa-angle-right"></i></div>
+            <div class="pico-step rise d2"><span class="pl">I</span><p>Graph-RAG grounded in an obstetric knowledge graph</p></div>
+            <div class="pico-arrow rise d3"><i class="fa-solid fa-angle-right"></i></div>
+            <div class="pico-step rise d3"><span class="pl">C</span><p>Dense-only RAG and unaided LLMs</p></div>
+            <div class="pico-arrow rise d4"><i class="fa-solid fa-angle-right"></i></div>
+            <div class="pico-step rise d4"><span class="pl">O</span><p>Faithfulness, multi-hop &amp; contradiction handling, citation accuracy, expert-rated safety</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6 · DIVIDER: ARCHITECTURE -->
+      <section id="divider-1" class="section-divider" data-background-color="#0B2E33">
+        <div class="net-bg">
+          <svg viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice">
+            <line class="net-edge" x1="150" y1="520" x2="380" y2="380"/>
+            <line class="net-edge" x1="380" y1="380" x2="620" y2="470"/>
+            <line class="net-edge" x1="620" y1="470" x2="900" y2="330"/>
+            <line class="net-edge" x1="900" y1="330" x2="1140" y2="180"/>
+            <line class="net-edge" x1="380" y1="380" x2="500" y2="160"/>
+            <circle class="net-node coral" cx="150" cy="520" r="8" style="animation-delay:0s"/>
+            <circle class="net-node" cx="380" cy="380" r="9" style="animation-delay:1s"/>
+            <circle class="net-node" cx="620" cy="470" r="7" style="animation-delay:2s"/>
+            <circle class="net-node coral" cx="900" cy="330" r="9" style="animation-delay:3s"/>
+            <circle class="net-node" cx="1140" cy="180" r="7" style="animation-delay:4s"/>
+            <circle class="net-node" cx="500" cy="160" r="6" style="animation-delay:5s"/>
+          </svg>
+        </div>
+        <p class="kicker">The architecture</p>
+        <h1>From a question to a<br>cited, safety-flagged answer</h1>
+        <p>A pipeline that takes a clinician's natural-language question and returns an answer supported by citations and screened for safety.</p>
+      </section>
+
+      <!-- 7 · PIPELINE -->
+      <section id="slide-7" class="dark" data-background-color="#0B2E33">
+        <h2>The pipeline, end to end</h2>
+        <div class="content" style="justify-content:center;">
+          <div class="flow" style="min-height:215px;">
+            <div class="fnode q rise"><h3><i class="fa-solid fa-comment-medical"></i> Question</h3><p>natural language</p></div>
+            <div class="farrow rise"><i class="fa-solid fa-angle-right"></i></div>
+            <div class="fnode rise d1"><span class="pn">1</span><h3>Understand</h3><p>entity linking · intent routing</p></div>
+            <div class="farrow rise d1"><i class="fa-solid fa-angle-right"></i></div>
+            <div class="lanes rise d2">
+              <div class="lane lane-graph"><h3><span style="opacity:.8">2 ·</span> Graph search</h3><p>Neo4j traversal · red-flags</p></div>
+              <div class="lane lane-vec"><h3><span style="opacity:.8">3 ·</span> Vector search</h3><p>BioLORD · Qdrant</p></div>
+            </div>
+            <div class="farrow rise d3"><i class="fa-solid fa-angle-right"></i></div>
+            <div class="fnode rise d3"><span class="pn">4</span><h3>Fuse + rerank</h3><p>RRF · cross-encoder</p></div>
+            <div class="farrow rise d4"><i class="fa-solid fa-angle-right"></i></div>
+            <div class="fnode gen rise d4"><span class="pn">5</span><h3>Generate</h3><p>grounded · cited · flagged</p></div>
+          </div>
+          <div class="foundation rise d5">
+            <p><span class="pn" style="display:inline-flex; width:24px; height:24px; vertical-align:middle; margin-right:6px;">6</span> <strong>Provenance store</strong> — Neo4j · Qdrant · PostgreSQL · every question, evidence &amp; answer logged with dated, versioned audit trail</p>
+          </div>
+          <p class="text-center rise d5" style="margin-top:16px; font-size:13.5pt; color:var(--dark-muted);"><i class="fa-solid fa-shield-halved" style="color:var(--coral-bright);"></i>&nbsp; Dual retrieval &nbsp;·&nbsp; citation-grounded generation &nbsp;·&nbsp; parallel graph + vector paths</p>
+        </div>
+        <div class="footnote">Neumann et al., 2019 · Cormack et al., 2009 · Remy et al., 2024 · Gao et al., 2023</div>
+      </section>
+
+      <!-- 8 · DIVIDER: STUDIES -->
+      <section id="divider-2" class="section-divider" data-background-color="#0B2E33">
+        <div class="net-bg">
+          <svg viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice">
+            <line class="net-edge" x1="200" y1="360" x2="420" y2="360"/>
+            <line class="net-edge" x1="420" y1="360" x2="640" y2="360"/>
+            <line class="net-edge" x1="640" y1="360" x2="860" y2="360"/>
+            <line class="net-edge" x1="860" y1="360" x2="1080" y2="360"/>
+            <circle class="net-node coral" cx="200" cy="360" r="10" style="animation-delay:0s"/>
+            <circle class="net-node" cx="420" cy="360" r="10" style="animation-delay:1.2s"/>
+            <circle class="net-node coral" cx="640" cy="360" r="10" style="animation-delay:2.4s"/>
+            <circle class="net-node" cx="860" cy="360" r="10" style="animation-delay:3.6s"/>
+            <circle class="net-node coral" cx="1080" cy="360" r="10" style="animation-delay:4.8s"/>
+          </svg>
+        </div>
+        <p class="kicker">Research plan</p>
+        <h1>Five linked studies,<br>one publication each</h1>
+        <p>A single connected programme of engineering and evaluation — each study produces what the next one needs.</p>
+      </section>
+
+      <!-- 9 · STUDY I -->
+      <section id="slide-9">
+        <div class="chain rise">
+          <span class="step active">I</span><span class="link"></span>
+          <span class="step">II</span><span class="link"></span>
+          <span class="step">III</span><span class="link"></span>
+          <span class="step">IV</span><span class="link"></span>
+          <span class="step">V</span>
+        </div>
+        <h2><span class="text-coral">Study I</span> · Scoping review</h2>
+        <div class="content" style="padding-top:14px;">
+          <p class="text-lg rise d1">Map how guideline knowledge is represented, retrieved and reasoned over in CDSS across clinical domains — with obstetrics as the motivating exemplar.</p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:14px;">
+            <div class="card rise d2"><h3><i class="fa-solid fa-clipboard-check text-teal"></i>&nbsp; Method</h3>
+              <ul style="margin-top:6px;"><li>JBI methodology, reported per <strong>PRISMA-ScR</strong></li><li>OSF pre-registration before screening</li><li>6 databases · dual independent screening · PCC framework</li></ul></div>
+            <div class="card card-accent rise d3"><h3><i class="fa-solid fa-bullseye text-teal"></i>&nbsp; Output</h3>
+              <ul style="margin-top:6px;"><li>Cross-domain evidence map</li><li>Characterisation of evaluation methods</li><li>The <strong>gap</strong> that motivates the thesis</li></ul></div>
+          </div>
+        </div>
+        <div class="footnote">Peters et al., 2020 · Tricco et al., 2018</div>
+      </section>
+
+      <!-- 10 · STUDY II -->
+      <section id="slide-10">
+        <div class="chain rise">
+          <span class="step done">I</span><span class="link done"></span>
+          <span class="step active">II</span><span class="link"></span>
+          <span class="step">III</span><span class="link"></span>
+          <span class="step">IV</span><span class="link"></span>
+          <span class="step">V</span>
+        </div>
+        <h2><span class="text-coral">Study II</span> · Obstetric knowledge graph</h2>
+        <div class="content" style="padding-top:14px;">
+          <p class="text-lg rise d1">Build an obstetric property-graph ontology with explicit guideline versioning and schema-guided triple extraction.</p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:14px;">
+            <div class="card rise d2"><h3><i class="fa-solid fa-diagram-project text-teal"></i>&nbsp; Construction</h3>
+              <ul style="margin-top:6px;"><li>LLM extraction normalised to <strong>SNOMED-CT</strong> &amp; <strong>ICD-11</strong></li><li>Explicit vs. inferred edges; provenance on <em>every</em> edge</li><li>scispaCy extraction baseline</li></ul></div>
+            <div class="card card-accent rise d3"><h3><i class="fa-solid fa-layer-group text-teal"></i>&nbsp; Layered validation</h3>
+              <ul style="margin-top:6px;"><li>Automated checks over the full graph</li><li>Stratified <strong>~300–500 triple</strong> human review</li><li>Safety-critical subset signed off by an obstetrician</li></ul></div>
+          </div>
+          <p class="text-muted text-center rise d4" style="margin-top:12px; font-size:12.5pt;">Metrics: source faithfulness · linking validity · hallucination rate · Cohen/Fleiss κ · precision/recall/F1</p>
+        </div>
+      </section>
+
+      <!-- 11 · STUDY III -->
+      <section id="slide-11">
+        <div class="chain rise">
+          <span class="step done">I</span><span class="link done"></span>
+          <span class="step done">II</span><span class="link done"></span>
+          <span class="step active">III</span><span class="link"></span>
+          <span class="step">IV</span><span class="link"></span>
+          <span class="step">V</span>
+        </div>
+        <h2><span class="text-coral">Study III</span> · Graph-RAG architecture</h2>
+        <div class="content" style="padding-top:14px;">
+          <p class="text-lg rise d1">Design and implement the dual-retrieval, fusion and grounded-generation pipeline — isolating each component's contribution by ablation.</p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:14px;">
+            <div class="card rise d2"><h3><i class="fa-solid fa-gears text-teal"></i>&nbsp; Components</h3>
+              <ul style="margin-top:6px;"><li>Entity linking + intent-aware routing</li><li>Parallel graph + dense retrieval</li><li>Reciprocal rank fusion + cross-encoder rerank</li><li>Cited generation; optional MedGemma fine-tuning</li></ul></div>
+            <div class="card card-accent rise d3"><h3><i class="fa-solid fa-flask-vial text-teal"></i>&nbsp; Controlled ablation</h3>
+              <ul style="margin-top:6px;"><li>4 configs: <strong>vector-only · graph-only · hybrid · hybrid+reranker</strong></li><li>Single-hop vs. multi-hop</li><li>Latency, token cost &amp; citation correctness</li></ul></div>
+          </div>
+        </div>
+        <div class="footnote">Technical artefact — no human participants at this stage</div>
+      </section>
+
+      <!-- 12 · STUDY IV -->
+      <section id="slide-12">
+        <div class="chain rise">
+          <span class="step done">I</span><span class="link done"></span>
+          <span class="step done">II</span><span class="link done"></span>
+          <span class="step done">III</span><span class="link done"></span>
+          <span class="step active">IV</span><span class="link"></span>
+          <span class="step">V</span>
+        </div>
+        <h2><span class="text-coral">Study IV</span> · Evaluation and expert panel</h2>
+        <div class="content" style="padding-top:12px;">
+          <p class="text-lg rise d1">A purpose-built obstetric QA benchmark scored by automated metrics <strong>and</strong> a blinded obstetrician panel.</p>
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:14px;">
+            <div class="card rise d2" style="text-align:center;"><p class="stat" style="margin:0;"><span class="num">~200</span><span class="lbl">QA items, balanced across categories</span></p></div>
+            <div class="card rise d3" style="text-align:center;"><p class="stat" style="margin:0;"><span class="num">4</span><span class="lbl">single-hop · multi-hop · contradiction · escalation</span></p></div>
+            <div class="card rise d4" style="text-align:center;"><p class="stat" style="margin:0;"><span class="num">3–5</span><span class="lbl">obstetricians &amp; obstetric nurses on the panel</span></p></div>
+          </div>
+          <div class="highlight rise d5" style="margin-top:16px;">
+            <p style="margin:0; font-size:14pt;"><strong>RAGAS</strong> (faithfulness, answer relevancy, context precision/recall) + human ratings of correctness, safety &amp; citation. Hypothesis: hybrid graph-RAG <strong>outperforms</strong> dense-only RAG and unaided LLMs on multi-hop and contradiction queries.</p>
+          </div>
+        </div>
+        <div class="footnote">Es et al., 2024 · non-parametric / mixed-effects models · ICC / weighted κ</div>
+      </section>
+
+      <!-- 13 · STUDY V -->
+      <section id="slide-13">
+        <div class="chain rise">
+          <span class="step done">I</span><span class="link done"></span>
+          <span class="step done">II</span><span class="link done"></span>
+          <span class="step done">III</span><span class="link done"></span>
+          <span class="step done">IV</span><span class="link done"></span>
+          <span class="step active">V</span>
+        </div>
+        <h2><span class="text-coral">Study V</span> · Clinical safety</h2>
+        <div class="content" style="padding-top:14px;">
+          <p class="text-lg rise d1">A graph-based safety layer: <strong>escalation flags</strong> and inter-guideline contradiction detection.</p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:14px;">
+            <div class="card rise d2"><h3><i class="fa-solid fa-traffic-light text-teal"></i>&nbsp; Red/amber taxonomy</h3>
+              <ul style="margin-top:6px;"><li>Built from guideline red-flag criteria</li><li>Rule-based flags vs. free-text LLM warnings</li><li>Exemplar scenarios as structured case studies</li></ul></div>
+            <div class="card card-accent rise d3"><h3><i class="fa-solid fa-code-compare text-teal"></i>&nbsp; Contradiction by traversal</h3>
+              <ul style="margin-top:6px;"><li>Detection over versioned, provenance-tagged edges</li><li>Curated <strong>NICE vs. FIGO vs. RCOG</strong> benchmark</li><li>Precision/recall + agreement with expert consensus</li></ul></div>
+          </div>
+          <p class="text-muted text-center rise d4" style="margin-top:12px; font-size:12.5pt;">Reuses the Study IV obstetrician panel for a usability and safety review</p>
+        </div>
+      </section>
+
+      <!-- 14 · DIVIDER: EXECUTION -->
+      <section id="divider-3" class="section-divider" data-background-color="#0B2E33">
+        <div class="net-bg">
+          <svg viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice">
+            <line class="net-edge" x1="160" y1="250" x2="430" y2="420"/>
+            <line class="net-edge" x1="430" y1="420" x2="720" y2="280"/>
+            <line class="net-edge" x1="720" y1="280" x2="1000" y2="450"/>
+            <line class="net-edge" x1="1000" y1="450" x2="1160" y2="240"/>
+            <circle class="net-node" cx="160" cy="250" r="7" style="animation-delay:0s"/>
+            <circle class="net-node coral" cx="430" cy="420" r="9" style="animation-delay:1.2s"/>
+            <circle class="net-node" cx="720" cy="280" r="8" style="animation-delay:2.4s"/>
+            <circle class="net-node coral" cx="1000" cy="450" r="7" style="animation-delay:3.6s"/>
+            <circle class="net-node" cx="1160" cy="240" r="6" style="animation-delay:4.8s"/>
+          </svg>
+        </div>
+        <p class="kicker">Execution</p>
+        <h1>Timeline, results<br>and dissemination</h1>
+        <p>36 months · September 2026 to August 2029 · a thesis with ≥3 published or submitted manuscripts.</p>
+      </section>
+
+      <!-- 15 · GANTT TIMELINE -->
+      <section id="slide-15">
+        <h2>Timeline across 36 months</h2>
+        <div class="content" style="padding-top:16px;">
+          <div class="gantt">
+            <div class="gantt-milestones">
+              <div class="gantt-ms" style="left:8.3%;"><span class="dia"></span>M-A</div>
+              <div class="gantt-ms" style="left:27.8%;"><span class="dia"></span>M-B</div>
+              <div class="gantt-ms" style="left:50%;"><span class="dia"></span>M-C</div>
+              <div class="gantt-ms" style="left:72.2%;"><span class="dia"></span>M-D</div>
+              <div class="gantt-ms" style="left:83.3%;"><span class="dia"></span>M-E</div>
+              <div class="gantt-ms" style="left:97%;"><span class="dia"></span>M-F</div>
+            </div>
+            <div class="gantt-axis">
+              <div></div>
+              <div class="gantt-years"><span>Year 1</span><span>Year 2</span><span>Year 3</span></div>
+            </div>
+            <div class="gantt-row"><div class="tlabel">T1 · Protocol approval</div><div class="gantt-track"><div class="gantt-bar" style="left:0%; width:8.3%; animation-delay:.05s;"></div></div></div>
+            <div class="gantt-row"><div class="tlabel">T2 · Ethics / R&amp;D committee</div><div class="gantt-track"><div class="gantt-bar" style="left:5.6%; width:11.1%; animation-delay:.10s;"></div></div></div>
+            <div class="gantt-row"><div class="tlabel">T3 · Study I — scoping review</div><div class="gantt-track"><div class="gantt-bar alt" style="left:2.8%; width:25%; animation-delay:.15s;"></div></div></div>
+            <div class="gantt-row"><div class="tlabel">T4 · Study II — ontology &amp; KG</div><div class="gantt-track"><div class="gantt-bar alt" style="left:19.4%; width:30.6%; animation-delay:.20s;"></div></div></div>
+            <div class="gantt-row"><div class="tlabel">T5 · Triple-extraction validation</div><div class="gantt-track"><div class="gantt-bar alt" style="left:36.1%; width:19.4%; animation-delay:.25s;"></div></div></div>
+            <div class="gantt-row"><div class="tlabel">T6 · Study III — graph-RAG build</div><div class="gantt-track"><div class="gantt-bar" style="left:41.7%; width:30.6%; animation-delay:.30s;"></div></div></div>
+            <div class="gantt-row"><div class="tlabel">T7 · Study IV — benchmark &amp; panel</div><div class="gantt-track"><div class="gantt-bar" style="left:58.3%; width:25%; animation-delay:.35s;"></div></div></div>
+            <div class="gantt-row"><div class="tlabel">T8 · Study V — safety layer</div><div class="gantt-track"><div class="gantt-bar" style="left:69.4%; width:19.4%; animation-delay:.40s;"></div></div></div>
+            <div class="gantt-row"><div class="tlabel">T9 · Writing &amp; thesis assembly</div><div class="gantt-track"><div class="gantt-bar write" style="left:25%; width:75%; animation-delay:.45s;"></div></div></div>
+          </div>
+          <p class="text-muted text-center" style="margin-top:10px; font-size:11.5pt;"><span style="color:var(--primary-color);">&#9632;</span> build &nbsp; <span style="color:var(--accent-mint);">&#9632;</span> evidence &amp; validation &nbsp; <span style="color:var(--accent-gold);">&#9632;</span> writing &nbsp;·&nbsp; <span style="color:var(--secondary-color);">&#9670;</span> milestones M-A…M-F</p>
+        </div>
+      </section>
+
+      <!-- 16 · EXPECTED RESULTS -->
+      <section id="slide-16">
+        <h2>Expected results</h2>
+        <div class="content">
+          <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:18px;">
+            <div class="card card-accent rise d1"><h3><i class="fa-solid fa-map text-teal"></i>&nbsp; Evidence map</h3><p>A cross-domain map of knowledge representations for CDSS, quantifying the scarcity of graph-based systems — and the absence of obstetric ones.</p></div>
+            <div class="card card-accent rise d2"><h3><i class="fa-solid fa-share-nodes text-teal"></i>&nbsp; Open artefacts</h3><p>A released obstetric ontology &amp; populated knowledge graph (Neo4j dump) plus an open QA benchmark, enabling independent replication.</p></div>
+            <div class="card card-accent rise d3"><h3><i class="fa-solid fa-chart-line text-teal"></i>&nbsp; Quantitative evidence</h3><p>Whether and when hybrid graph-RAG beats dense-only RAG, with latency and cost trade-offs characterised for realistic deployment.</p></div>
+            <div class="card card-accent rise d4"><h3><i class="fa-solid fa-shield-heart text-teal"></i>&nbsp; Validated safety</h3><p>Expert-rated safety of escalation flags and accuracy of contradiction detection across NICE, FIGO and RCOG.</p></div>
+          </div>
+          <p class="text-muted text-center rise d5" style="margin-top:16px; font-size:12.5pt;"><strong>Acknowledged limits:</strong> coverage bounded by included guidelines · model drift · sample-based validation · retrospective evaluation</p>
+        </div>
+      </section>
+
+      <!-- 17 · CONTRIBUTIONS -->
+      <section id="slide-17">
+        <h2>Contributions and dissemination</h2>
+        <div class="content">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:30px; margin-top:6px;">
+            <div>
+              <p class="kicker rise">Five planned publications</p>
+              <ul class="text-xl" style="margin-top:14px;">
+                <li class="rise d1">Scoping review</li>
+                <li class="rise d2">Obstetric knowledge graph</li>
+                <li class="rise d3">Graph-RAG architecture</li>
+                <li class="rise d4">Evaluation study</li>
+                <li class="rise d5">Clinical-safety report</li>
+              </ul>
+            </div>
+            <div>
+              <p class="kicker rise d1">Candidate venues</p>
+              <div class="rise d2" style="margin-top:12px;">
+                <span class="pill text-lg">JAMIA</span>
+                <span class="pill text-lg">npj Digital Medicine</span>
+                <span class="pill text-lg">J. Biomedical Informatics</span>
+                <span class="pill text-lg">JMIR AI</span>
+                <span class="pill text-lg">JMIR Medical Informatics</span>
+                <span class="pill text-lg">BMJ Health &amp; Care Informatics</span>
+              </div>
+              <p class="kicker rise d3" style="margin-top:26px;">NLP contributions</p>
+              <div class="rise d4" style="margin-top:12px;">
+                <span class="pill text-lg">ACL</span>
+                <span class="pill text-lg">EMNLP</span>
+              </div>
+            </div>
+          </div>
+          <div class="highlight rise d5" style="margin-top:24px;">
+            <p style="margin:0; font-size:14.5pt;"><i class="fa-solid fa-unlock-keyhole text-coral"></i>&nbsp; Open artefacts for replication: ontology &amp; graph (Zenodo / Neo4j dump), QA benchmark, and an OSF-preregistered review protocol.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 18 · CLOSING -->
+      <section id="slide-18" class="dark" data-background-color="#0B2E33">
+        <div class="net-bg">
+          <svg viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice">
+            <line class="net-edge" x1="180" y1="180" x2="430" y2="300"/>
+            <line class="net-edge" x1="430" y1="300" x2="680" y2="200"/>
+            <line class="net-edge" x1="680" y1="200" x2="950" y2="340"/>
+            <line class="net-edge" x1="950" y1="340" x2="1130" y2="540"/>
+            <line class="net-edge" x1="430" y1="300" x2="560" y2="560"/>
+            <circle class="net-node" cx="180" cy="180" r="7" style="animation-delay:0s"/>
+            <circle class="net-node coral" cx="430" cy="300" r="9" style="animation-delay:1s"/>
+            <circle class="net-node" cx="680" cy="200" r="8" style="animation-delay:2s"/>
+            <circle class="net-node coral" cx="950" cy="340" r="8" style="animation-delay:3s"/>
+            <circle class="net-node" cx="1130" cy="540" r="6" style="animation-delay:4s"/>
+            <circle class="net-node coral" cx="560" cy="560" r="9" style="animation-delay:5s"/>
+          </svg>
+        </div>
+        <p class="kicker rise">In summary</p>
+        <h1 class="rise d1">A transparent, citable and safe<br>route to obstetric guideline knowledge</h1>
+        <p class="rise d2" style="margin-top:18px;">Cutting the cognitive burden of reconciling fragmented sources — with methods that generalise to other specialties and reusable open artefacts.</p>
+        <div class="rise d3" style="margin-top:36px;">
+          <p style="font-size:17pt; color:var(--dark-text); margin:0;"><strong style="color:#fff;">Daniel Rodrigues</strong> &nbsp;·&nbsp; <span style="color:#7FB3AC;">daniel@virtualcare.pt</span></p>
+          <p style="font-size:13pt; color:#7FA09D; margin:8px 0 0 0;">Doctoral Programme HEADS · Faculty of Medicine, University of Porto</p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/chart/plugin.js"></script>
+  <script>
+    Reveal.initialize({
+      width: 1280,
+      height: 720,
+      margin: 0,
+      controls: true,
+      progress: true,
+      slideNumber: 'c/t',
+      hash: true,
+      transition: 'fade',
+      transitionSpeed: 'default',
+      backgroundTransition: 'fade',
+      center: false,
+      plugins: [ RevealChart ],
+      chart: {
+        defaults: Object.assign({
+          color: 'rgba(0, 0, 0, 0.8)',
+          borderColor: 'rgba(0, 0, 0, 0.8)',
+          devicePixelRatio: 2
+        }, window.location.search.includes('export') ? { animation: false } : {})
+      }
+    });
+  </script>
+</body>
+</html>
