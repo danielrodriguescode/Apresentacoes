@@ -14,7 +14,7 @@
 
   <!-- Custom styles (inlined for single-file portability) -->
   <style>
-/* HEADS PhD Protocol — Hybrid Retrieval for Trustworthy CDSS in Obstetrics
+/* HEADS PhD Protocol: Hybrid Retrieval for Trustworthy CDSS in Obstetrics
  * Palette: deep petrol/teal (clinical trust) + warm coral (maternal health)
  * Infographic build with animated entrances and a knowledge-graph motif.
  */
@@ -319,6 +319,44 @@
 .chain .link { height: 3px; width: 42px; background: var(--line-color); flex-shrink: 1; }
 .chain .link.done { background: var(--primary-color); }
 
+/* Study detail strip */
+.smeta { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 14px; }
+.smeta .m { background: var(--surface); border: 1px solid var(--line-color); border-radius: 10px; padding: 10px 14px; }
+.smeta .m .k { font-size: 9.5pt; letter-spacing: 0.12em; text-transform: uppercase; color: var(--secondary-color); font-weight: 700; margin: 0 0 3px 0; }
+.smeta .m p { margin: 0; font-size: 12.5pt; line-height: 1.35; }
+.feeds { margin-top: 12px; display: flex; align-items: center; gap: 12px; background: var(--surface-tint); border-radius: 10px; padding: 11px 18px; border-left: 4px solid var(--primary-color); }
+.feeds i { color: var(--primary-color); font-size: 14pt; }
+.feeds p { margin: 0; font-size: 13.5pt; }
+
+/* Triple example */
+.trip { display: flex; align-items: center; flex-wrap: wrap; gap: 7px; }
+.trip .s { background: var(--surface-tint); border: 1px solid var(--line-color); border-radius: 8px; padding: 4px 11px; font-weight: 600; font-size: 13pt; color: var(--primary-dark); }
+.trip .o { background: #fff; border: 1px solid var(--line-color); border-radius: 8px; padding: 4px 11px; font-weight: 600; font-size: 13pt; }
+.trip .p { color: var(--secondary-color); font-size: 11.5pt; font-style: italic; }
+.trip .arr { color: var(--muted-color); font-size: 11pt; }
+.tag-exp, .tag-inf { font-size: 9pt; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 7px; border-radius: 5px; }
+.tag-exp { color: var(--primary-color); background: rgba(17,99,110,0.10); }
+.tag-inf { color: var(--accent-gold); background: rgba(217,164,65,0.16); }
+.codes { font-size: 10pt; color: var(--muted-color); margin: 3px 0 0 2px; }
+.codes b { color: var(--primary-color); font-weight: 600; }
+
+/* Worked-example helpers (flags, citations, comparison table) */
+.flag { display: inline-flex; align-items: center; gap: 7px; font-weight: 700; font-size: 11.5pt; padding: 5px 13px; border-radius: 999px; }
+.flag.red { background: rgba(224,101,78,0.14); color: #C0392B; border: 1px solid rgba(224,101,78,0.5); }
+.flag.amber { background: rgba(217,164,65,0.16); color: #936511; border: 1px solid rgba(217,164,65,0.6); }
+.cite { font-size: 10.5pt; color: var(--primary-color); font-weight: 600; background: var(--surface-tint); border-radius: 5px; padding: 1px 7px; white-space: nowrap; }
+.cmp { width: 100%; border-collapse: collapse; }
+.cmp th, .cmp td { text-align: left; padding: 9px 14px; font-size: 13pt; border-bottom: 1px solid var(--line-color); }
+.cmp th { font-size: 10pt; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted-color); font-weight: 700; }
+.cmp tr:last-child td { border-bottom: none; }
+.cmp .sys { font-weight: 600; color: var(--primary-dark); }
+.cmp tr.best td { background: rgba(95,182,168,0.12); }
+.cmp tr.best td:first-child { border-top-left-radius: 8px; border-bottom-left-radius: 8px; }
+.cmp tr.best td:last-child { border-top-right-radius: 8px; border-bottom-right-radius: 8px; }
+.ok { color: var(--accent-mint); font-weight: 700; }
+.bad { color: var(--secondary-color); font-weight: 700; }
+.warn { color: var(--accent-gold); font-weight: 700; }
+
 /* ===========================================
    INFOGRAPHIC: GANTT TIMELINE
    =========================================== */
@@ -379,6 +417,16 @@
   from { height: 0; }
 }
 
+/* Hero emblem: fetal heartbeat pulse */
+.hero-beat { transform-box: fill-box; transform-origin: center; animation: heroBeat 2.6s ease-in-out infinite; }
+@keyframes heroBeat {
+  0%, 100% { transform: scale(1); opacity: 0.92; }
+  10%      { transform: scale(1.08); opacity: 1; }
+  22%      { transform: scale(1); opacity: 0.92; }
+}
+.hero-ring { transform-box: fill-box; transform-origin: center; animation: heroRing 14s linear infinite; }
+@keyframes heroRing { to { transform: rotate(360deg); } }
+
 /* Entrance animation for elements on the active slide */
 .reveal .slides section.present .rise { animation: riseIn 0.7s cubic-bezier(.2,.8,.2,1) both; }
 @keyframes riseIn { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
@@ -431,12 +479,57 @@
             <circle class="net-node" cx="300" cy="470" r="6" style="animation-delay:5.25s"/>
           </svg>
         </div>
-        <p class="kicker rise">Doctoral Programme HEADS · FMUP</p>
-        <h1 class="rise d1">Hybrid Retrieval for Trustworthy Clinical Decision Support in Obstetrics</h1>
-        <p class="rise d2" style="margin-top:18px; font-size:18pt; color:#7FB3AC; font-style:italic; max-width:none;">A provenance-aware graph-RAG pipeline for obstetric guidelines</p>
-        <div class="rise d3" style="margin-top:40px;">
-          <p style="font-size:18pt; color:var(--dark-text); margin:0;"><strong style="color:#fff;">Daniel Rodrigues</strong> &nbsp;·&nbsp; PhD candidate</p>
-          <p style="font-size:13pt; color:#7FA09D; margin:10px 0 0 0;">Thesis protocol &nbsp;·&nbsp; Sep 2026 – Aug 2029 &nbsp;·&nbsp; 36 months</p>
+        <div style="flex:1; display:grid; grid-template-columns:1.32fr 0.68fr; gap:34px; align-items:center;">
+          <div>
+            <p class="kicker rise">Doctoral Programme HEADS · FMUP</p>
+            <h1 class="rise d1" style="font-size:40pt; line-height:1.14;">Hybrid Retrieval for Trustworthy Clinical Decision Support in Obstetrics</h1>
+            <div class="rise d2" style="margin-top:36px;">
+              <p style="font-size:18pt; color:var(--dark-text); margin:0;"><strong style="color:#fff;">Daniel Rodrigues</strong></p>
+              <p style="font-size:13pt; color:#7FA09D; margin:10px 0 0 0;">Thesis protocol</p>
+            </div>
+          </div>
+          <div class="rise d2" style="display:flex; justify-content:center; align-items:center;">
+            <svg viewBox="0 0 460 520" style="width:100%; max-height:540px;" xmlns="http://www.w3.org/2000/svg">
+              <!-- orbit rings -->
+              <circle class="hero-ring" cx="230" cy="260" r="150" fill="none" stroke="#5FB6A8" stroke-opacity="0.20" stroke-width="1.2" stroke-dasharray="2 9"/>
+              <circle cx="230" cy="260" r="96" fill="none" stroke="#5FB6A8" stroke-opacity="0.12" stroke-width="1"/>
+              <!-- hub spokes -->
+              <g stroke="#5FB6A8" stroke-opacity="0.30" stroke-width="1.4">
+                <line x1="230" y1="260" x2="230" y2="110"/>
+                <line x1="230" y1="260" x2="360" y2="185"/>
+                <line x1="230" y1="260" x2="360" y2="335"/>
+                <line x1="230" y1="260" x2="230" y2="410"/>
+                <line x1="230" y1="260" x2="100" y2="335"/>
+                <line x1="230" y1="260" x2="100" y2="185"/>
+              </g>
+              <!-- ring chords -->
+              <g stroke="#5FB6A8" stroke-opacity="0.14" stroke-width="1">
+                <line x1="230" y1="110" x2="360" y2="185"/>
+                <line x1="360" y1="185" x2="360" y2="335"/>
+                <line x1="360" y1="335" x2="230" y2="410"/>
+                <line x1="230" y1="410" x2="100" y2="335"/>
+                <line x1="100" y1="335" x2="100" y2="185"/>
+                <line x1="100" y1="185" x2="230" y2="110"/>
+              </g>
+              <!-- guideline-document node (upper-left) -->
+              <rect x="87" y="168" width="26" height="33" rx="3" fill="#11636E" stroke="#5FB6A8" stroke-opacity="0.65" stroke-width="1.2"/>
+              <line x1="93" y1="178" x2="107" y2="178" stroke="#DCEDEA" stroke-opacity="0.55" stroke-width="1.4"/>
+              <line x1="93" y1="185" x2="107" y2="185" stroke="#DCEDEA" stroke-opacity="0.55" stroke-width="1.4"/>
+              <line x1="93" y1="192" x2="102" y2="192" stroke="#DCEDEA" stroke-opacity="0.55" stroke-width="1.4"/>
+              <!-- safety-shield node (bottom) -->
+              <path d="M230 392 L245 398 L245 411 C245 424 238 430 230 434 C222 430 215 424 215 411 L215 398 Z" fill="#11636E" stroke="#5FB6A8" stroke-opacity="0.65" stroke-width="1.2"/>
+              <path d="M223 410 l5 6 l10 -12" fill="none" stroke="#F47A5F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- blinking graph nodes -->
+              <circle class="net-node" cx="230" cy="110" r="9" style="animation-delay:0s"/>
+              <circle class="net-node coral" cx="360" cy="185" r="8" style="animation-delay:.7s"/>
+              <circle class="net-node" cx="360" cy="335" r="7" style="animation-delay:1.4s"/>
+              <circle class="net-node coral" cx="100" cy="335" r="8" style="animation-delay:2.8s"/>
+              <!-- hub -->
+              <circle cx="230" cy="260" r="52" fill="#0B2E33"/>
+              <circle cx="230" cy="260" r="52" fill="#5FB6A8" fill-opacity="0.12" stroke="#F47A5F" stroke-width="2"/>
+              <polyline class="hero-beat" points="198,261 213,261 221,240 233,288 244,261 262,261" fill="none" stroke="#F47A5F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
         </div>
       </section>
 
@@ -447,7 +540,7 @@
           <div style="display:grid; grid-template-columns:0.9fr 1.1fr; gap:30px; align-items:stretch;">
             <div class="card rise" style="display:flex; flex-direction:column; justify-content:center; text-align:center;">
               <div style="font-size:30pt; color:var(--secondary-color);"><i class="fa-solid fa-person-pregnant"></i></div>
-              <p class="stat" style="margin:6px 0 0 0;"><span class="num">2</span><span class="lbl">patients in every decision — mother <em>and</em> fetus</span></p>
+              <p class="stat" style="margin:6px 0 0 0;"><span class="num">2</span><span class="lbl">patients in every decision: mother <em>and</em> fetus</span></p>
               <p style="font-size:13pt; color:var(--muted-color); margin-top:14px;">Deterioration is rapid; small delays carry disproportionate consequences.</p>
             </div>
             <div>
@@ -459,11 +552,15 @@
                 <span class="rise d4" style="align-self:center; color:var(--secondary-color); font-size:20pt;"><i class="fa-solid fa-bolt"></i></span>
               </div>
               <ul class="text-lg" style="margin-top:14px;">
-                <li class="rise d2"><strong>Fragmented</strong> — extensive, periodically revised, independently maintained.</li>
-                <li class="rise d3"><strong>Sometimes contradictory</strong> — divergent recommendations across bodies.</li>
-                <li class="rise d4"><strong>Poorly supported</strong> — most point-of-care questions go unanswered; tools don't reconcile conflict.</li>
+                <li class="rise d2"><strong>Fragmented</strong>: extensive, periodically revised, independently maintained.</li>
+                <li class="rise d3"><strong>Sometimes contradictory</strong>: divergent recommendations across bodies.</li>
+                <li class="rise d4"><strong>Poorly supported</strong>: most point-of-care questions go unanswered, and tools don't reconcile conflict.</li>
               </ul>
             </div>
+          </div>
+          <div class="highlight rise d5" style="margin-top:22px; display:flex; align-items:center; gap:18px;">
+            <span style="font-size:24pt; color:var(--secondary-color);"><i class="fa-solid fa-stopwatch"></i></span>
+            <p style="margin:0; font-size:15pt;">Front-line midwives and obstetricians must <strong>locate, interpret and reconcile</strong> this guidance under time pressure. This is exactly the task that current point-of-care tools support poorly, and the burden this thesis sets out to reduce.</p>
           </div>
         </div>
         <div class="footnote">Del Fiol et al., 2014 · Santo et al., 2017 · NICE 2019 · Poon et al., 2019 · RCOG 2011</div>
@@ -479,7 +576,7 @@
               <ul class="text-lg">
                 <li class="rise d1">They <strong>hallucinate</strong> and can't trace an answer to a source.</li>
                 <li class="rise d2">They reason weakly over the <strong>multi-step, conditional</strong> logic of guidelines.</li>
-                <li class="rise d3">Dense (embedding-only) RAG captures surface similarity — not the <strong>structured relations</strong> behind clinical reasoning.</li>
+                <li class="rise d3">Dense (embedding-only) RAG captures surface similarity, not the <strong>structured relations</strong> behind clinical reasoning.</li>
               </ul>
               <div class="highlight rise d4" style="margin-top:14px;">
                 <p style="margin:0; font-size:14.5pt;">Grounding LLMs in ontologies and knowledge graphs sharply reduces hallucination in clinical QA.</p>
@@ -489,8 +586,8 @@
               <p class="kicker text-center" style="margin-bottom:14px;">Hallucination rate</p>
               <div class="barwrap" style="justify-content:center;">
                 <div class="barcol">
-                  <div class="bar" style="height:92%; background:linear-gradient(180deg,#3C5A5F,#274449);">63%</div>
-                  <span class="cap">Baseline<br>RAG</span>
+                  <div class="bar" style="height:92%; background:linear-gradient(180deg,#3C5A5F,#274449);">~63%</div>
+                  <span class="cap">Ungrounded<br>baseline</span>
                 </div>
                 <div class="barcol">
                   <div class="bar" style="height:14%; background:linear-gradient(180deg,#F47A5F,#E0654E); animation-delay:.35s;">1.7%</div>
@@ -507,22 +604,22 @@
       <section id="slide-4">
         <h2>No obstetric graph-RAG exists</h2>
         <div class="content">
-          <p class="text-lg rise">Graph-based retrieval is proving decisive in adjacent areas — but obstetric guideline knowledge is untouched.</p>
+          <p class="text-lg rise">Graph-based retrieval is gaining ground in adjacent areas, but obstetric guideline knowledge remains untouched.</p>
           <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:18px;">
             <div class="card rise d1" style="text-align:center;">
               <div class="iconc" style="margin:0 auto 10px auto;"><i class="fa-solid fa-list-check"></i></div>
               <h3 style="font-size:16pt;">Triage</h3>
-              <p style="color:var(--accent-mint); font-weight:700; margin-top:6px;"><i class="fa-solid fa-check"></i> covered</p>
+              <p style="color:var(--accent-mint); font-weight:700; margin-top:6px;"><i class="fa-solid fa-check"></i> addressed</p>
             </div>
             <div class="card rise d2" style="text-align:center;">
               <div class="iconc" style="margin:0 auto 10px auto;"><i class="fa-solid fa-file-medical"></i></div>
               <h3 style="font-size:16pt;">EHR patient QA</h3>
-              <p style="color:var(--accent-mint); font-weight:700; margin-top:6px;"><i class="fa-solid fa-check"></i> covered</p>
+              <p style="color:var(--accent-mint); font-weight:700; margin-top:6px;"><i class="fa-solid fa-check"></i> addressed</p>
             </div>
             <div class="card rise d3" style="text-align:center;">
               <div class="iconc" style="margin:0 auto 10px auto;"><i class="fa-solid fa-bone"></i></div>
               <h3 style="font-size:16pt;">Other domains</h3>
-              <p style="color:var(--accent-mint); font-weight:700; margin-top:6px;"><i class="fa-solid fa-check"></i> covered</p>
+              <p style="color:var(--accent-mint); font-weight:700; margin-top:6px;"><i class="fa-solid fa-check"></i> addressed</p>
             </div>
             <div class="card card-accent rise d4" style="text-align:center; border:2px solid var(--secondary-color); background:var(--surface-tint);">
               <div class="iconc" style="margin:0 auto 10px auto; background:var(--secondary-color); color:#fff;"><i class="fa-solid fa-person-pregnant"></i></div>
@@ -530,11 +627,16 @@
               <p class="text-coral" style="font-weight:700; margin-top:6px;"><i class="fa-solid fa-xmark"></i> the gap</p>
             </div>
           </div>
-          <div class="highlight rise d5" style="margin-top:20px;">
+          <div class="highlight rise d5" style="margin-top:18px;">
             <p style="margin:0; font-size:14.5pt;">No structured representation reconciles multiple obstetric guideline bodies to <strong>detect contradictions</strong>, and none couples retrieval with explicit <strong>safety escalation</strong>.</p>
           </div>
+          <p class="kicker rise d5" style="margin-top:18px;">The nearest systems and what they miss</p>
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:6px;">
+            <div class="card rise d5" style="padding:13px 16px;"><p style="margin:0; font-size:13pt;"><strong>Buonocore et al.</strong>: ontology-enriched, SNOMED-CT-aligned hybrid retrieval for <em>rheumatology</em> triage.</p></div>
+            <div class="card rise d5" style="padding:13px 16px;"><p style="margin:0; font-size:13pt;"><strong>Thio et al.</strong>: hybrid Neo4j + vector graph-RAG for <em>EHR</em> patient question answering.</p></div>
+            <div class="card rise d5" style="padding:13px 16px;"><p style="margin:0; font-size:13pt;"><strong>Chehab et al.</strong>: formalising how narrative guidelines become <em>machine-executable</em>, with no obstetric focus.</p></div>
+          </div>
         </div>
-        <div class="footnote">Nearest systems: Buonocore et al. (rheumatology) · Thio et al. (EHR) · Chehab et al. (computable guidelines)</div>
       </section>
 
       <!-- 5 · AIM & PICO -->
@@ -553,6 +655,10 @@
             <div class="pico-step rise d3"><span class="pl">C</span><p>Dense-only RAG and unaided LLMs</p></div>
             <div class="pico-arrow rise d4"><i class="fa-solid fa-angle-right"></i></div>
             <div class="pico-step rise d4"><span class="pl">O</span><p>Faithfulness, multi-hop &amp; contradiction handling, citation accuracy, expert-rated safety</p></div>
+          </div>
+          <div class="highlight rise d5" style="margin-top:20px; display:flex; align-items:center; gap:16px;">
+            <span style="font-size:22pt; color:var(--secondary-color);"><i class="fa-solid fa-flask-vial"></i></span>
+            <p style="margin:0; font-size:14.5pt;"><strong>Primary hypothesis:</strong> hybrid graph-RAG outperforms dense-only RAG and unaided LLMs on multi-hop and contradiction queries, while returning citation-traceable, safety-flagged answers.</p>
           </div>
         </div>
       </section>
@@ -598,7 +704,7 @@
             <div class="fnode gen rise d4"><span class="pn">5</span><h3>Generate</h3><p>grounded · cited · flagged</p></div>
           </div>
           <div class="foundation rise d5">
-            <p><span class="pn" style="display:inline-flex; width:24px; height:24px; vertical-align:middle; margin-right:6px;">6</span> <strong>Provenance store</strong> — Neo4j · Qdrant · PostgreSQL · every question, evidence &amp; answer logged with dated, versioned audit trail</p>
+            <p><span class="pn" style="display:inline-flex; width:24px; height:24px; vertical-align:middle; margin-right:6px;">6</span> <strong>Provenance store</strong>: Neo4j · Qdrant · PostgreSQL · every question, evidence &amp; answer logged with dated, versioned audit trail</p>
           </div>
           <p class="text-center rise d5" style="margin-top:16px; font-size:13.5pt; color:var(--dark-muted);"><i class="fa-solid fa-shield-halved" style="color:var(--coral-bright);"></i>&nbsp; Dual retrieval &nbsp;·&nbsp; citation-grounded generation &nbsp;·&nbsp; parallel graph + vector paths</p>
         </div>
@@ -622,7 +728,7 @@
         </div>
         <p class="kicker">Research plan</p>
         <h1>Five linked studies,<br>one publication each</h1>
-        <p>A single connected programme of engineering and evaluation — each study produces what the next one needs.</p>
+        <p>A single connected programme of engineering and evaluation, where each study produces what the next one needs.</p>
       </section>
 
       <!-- 9 · STUDY I -->
@@ -636,12 +742,17 @@
         </div>
         <h2><span class="text-coral">Study I</span> · Scoping review</h2>
         <div class="content" style="padding-top:14px;">
-          <p class="text-lg rise d1">Map how guideline knowledge is represented, retrieved and reasoned over in CDSS across clinical domains — with obstetrics as the motivating exemplar.</p>
+          <p class="text-lg rise d1">Map how guideline knowledge is represented, retrieved and reasoned over in CDSS across clinical domains, with obstetrics as the motivating exemplar.</p>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:14px;">
             <div class="card rise d2"><h3><i class="fa-solid fa-clipboard-check text-teal"></i>&nbsp; Method</h3>
               <ul style="margin-top:6px;"><li>JBI methodology, reported per <strong>PRISMA-ScR</strong></li><li>OSF pre-registration before screening</li><li>6 databases · dual independent screening · PCC framework</li></ul></div>
             <div class="card card-accent rise d3"><h3><i class="fa-solid fa-bullseye text-teal"></i>&nbsp; Output</h3>
               <ul style="margin-top:6px;"><li>Cross-domain evidence map</li><li>Characterisation of evaluation methods</li><li>The <strong>gap</strong> that motivates the thesis</li></ul></div>
+          </div>
+          <div class="smeta rise d4">
+            <div class="m"><p class="k">Type</p><p>JBI scoping review, reported per PRISMA-ScR</p></div>
+            <div class="m"><p class="k">Scope</p><p>6 databases, no a priori cap + grey literature &amp; citation chasing</p></div>
+            <div class="m"><p class="k">Synthesis</p><p>Descriptive: frequency tabulation &amp; narrative mapping; no formal appraisal</p></div>
           </div>
         </div>
         <div class="footnote">Peters et al., 2020 · Tricco et al., 2018</div>
@@ -665,8 +776,78 @@
             <div class="card card-accent rise d3"><h3><i class="fa-solid fa-layer-group text-teal"></i>&nbsp; Layered validation</h3>
               <ul style="margin-top:6px;"><li>Automated checks over the full graph</li><li>Stratified <strong>~300–500 triple</strong> human review</li><li>Safety-critical subset signed off by an obstetrician</li></ul></div>
           </div>
-          <p class="text-muted text-center rise d4" style="margin-top:12px; font-size:12.5pt;">Metrics: source faithfulness · linking validity · hallucination rate · Cohen/Fleiss κ · precision/recall/F1</p>
+          <div class="smeta rise d4">
+            <div class="m"><p class="k">Type</p><p>Knowledge-engineering with layered validation sub-study</p></div>
+            <div class="m"><p class="k">Sources</p><p>NICE, FIGO &amp; RCOG obstetric guideline texts</p></div>
+            <div class="m"><p class="k">Metrics</p><p>Faithfulness · linking validity · hallucination rate · κ · P/R/F1</p></div>
+          </div>
         </div>
+      </section>
+
+      <!-- 10b · STUDY II — WORKED EXAMPLE -->
+      <section id="slide-10b">
+        <div class="chain rise">
+          <span class="step done">I</span><span class="link done"></span>
+          <span class="step active">II</span><span class="link"></span>
+          <span class="step">III</span><span class="link"></span>
+          <span class="step">IV</span><span class="link"></span>
+          <span class="step">V</span>
+        </div>
+        <h2><span class="text-coral">Study II</span> · From guideline text to graph</h2>
+        <div class="content" style="padding-top:12px;">
+          <div class="card rise d1" style="border-left:4px solid var(--accent-mint); padding:13px 18px;">
+            <p class="kicker" style="margin-bottom:4px;"><i class="fa-solid fa-quote-left"></i>&nbsp; Source passage &nbsp;·&nbsp; chunked guideline text</p>
+            <p style="margin:0; font-size:14.5pt; font-style:italic;">"In women with <strong>severe pre-eclampsia</strong>, offer intravenous <strong>magnesium sulfate</strong> and admit for inpatient monitoring."</p>
+          </div>
+          <div style="display:grid; grid-template-columns:1.32fr 1fr; gap:24px; margin-top:16px; align-items:start;">
+            <div class="rise d2">
+              <p class="kicker" style="margin-bottom:8px;"><i class="fa-solid fa-arrow-down-up-across-line"></i>&nbsp; Schema-guided extraction &rarr; normalised triples</p>
+              <div style="display:flex; flex-direction:column; gap:11px;">
+                <div>
+                  <div class="trip"><span class="s">Severe pre-eclampsia</span><span class="arr"><i class="fa-solid fa-arrow-right"></i></span><span class="p">is treated with</span><span class="arr"><i class="fa-solid fa-arrow-right"></i></span><span class="o">Magnesium sulfate</span><span class="tag-exp">explicit</span></div>
+                  <p class="codes">SNOMED-CT&nbsp; <b>398254007</b> &rarr; <b>387202002</b></p>
+                </div>
+                <div>
+                  <div class="trip"><span class="s">Severe pre-eclampsia</span><span class="arr"><i class="fa-solid fa-arrow-right"></i></span><span class="p">requires</span><span class="arr"><i class="fa-solid fa-arrow-right"></i></span><span class="o">Inpatient admission</span><span class="tag-exp">explicit</span></div>
+                  <p class="codes">SNOMED-CT&nbsp; <b>398254007</b> &rarr; <b>32485007</b></p>
+                </div>
+                <div>
+                  <div class="trip"><span class="s">Severe pre-eclampsia</span><span class="arr"><i class="fa-solid fa-arrow-right"></i></span><span class="p">risk factor for</span><span class="arr"><i class="fa-solid fa-arrow-right"></i></span><span class="o">Eclampsia</span><span class="tag-inf">inferred</span></div>
+                  <p class="codes">SNOMED-CT&nbsp; <b>398254007</b> &rarr; <b>15938005</b></p>
+                </div>
+              </div>
+              <p style="margin:12px 0 0 0; font-size:12pt; color:var(--muted-color);"><i class="fa-solid fa-tag text-coral"></i>&nbsp; <strong>Provenance</strong> stored on every edge: <em>NICE NG133 · §1.5 · v2019</em></p>
+            </div>
+            <div class="rise d3" style="display:flex; flex-direction:column; align-items:center;">
+              <p class="kicker" style="margin-bottom:2px; align-self:flex-start;"><i class="fa-solid fa-circle-nodes"></i>&nbsp; As a property graph</p>
+              <svg viewBox="0 0 380 250" style="width:100%; max-height:230px;" xmlns="http://www.w3.org/2000/svg">
+                <!-- edges -->
+                <line x1="190" y1="125" x2="300" y2="48" stroke="#11636E" stroke-width="1.8"/>
+                <line x1="190" y1="125" x2="300" y2="205" stroke="#11636E" stroke-width="1.8"/>
+                <line x1="120" y1="125" x2="70" y2="205" stroke="#D9A441" stroke-width="1.8" stroke-dasharray="5 5"/>
+                <!-- nodes -->
+                <g font-family="Inter, sans-serif">
+                  <rect x="118" y="103" width="144" height="46" rx="11" fill="#0B2E33" stroke="#E0654E" stroke-width="2"/>
+                  <text x="190" y="121" text-anchor="middle" fill="#F2EFEA" font-size="12" font-weight="600">Severe</text>
+                  <text x="190" y="137" text-anchor="middle" fill="#F2EFEA" font-size="12" font-weight="600">pre-eclampsia</text>
+                  <rect x="262" y="26" width="112" height="42" rx="10" fill="#fff" stroke="#11636E" stroke-width="1.5"/>
+                  <text x="318" y="44" text-anchor="middle" fill="#1E2A2C" font-size="11" font-weight="600">Magnesium</text>
+                  <text x="318" y="58" text-anchor="middle" fill="#1E2A2C" font-size="11" font-weight="600">sulfate</text>
+                  <rect x="262" y="184" width="112" height="42" rx="10" fill="#fff" stroke="#11636E" stroke-width="1.5"/>
+                  <text x="318" y="202" text-anchor="middle" fill="#1E2A2C" font-size="11" font-weight="600">Inpatient</text>
+                  <text x="318" y="216" text-anchor="middle" fill="#1E2A2C" font-size="11" font-weight="600">admission</text>
+                  <rect x="14" y="184" width="104" height="42" rx="10" fill="#FBF4E4" stroke="#D9A441" stroke-width="1.5"/>
+                  <text x="66" y="209" text-anchor="middle" fill="#1E2A2C" font-size="11" font-weight="600">Eclampsia</text>
+                </g>
+              </svg>
+              <div style="display:flex; gap:18px; margin-top:4px; font-size:10.5pt; color:var(--muted-color);">
+                <span><span style="display:inline-block; width:18px; height:2px; background:#11636E; vertical-align:middle;"></span> explicit edge</span>
+                <span><span style="display:inline-block; width:18px; height:2px; background:#D9A441; vertical-align:middle;"></span> inferred edge</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footnote">Illustrative example · concepts normalised to SNOMED-CT; source passage paraphrased from NICE NG133 (Hypertension in pregnancy), 2019</div>
       </section>
 
       <!-- 11 · STUDY III -->
@@ -680,15 +861,58 @@
         </div>
         <h2><span class="text-coral">Study III</span> · Graph-RAG architecture</h2>
         <div class="content" style="padding-top:14px;">
-          <p class="text-lg rise d1">Design and implement the dual-retrieval, fusion and grounded-generation pipeline — isolating each component's contribution by ablation.</p>
+          <p class="text-lg rise d1">Design and implement the dual-retrieval, fusion and grounded-generation pipeline, isolating each component's contribution by ablation.</p>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:14px;">
             <div class="card rise d2"><h3><i class="fa-solid fa-gears text-teal"></i>&nbsp; Components</h3>
               <ul style="margin-top:6px;"><li>Entity linking + intent-aware routing</li><li>Parallel graph + dense retrieval</li><li>Reciprocal rank fusion + cross-encoder rerank</li><li>Cited generation; optional MedGemma fine-tuning</li></ul></div>
             <div class="card card-accent rise d3"><h3><i class="fa-solid fa-flask-vial text-teal"></i>&nbsp; Controlled ablation</h3>
               <ul style="margin-top:6px;"><li>4 configs: <strong>vector-only · graph-only · hybrid · hybrid+reranker</strong></li><li>Single-hop vs. multi-hop</li><li>Latency, token cost &amp; citation correctness</li></ul></div>
           </div>
+          <div class="smeta rise d4">
+            <div class="m"><p class="k">Type</p><p>Systems design &amp; development with internal ablation</p></div>
+            <div class="m"><p class="k">Inputs</p><p>Study II knowledge graph + guideline corpus; no human participants</p></div>
+            <div class="m"><p class="k">Stack</p><p>scispaCy · Neo4j · BioLORD + Qdrant · cross-encoder · MedGemma</p></div>
+          </div>
         </div>
-        <div class="footnote">Technical artefact — no human participants at this stage</div>
+      </section>
+
+      <!-- 11b · STUDY III — WORKED EXAMPLE -->
+      <section id="slide-11b">
+        <div class="chain rise">
+          <span class="step done">I</span><span class="link done"></span>
+          <span class="step done">II</span><span class="link done"></span>
+          <span class="step active">III</span><span class="link"></span>
+          <span class="step">IV</span><span class="link"></span>
+          <span class="step">V</span>
+        </div>
+        <h2><span class="text-coral">Study III</span> · A question through the pipeline</h2>
+        <div class="content" style="padding-top:12px;">
+          <div class="card rise d1" style="border-left:4px solid var(--accent-mint); padding:12px 18px;">
+            <p class="kicker" style="margin-bottom:4px;"><i class="fa-solid fa-comment-medical"></i>&nbsp; Clinician question · natural language</p>
+            <p style="margin:0; font-size:15pt; font-style:italic;">"In severe hypertension in pregnancy, what is the first-line treatment, and at what blood pressure does it become an emergency?"</p>
+            <p style="margin:8px 0 0 0; font-size:11.5pt; color:var(--muted-color);"><strong>Understood as</strong> · entity: <em>severe hypertension in pregnancy</em> · intent: factual + urgency</p>
+          </div>
+          <div style="display:grid; grid-template-columns:1.18fr 1fr; gap:22px; margin-top:14px; align-items:start;">
+            <div class="rise d2">
+              <p class="kicker" style="margin-bottom:8px;"><i class="fa-solid fa-magnifying-glass"></i>&nbsp; Dual retrieval, fused</p>
+              <p style="font-size:10.5pt; color:var(--muted-color); margin:0 0 5px 2px;">Graph path</p>
+              <div class="trip" style="margin-bottom:7px;"><span class="s">Severe HTN in pregnancy</span><span class="arr"><i class="fa-solid fa-arrow-right"></i></span><span class="p">first-line</span><span class="arr"><i class="fa-solid fa-arrow-right"></i></span><span class="o">Oral labetalol</span></div>
+              <div class="trip"><span class="s">BP ≥160/110</span><span class="arr"><i class="fa-solid fa-arrow-right"></i></span><span class="p">red-flag</span><span class="arr"><i class="fa-solid fa-arrow-right"></i></span><span class="o">Treat as emergency</span></div>
+              <p style="font-size:10.5pt; color:var(--muted-color); margin:12px 0 5px 2px;">Vector passage</p>
+              <div class="card" style="padding:9px 13px;"><p style="margin:0; font-size:11.5pt; font-style:italic;">"...offer oral labetalol as first-line... treat sustained BP ≥160/110 mmHg as an emergency..." <span class="cite">NICE NG133</span></p></div>
+              <p style="font-size:10.5pt; color:var(--muted-color); margin:10px 0 0 2px;"><i class="fa-solid fa-layer-group text-coral"></i>&nbsp; RRF + cross-encoder fuse graph and passage</p>
+            </div>
+            <div class="rise d3">
+              <p class="kicker" style="margin-bottom:8px;"><i class="fa-solid fa-wand-magic-sparkles"></i>&nbsp; Grounded answer</p>
+              <div class="card card-accent" style="padding:14px 16px;">
+                <p style="margin:0; font-size:13.5pt;"><strong>First-line:</strong> oral labetalol. Treat <strong>sustained BP ≥160/110 mmHg</strong> as an emergency, without delay. <span class="cite">NICE NG133 §1.5</span></p>
+                <div style="margin-top:12px;"><span class="flag red"><i class="fa-solid fa-triangle-exclamation"></i> Escalation flag · time-critical</span></div>
+              </div>
+              <p style="font-size:11pt; color:var(--muted-color); margin:10px 0 0 2px;">Answer uses only retrieved evidence; every claim carries a citation.</p>
+            </div>
+          </div>
+        </div>
+        <div class="footnote">Illustrative example · passage paraphrased from NICE NG133 (Hypertension in pregnancy), 2019</div>
       </section>
 
       <!-- 12 · STUDY IV -->
@@ -708,11 +932,49 @@
             <div class="card rise d3" style="text-align:center;"><p class="stat" style="margin:0;"><span class="num">4</span><span class="lbl">single-hop · multi-hop · contradiction · escalation</span></p></div>
             <div class="card rise d4" style="text-align:center;"><p class="stat" style="margin:0;"><span class="num">3–5</span><span class="lbl">obstetricians &amp; obstetric nurses on the panel</span></p></div>
           </div>
-          <div class="highlight rise d5" style="margin-top:16px;">
+          <div class="highlight rise d5" style="margin-top:14px;">
             <p style="margin:0; font-size:14pt;"><strong>RAGAS</strong> (faithfulness, answer relevancy, context precision/recall) + human ratings of correctness, safety &amp; citation. Hypothesis: hybrid graph-RAG <strong>outperforms</strong> dense-only RAG and unaided LLMs on multi-hop and contradiction queries.</p>
           </div>
         </div>
         <div class="footnote">Es et al., 2024 · non-parametric / mixed-effects models · ICC / weighted κ</div>
+      </section>
+
+      <!-- 12b · STUDY IV — WORKED EXAMPLE -->
+      <section id="slide-12b">
+        <div class="chain rise">
+          <span class="step done">I</span><span class="link done"></span>
+          <span class="step done">II</span><span class="link done"></span>
+          <span class="step done">III</span><span class="link done"></span>
+          <span class="step active">IV</span><span class="link"></span>
+          <span class="step">V</span>
+        </div>
+        <h2><span class="text-coral">Study IV</span> · Scoring one benchmark item</h2>
+        <div class="content" style="padding-top:12px;">
+          <div class="card rise d1" style="border-left:4px solid var(--accent-mint); padding:12px 18px;">
+            <p class="kicker" style="margin-bottom:4px;"><i class="fa-solid fa-circle-question"></i>&nbsp; Benchmark item · <span class="text-teal">multi-hop</span></p>
+            <p style="margin:0; font-size:14.5pt;"><strong>Q:</strong> A woman on a long-term ACE inhibitor is planning pregnancy: is this safe, and what should change?</p>
+            <p style="margin:6px 0 0 0; font-size:12.5pt; color:var(--muted-color);"><strong>Reference answer:</strong> ACE inhibitors are contraindicated in pregnancy; switch to a pregnancy-safe antihypertensive before conception. <span class="cite">NICE NG133</span></p>
+          </div>
+          <p class="kicker rise d2" style="margin:16px 0 8px 0;"><i class="fa-solid fa-diagram-next"></i>&nbsp; The same item is answered by three configurations &rarr; each answer scored two ways</p>
+          <div style="display:grid; grid-template-columns:0.9fr 1.05fr 1.05fr; gap:14px; align-items:stretch;">
+            <div class="card rise d2" style="padding:13px 16px;">
+              <p class="kicker" style="margin-bottom:8px;">Compared</p>
+              <p style="margin:0 0 6px 0; font-size:12.5pt;">Unaided LLM</p>
+              <p style="margin:0 0 6px 0; font-size:12.5pt;">Dense-only RAG</p>
+              <p style="margin:0; font-size:12.5pt; font-weight:700; color:var(--primary-dark);">Hybrid graph-RAG</p>
+            </div>
+            <div class="card rise d3" style="padding:13px 16px;">
+              <p class="kicker" style="margin-bottom:6px;"><i class="fa-solid fa-robot text-teal"></i>&nbsp; Automated · RAGAS</p>
+              <p style="margin:0; font-size:12.5pt; color:var(--muted-color);">Faithfulness · answer relevancy · context precision · context recall</p>
+            </div>
+            <div class="card card-accent rise d3" style="padding:13px 16px;">
+              <p class="kicker" style="margin-bottom:6px;"><i class="fa-solid fa-user-doctor text-teal"></i>&nbsp; Blinded expert panel</p>
+              <p style="margin:0; font-size:12.5pt; color:var(--muted-color);">Correctness · clinical safety · citation adequacy</p>
+            </div>
+          </div>
+          <p class="rise d4" style="font-size:12.5pt; color:var(--muted-color); margin-top:16px;"><strong>Hypothesis under test:</strong> the gap favouring hybrid graph-RAG widens on <strong>multi-hop</strong> and <strong>contradiction</strong> items, where structured graph paths matter most.</p>
+        </div>
+        <div class="footnote">Evaluation design · no results yet; scores are computed once the benchmark is built and the panel completes annotation</div>
       </section>
 
       <!-- 13 · STUDY V -->
@@ -733,8 +995,47 @@
             <div class="card card-accent rise d3"><h3><i class="fa-solid fa-code-compare text-teal"></i>&nbsp; Contradiction by traversal</h3>
               <ul style="margin-top:6px;"><li>Detection over versioned, provenance-tagged edges</li><li>Curated <strong>NICE vs. FIGO vs. RCOG</strong> benchmark</li><li>Precision/recall + agreement with expert consensus</li></ul></div>
           </div>
-          <p class="text-muted text-center rise d4" style="margin-top:12px; font-size:12.5pt;">Reuses the Study IV obstetrician panel for a usability and safety review</p>
+          <div class="smeta rise d4">
+            <div class="m"><p class="k">Type</p><p>Focused evaluation with structured case-study analysis</p></div>
+            <div class="m"><p class="k">Benchmark</p><p>Known NICE/FIGO/RCOG contradictions + red-flag escalation scenarios</p></div>
+            <div class="m"><p class="k">Analysis</p><p>Precision/recall with CIs · agreement vs. consensus · thematic analysis</p></div>
+          </div>
         </div>
+      </section>
+
+      <!-- 13b · STUDY V — WORKED EXAMPLE -->
+      <section id="slide-13b">
+        <div class="chain rise">
+          <span class="step done">I</span><span class="link done"></span>
+          <span class="step done">II</span><span class="link done"></span>
+          <span class="step done">III</span><span class="link done"></span>
+          <span class="step done">IV</span><span class="link done"></span>
+          <span class="step active">V</span>
+        </div>
+        <h2><span class="text-coral">Study V</span> · Catching a conflict, raising a flag</h2>
+        <div class="content" style="padding-top:14px;">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:26px; align-items:start;">
+            <div class="rise d1">
+              <p class="kicker" style="margin-bottom:8px;"><i class="fa-solid fa-code-compare"></i>&nbsp; Contradiction by traversal</p>
+              <p style="font-size:12.5pt; margin:0 0 10px 0;">Same test result, two guideline bodies. Traversal over versioned, provenance-tagged edges surfaces the divergence:</p>
+              <div class="card" style="padding:9px 14px; margin-bottom:10px; border-left:4px solid var(--accent-mint);"><p style="margin:0; font-size:12.5pt;"><strong>Patient:</strong> fasting plasma glucose <strong>5.3 mmol/L</strong> (75 g OGTT)</p></div>
+              <div style="display:flex; flex-direction:column; gap:9px;">
+                <div class="card" style="padding:9px 14px; border-left:4px solid var(--primary-color);"><p style="margin:0; font-size:12pt;"><strong>NICE</strong> · GDM if fasting ≥ 5.6 mmol/L &rarr; <strong class="text-teal">not GDM</strong> <span class="cite">NICE NG3</span></p></div>
+                <div class="card" style="padding:9px 14px; border-left:4px solid var(--accent-gold);"><p style="margin:0; font-size:12pt;"><strong>FIGO / WHO</strong> · GDM if fasting ≥ 5.1 mmol/L &rarr; <strong class="text-gold">GDM</strong> <span class="cite">FIGO 2015</span></p></div>
+              </div>
+              <div style="margin-top:12px;"><span class="flag amber"><i class="fa-solid fa-triangle-exclamation"></i> Guideline conflict · same value, opposite diagnoses</span></div>
+            </div>
+            <div class="rise d2">
+              <p class="kicker" style="margin-bottom:8px;"><i class="fa-solid fa-traffic-light"></i>&nbsp; Escalation flag</p>
+              <p style="font-size:12.5pt; margin:0 0 10px 0;">When a retrieved fact trips a red-flag rule, the answer is tagged <strong>time-critical</strong>, so an urgent finding is never answered as if it were routine:</p>
+              <div class="card" style="padding:10px 14px; margin-bottom:8px;"><p style="margin:0; font-size:12pt;"><strong>Retrieved fact:</strong> sustained BP ≥160/110 mmHg, a hypertensive emergency <span class="cite">NICE NG133</span></p></div>
+              <p style="font-size:11pt; color:var(--muted-color); margin:0 0 8px 12px;"><i class="fa-solid fa-arrow-down"></i>&nbsp; matches a red-flag rule in the graph</p>
+              <div><span class="flag red"><i class="fa-solid fa-triangle-exclamation"></i> RED · hypertensive emergency: treat without delay</span></div>
+              <p style="font-size:11.5pt; color:var(--muted-color); margin:14px 0 0 0;"><strong>Red</strong> = immediate action · <strong>amber</strong> = caution / verify. Rule-based flags are benchmarked against the LLM's free-text warnings.</p>
+            </div>
+          </div>
+        </div>
+        <div class="footnote">Documented divergence · GDM diagnostic thresholds differ: NICE NG3 (fasting ≥ 5.6 mmol/L) vs WHO/IADPSG criteria adopted by FIGO (≥ 5.1 mmol/L). Patient value illustrative.</div>
       </section>
 
       <!-- 14 · DIVIDER: EXECUTION -->
@@ -776,12 +1077,12 @@
             </div>
             <div class="gantt-row"><div class="tlabel">T1 · Protocol approval</div><div class="gantt-track"><div class="gantt-bar" style="left:0%; width:8.3%; animation-delay:.05s;"></div></div></div>
             <div class="gantt-row"><div class="tlabel">T2 · Ethics / R&amp;D committee</div><div class="gantt-track"><div class="gantt-bar" style="left:5.6%; width:11.1%; animation-delay:.10s;"></div></div></div>
-            <div class="gantt-row"><div class="tlabel">T3 · Study I — scoping review</div><div class="gantt-track"><div class="gantt-bar alt" style="left:2.8%; width:25%; animation-delay:.15s;"></div></div></div>
-            <div class="gantt-row"><div class="tlabel">T4 · Study II — ontology &amp; KG</div><div class="gantt-track"><div class="gantt-bar alt" style="left:19.4%; width:30.6%; animation-delay:.20s;"></div></div></div>
+            <div class="gantt-row"><div class="tlabel">T3 · Study I: scoping review</div><div class="gantt-track"><div class="gantt-bar alt" style="left:2.8%; width:25%; animation-delay:.15s;"></div></div></div>
+            <div class="gantt-row"><div class="tlabel">T4 · Study II: ontology &amp; KG</div><div class="gantt-track"><div class="gantt-bar alt" style="left:19.4%; width:30.6%; animation-delay:.20s;"></div></div></div>
             <div class="gantt-row"><div class="tlabel">T5 · Triple-extraction validation</div><div class="gantt-track"><div class="gantt-bar alt" style="left:36.1%; width:19.4%; animation-delay:.25s;"></div></div></div>
-            <div class="gantt-row"><div class="tlabel">T6 · Study III — graph-RAG build</div><div class="gantt-track"><div class="gantt-bar" style="left:41.7%; width:30.6%; animation-delay:.30s;"></div></div></div>
-            <div class="gantt-row"><div class="tlabel">T7 · Study IV — benchmark &amp; panel</div><div class="gantt-track"><div class="gantt-bar" style="left:58.3%; width:25%; animation-delay:.35s;"></div></div></div>
-            <div class="gantt-row"><div class="tlabel">T8 · Study V — safety layer</div><div class="gantt-track"><div class="gantt-bar" style="left:69.4%; width:19.4%; animation-delay:.40s;"></div></div></div>
+            <div class="gantt-row"><div class="tlabel">T6 · Study III: graph-RAG build</div><div class="gantt-track"><div class="gantt-bar" style="left:41.7%; width:30.6%; animation-delay:.30s;"></div></div></div>
+            <div class="gantt-row"><div class="tlabel">T7 · Study IV: benchmark &amp; panel</div><div class="gantt-track"><div class="gantt-bar" style="left:58.3%; width:25%; animation-delay:.35s;"></div></div></div>
+            <div class="gantt-row"><div class="tlabel">T8 · Study V: safety layer</div><div class="gantt-track"><div class="gantt-bar" style="left:69.4%; width:19.4%; animation-delay:.40s;"></div></div></div>
             <div class="gantt-row"><div class="tlabel">T9 · Writing &amp; thesis assembly</div><div class="gantt-track"><div class="gantt-bar write" style="left:25%; width:75%; animation-delay:.45s;"></div></div></div>
           </div>
           <p class="text-muted text-center" style="margin-top:10px; font-size:11.5pt;"><span style="color:var(--primary-color);">&#9632;</span> build &nbsp; <span style="color:var(--accent-mint);">&#9632;</span> evidence &amp; validation &nbsp; <span style="color:var(--accent-gold);">&#9632;</span> writing &nbsp;·&nbsp; <span style="color:var(--secondary-color);">&#9670;</span> milestones M-A…M-F</p>
@@ -793,12 +1094,16 @@
         <h2>Expected results</h2>
         <div class="content">
           <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:18px;">
-            <div class="card card-accent rise d1"><h3><i class="fa-solid fa-map text-teal"></i>&nbsp; Evidence map</h3><p>A cross-domain map of knowledge representations for CDSS, quantifying the scarcity of graph-based systems — and the absence of obstetric ones.</p></div>
+            <div class="card card-accent rise d1"><h3><i class="fa-solid fa-map text-teal"></i>&nbsp; Evidence map</h3><p>A cross-domain map of knowledge representations for CDSS, quantifying the scarcity of graph-based systems, and the absence of obstetric ones.</p></div>
             <div class="card card-accent rise d2"><h3><i class="fa-solid fa-share-nodes text-teal"></i>&nbsp; Open artefacts</h3><p>A released obstetric ontology &amp; populated knowledge graph (Neo4j dump) plus an open QA benchmark, enabling independent replication.</p></div>
-            <div class="card card-accent rise d3"><h3><i class="fa-solid fa-chart-line text-teal"></i>&nbsp; Quantitative evidence</h3><p>Whether and when hybrid graph-RAG beats dense-only RAG, with latency and cost trade-offs characterised for realistic deployment.</p></div>
+            <div class="card card-accent rise d3"><h3><i class="fa-solid fa-chart-line text-teal"></i>&nbsp; Quantitative evidence</h3><p>Whether and when hybrid graph-RAG improves on dense-only RAG, with latency and cost trade-offs characterised for realistic deployment.</p></div>
             <div class="card card-accent rise d4"><h3><i class="fa-solid fa-shield-heart text-teal"></i>&nbsp; Validated safety</h3><p>Expert-rated safety of escalation flags and accuracy of contradiction detection across NICE, FIGO and RCOG.</p></div>
           </div>
-          <p class="text-muted text-center rise d5" style="margin-top:16px; font-size:12.5pt;"><strong>Acknowledged limits:</strong> coverage bounded by included guidelines · model drift · sample-based validation · retrospective evaluation</p>
+          <div class="highlight rise d5" style="margin-top:18px; display:flex; align-items:center; gap:18px;">
+            <span style="font-size:22pt; color:var(--secondary-color);"><i class="fa-solid fa-arrows-to-circle"></i></span>
+            <p style="margin:0; font-size:14pt;"><strong>Benefit &amp; generalisability:</strong> a transparent, citable, safety-aware route to obstetric guideline knowledge, with methods (schema-guided extraction, versioned provenance, rank-fusion retrieval, graph-derived escalation) designed to transfer to other specialties.</p>
+          </div>
+          <p class="text-muted text-center rise d5" style="margin-top:14px; font-size:12.5pt;"><strong>Acknowledged limits:</strong> coverage bounded by included guidelines · model drift · sample-based validation · retrospective evaluation</p>
         </div>
       </section>
 
@@ -859,9 +1164,8 @@
         </div>
         <p class="kicker rise">In summary</p>
         <h1 class="rise d1">A transparent, citable and safe<br>route to obstetric guideline knowledge</h1>
-        <p class="rise d2" style="margin-top:18px;">Cutting the cognitive burden of reconciling fragmented sources — with methods that generalise to other specialties and reusable open artefacts.</p>
-        <div class="rise d3" style="margin-top:36px;">
-          <p style="font-size:17pt; color:var(--dark-text); margin:0;"><strong style="color:#fff;">Daniel Rodrigues</strong> &nbsp;·&nbsp; <span style="color:#7FB3AC;">daniel@virtualcare.pt</span></p>
+        <div class="rise d2" style="margin-top:36px;">
+          <p style="font-size:17pt; color:var(--dark-text); margin:0;"><strong style="color:#fff;">Daniel Rodrigues</strong></p>
           <p style="font-size:13pt; color:#7FA09D; margin:8px 0 0 0;">Doctoral Programme HEADS · Faculty of Medicine, University of Porto</p>
         </div>
       </section>
