@@ -385,28 +385,6 @@
         <aside class="notes">It helps to see that hallucination is not one failure but two. The first is faulty reasoning: the individual facts may be correct, but the logic connecting them is wrong. For example, a model lists the correct red flags for pre-eclampsia and then concludes it is safe to delay review. This is actually the dominant mode: the large foundation-model study by Kim and colleagues found medical hallucination is reasoning-driven rather than a knowledge gap, and forcing step-by-step reasoning cut it in 86 percent of their tests. The second kind is fabrication: the model invents facts, studies, or citations that never existed. When Chelli and colleagues had models reproduce systematic reviews, fabricated references ranged from 28 percent for GPT-4 up to 91 percent for Bard. The dangerous part is that both arrive as fluent, confident prose, so neither is obvious unless the answer shows a real source you can check. That is exactly what our approach is built to fix.</aside>
       </section>
 
-      <section id="slide-conflict">
-        <h2>And the guidelines themselves disagree</h2>
-        <div class="content" style="justify-content:center;">
-          <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:14px;">
-            <div class="srcbadge">NICE<small>United Kingdom</small></div>
-            <div class="srcbadge">FIGO<small>international</small></div>
-            <div class="srcbadge">RCOG<small>obstetric college</small></div>
-            <div class="srcbadge">WHO<small>global</small></div>
-          </div>
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:22px; align-items:center;">
-            <div class="callout">
-              <p style="margin:0;">These bodies cover the same conditions, but their thresholds and timing advice sometimes <strong>differ</strong>.</p>
-            </div>
-            <div class="panel panel-bad">
-              <p style="margin:0;"><i class="fa-solid fa-triangle-exclamation c-red"></i> A naive system quietly <strong>picks one</strong> and hides the disagreement. The clinician never learns there was a choice.</p>
-            </div>
-          </div>
-          <p class="text-center text-lg" style="margin-top:18px;">We will see a real conflict later (gestational diabetes thresholds).</p>
-        </div>
-        <aside class="notes">There is a second, subtler problem. Obstetric care is governed by several respected bodies: NICE in the UK, FIGO internationally, the RCOG, and the WHO. They cover the same conditions, but their thresholds and their timing advice sometimes differ. A naive system trained or prompted on all of them will quietly pick one answer and hide the fact that there was any disagreement at all. The clinician never learns there was a choice to make. Later in the talk I will show a real, well-documented example of this with gestational diabetes thresholds. For now, the point is that handling disagreement openly is part of being trustworthy.</aside>
-      </section>
-
       <section id="slide-3">
         <h2>Why obstetrics is a hard and important test case</h2>
         <div class="content" style="justify-content:center;">
@@ -548,7 +526,7 @@
       <section id="divider-orag" class="section-divider" data-background-color="#0E3A44">
         <p class="kicker">Part 3</p>
         <h1 style="font-size:52pt;">ObstetricRAG</h1>
-        <p>Our proposal, one stage at a time.</p>
+        <p>Our proposal, from question to grounded answer.</p>
       </section>
 
       <section id="slide-8">
@@ -578,102 +556,6 @@
           </div>
         </div>
         <aside class="notes">Here is the proposed system, called ObstetricRAG. It takes the clinician's plain-language question and runs it through eight stages. First we parse the question and do entity linking, mapping phrases like "high blood pressure" to standard codes in SNOMED-CT and ICD-11. Then we classify the intent: is this a simple fact, a multi-step question, an urgent case, a possible contradiction, or a dose lookup? That routing matters. Next, and this is the heart of it, two retrievers run in parallel. The graph traversal walks the obstetric knowledge graph in Neo4j to follow clinical relationships. At the same time, vector search finds semantically similar guideline passages. We then merge the two result lists using reciprocal rank fusion, a simple and robust way to combine rankings, and we rerank the best candidates. Only then does the language model write the answer, and it can only use what was retrieved, with citations and safety flags attached. So the model is a careful writer, not the source of truth.</aside>
-      </section>
-
-      <section id="stage-1">
-        <p class="stage-tag">Stage 1 of 4</p>
-        <div class="stage-mini"><span class="on"></span><span></span><span></span><span></span></div>
-        <h2 style="margin-top:8px;">Query understanding: read the question properly</h2>
-        <div class="content" style="justify-content:center;">
-          <div style="display:grid; grid-template-columns:1fr 1.2fr; gap:26px; align-items:center;">
-            <div class="bubble bubble-user" style="max-width:100%;"><p class="bubble-label">Clinician asks</p><p style="margin:0;">"36 weeks, BP 160/110, severe headache, on labetalol. What is the recommended treatment?"</p></div>
-            <div>
-              <p style="margin:0 0 4px 0;"><strong class="c-teal">1. Entity linking</strong> to SNOMED-CT / ICD-11</p>
-              <div style="margin-bottom:10px;"><span class="tag tag-cond">severe pre-eclampsia</span><span class="tag tag-ga">36 weeks</span><span class="tag tag-meas">BP 160/110</span><span class="tag tag-drug">labetalol</span></div>
-              <p style="margin:0 0 4px 0;"><strong class="c-teal">2. Intent classification</strong></p>
-              <div style="margin-bottom:10px;"><span class="tag" style="background:#FDE0E0; color:#b91c1c;">multi-hop</span><span class="tag" style="background:#FDE0E0; color:#b91c1c;">urgent</span><span class="tag tag-teal">treatment + escalation</span></div>
-              <p style="margin:0 0 4px 0;"><strong class="c-teal">3. Query rewriting</strong> for better recall</p>
-              <p style="margin:0; font-size:13pt;" class="text-muted">writes a clean, well-formed version of the question before searching</p>
-            </div>
-          </div>
-          <div class="callout" style="margin-top:18px;"><p style="margin:0;">Standard words become <strong>standard codes</strong>, and the system knows this is an <strong>urgent, multi-step</strong> question, not a simple fact lookup.</p></div>
-        </div>
-        <aside class="notes">Now the four stages of ObstetricRAG, one at a time. Stage one is understanding the question. Three things happen. First, entity linking: the free text is mapped to standard codes in SNOMED-CT and ICD-11, so "high blood pressure at 36 weeks with a headache" becomes recognised concepts. Second, intent classification: the system decides this is a multi-hop, urgent, treatment-and-escalation question, not a simple fact. That routing decides how hard the retrieval works. Third, query rewriting: it writes a clean, well-formed version of the question to improve search recall. The payoff is that standard words become standard codes, and the system already knows this is urgent and multi-step.</aside>
-      </section>
-
-      <section id="stage-2">
-        <p class="stage-tag">Stage 2 of 4</p>
-        <div class="stage-mini"><span></span><span class="on"></span><span></span><span></span></div>
-        <h2 style="margin-top:8px;">Dual retrieval: search two ways at once</h2>
-        <div class="content" style="justify-content:center;">
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
-            <div class="card" style="border-top:5px solid var(--graph-color);">
-              <p class="card-title c-graph"><i class="fa-solid fa-diagram-project"></i> Graph traversal (Neo4j)</p>
-              <p style="font-size:13.5pt;">Follows 1 to 3 links from the linked concepts and returns a <strong>reasoning chain</strong>, collecting red-flag nodes on the way.</p>
-              <p style="font-size:12.5pt; background:#F5F0FE; border-radius:8px; padding:8px 10px; margin-top:6px;">severe PE <span class="c-graph">&rarr;</span> impending eclampsia <span class="c-graph">&rarr;</span> needs CTG + Doppler</p>
-            </div>
-            <div class="card" style="border-top:5px solid var(--vector-color);">
-              <p class="card-title c-vector"><i class="fa-solid fa-magnifying-glass"></i> Vector search (embeddings)</p>
-              <p style="font-size:13.5pt;">Finds guideline passages with similar <strong>meaning</strong>, each carrying its source, section and version.</p>
-              <p style="font-size:12.5pt; background:#EEF3FE; border-radius:8px; padding:8px 10px; margin-top:6px;">"offer delivery at 34 weeks or beyond ..." <span class="cite">NICE NG133</span> <span class="text-muted">0.94</span></p>
-            </div>
-          </div>
-          <p class="text-center text-lg" style="margin-top:18px;">The graph gives <strong class="c-graph">structure and logic</strong>; vectors give <strong class="c-vector">wording coverage</strong>. Run together, not one after the other.</p>
-        </div>
-        <aside class="notes">Stage two is the heart of the system: it searches two ways at the same time. On the left, graph traversal walks one to three links out from the linked concepts in the Neo4j graph, and returns a reasoning chain: severe pre-eclampsia escalates to impending eclampsia, which needs CTG and Doppler monitoring. Along the way it collects any red-flag nodes. On the right, vector search finds guideline passages that mean the same thing as the question, even if the words differ, and each passage carries its source, section and version. The graph gives structure and logic; the vectors give wording coverage. Crucially these run in parallel, not one after the other.</aside>
-      </section>
-
-      <section id="stage-3">
-        <p class="stage-tag">Stage 3 of 4</p>
-        <div class="stage-mini"><span></span><span></span><span class="on"></span><span></span></div>
-        <h2 style="margin-top:8px;">Fusion and reranking: pick the best evidence</h2>
-        <div class="content" style="justify-content:center;">
-          <div class="pipe" style="align-items:center; justify-content:center; gap:14px;">
-            <div style="display:flex; flex-direction:column; gap:6px;">
-              <div class="pstep pstep-graph" style="min-width:150px;">Graph results</div>
-              <div class="pstep pstep-vector" style="min-width:150px;">Vector results</div>
-            </div>
-            <div class="parrow"><i class="fa-solid fa-angle-right"></i></div>
-            <div class="pstep" style="min-width:190px;"><strong>Reciprocal rank fusion</strong><small>merge two ranked lists into one</small></div>
-            <div class="parrow"><i class="fa-solid fa-angle-right"></i></div>
-            <div class="pstep" style="min-width:170px;"><strong>Cross-encoder rerank</strong><small>reorder by relevance to the question</small></div>
-            <div class="parrow"><i class="fa-solid fa-angle-right"></i></div>
-            <div class="pstep pstep-out" style="min-width:150px;">Top evidence<small>with provenance</small></div>
-          </div>
-          <div style="display:grid; grid-template-columns:1fr 1.3fr; gap:24px; margin-top:22px; align-items:center;">
-            <div class="callout" style="text-align:center;"><p style="margin:0; font-family:monospace; font-size:15pt;">RRF score = 1 / (k + rank)</p><p class="text-muted" style="font-size:11pt; margin:4px 0 0 0;">a simple, robust way to blend rankings</p></div>
-            <p style="margin:0;">Fusion does not care where a result came from, only how highly each source ranked it. The reranker then reads each candidate against the question and keeps the most relevant, ready for the model.</p>
-          </div>
-        </div>
-        <aside class="notes">Stage three combines the two result lists. We use reciprocal rank fusion, a simple and robust method: each candidate gets a score of one over k plus its rank, and we add up the scores from both lists. It does not care whether a result came from the graph or the vectors, only how highly each ranked it. Then a cross-encoder reranker reads every surviving candidate against the actual question and reorders them by true relevance, which is more accurate than the first-pass search. What comes out is a small, high-quality set of evidence, each item still carrying its provenance, ready to hand to the model.</aside>
-      </section>
-
-      <section id="stage-4">
-        <p class="stage-tag">Stage 4 of 4</p>
-        <div class="stage-mini"><span></span><span></span><span></span><span class="on"></span></div>
-        <h2 style="margin-top:8px;">Grounded generation: write only from the evidence</h2>
-        <div class="content" style="justify-content:center;">
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:26px; align-items:center;">
-            <div>
-              <p class="card-title c-teal">The model is kept on a short leash</p>
-              <ul>
-                <li>Use <strong>only the retrieved evidence</strong>, never outside knowledge</li>
-                <li><strong>Cite</strong> the source for every claim</li>
-                <li><strong>Say so</strong> when the evidence is weak or conflicting</li>
-              </ul>
-            </div>
-            <div class="card on-dark" style="font-family:monospace; font-size:12.5pt; background:#0E3A44;">
-              <p style="margin:0; color:#8FE0D0 !important;">structured output</p>
-              <p style="margin:6px 0 0 0;">answer: "..."</p>
-              <p style="margin:2px 0 0 0;">citations: [NICE NG133, FIGO 2021]</p>
-              <p style="margin:2px 0 0 0;">escalation_flags: [red, amber]</p>
-              <p style="margin:2px 0 0 0;">confidence: 0.91</p>
-              <p style="margin:2px 0 0 0;">uncertainty_note: null</p>
-            </div>
-          </div>
-          <div class="callout" style="margin-top:18px;"><p style="margin:0;">Because the output is <strong>structured</strong>, the citations and safety flags are guaranteed fields, not something we hope the model remembered to add.</p></div>
-        </div>
-        <aside class="notes">Stage four is generation, and the model is kept on a short leash. Its instructions are strict: use only the retrieved evidence, never outside knowledge; cite the source for every claim; and explicitly say so when the evidence is weak or the guidelines conflict. Just as important, the model returns a structured output, not free text: a fixed shape with the answer, the list of citations, the escalation flags, a confidence value, and an uncertainty note. Because those are guaranteed fields, the citations and the safety flags are always present by construction, not something we hope the model remembered to include. This is what makes the next part, trustworthiness, possible.</aside>
       </section>
 
       <section id="slide-9">
