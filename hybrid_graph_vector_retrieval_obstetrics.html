@@ -419,7 +419,7 @@
               </div>
               <div class="card" style="border-left:5px solid var(--primary-color);">
                 <p class="card-title c-teal"><i class="fa-solid fa-comment-medical"></i> A realistic bedside question</p>
-                <p class="text-lg" style="font-style:italic; margin:6px 0 12px 0;">"My patient is 36 weeks pregnant, blood pressure 160/110, severe headache, currently on labetalol. What should I do?"</p>
+                <p class="text-lg" style="font-style:italic; margin:6px 0 12px 0;">"My patient is 36 weeks pregnant, blood pressure 160/110, severe headache, currently on labetalol. What is the recommended treatment?"</p>
                 <div>
                   <span class="tag tag-cond">severe pre-eclampsia</span>
                   <span class="tag tag-ga">36 weeks</span>
@@ -433,7 +433,7 @@
             </div>
           </div>
         </div>
-        <aside class="notes">I use obstetrics as the test case, and it is a demanding one. The field is guideline-dense: NICE, FIGO, RCOG, and WHO all publish overlapping recommendations. Many decisions are time-critical, and you are always caring for two patients at the same time, the mother and the baby. Here is the kind of question a clinician actually asks at the bedside. Thirty-six weeks pregnant, blood pressure 160 over 110, severe headache, already on labetalol. What do I do now? A good system has to recognise this as possible severe pre-eclampsia, pull the right recommendations, flag how urgent it is, and show where every statement comes from. Keep this example in mind, because I will come back to it.</aside>
+        <aside class="notes">I use obstetrics as the test case, and it is a demanding one. The field is guideline-dense: NICE, FIGO, RCOG, and WHO all publish overlapping recommendations. Many decisions are time-critical, and you are always caring for two patients at the same time, the mother and the baby. Here is the kind of question a clinician actually asks at the bedside. Thirty-six weeks pregnant, blood pressure 160 over 110, severe headache, already on labetalol. What is the recommended treatment? A good system has to recognise this as possible severe pre-eclampsia, pull the right recommendations, flag how urgent it is, and show where every statement comes from. Keep this example in mind, because I will come back to it.</aside>
       </section>
 
       <section id="divider-sota" class="section-divider" data-background-color="#0E3A44">
@@ -586,7 +586,7 @@
         <h2 style="margin-top:8px;">Query understanding: read the question properly</h2>
         <div class="content" style="justify-content:center;">
           <div style="display:grid; grid-template-columns:1fr 1.2fr; gap:26px; align-items:center;">
-            <div class="bubble bubble-user" style="max-width:100%;"><p class="bubble-label">Clinician asks</p><p style="margin:0;">"36 weeks, BP 160/110, severe headache, on labetalol. What should I do?"</p></div>
+            <div class="bubble bubble-user" style="max-width:100%;"><p class="bubble-label">Clinician asks</p><p style="margin:0;">"36 weeks, BP 160/110, severe headache, on labetalol. What is the recommended treatment?"</p></div>
             <div>
               <p style="margin:0 0 4px 0;"><strong class="c-teal">1. Entity linking</strong> to SNOMED-CT / ICD-11</p>
               <div style="margin-bottom:10px;"><span class="tag tag-cond">severe pre-eclampsia</span><span class="tag tag-ga">36 weeks</span><span class="tag tag-meas">BP 160/110</span><span class="tag tag-drug">labetalol</span></div>
