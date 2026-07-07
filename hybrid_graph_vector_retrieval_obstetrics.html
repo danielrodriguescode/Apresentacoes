@@ -238,6 +238,14 @@
 .evfind { font-size:13pt; margin:0 0 5px 0; }
 .evsrc { font-size:9.5pt; color:var(--muted-color); font-style:italic; margin:6px 0 0 0; }
 
+/* Hallucination type cards */
+.typehead { display:flex; align-items:flex-start; gap:11px; margin:0 0 4px 0; }
+.typenum { width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; color:#fff; font-size:14pt; flex-shrink:0; }
+.typehead h3 { margin:0; font-size:19pt; }
+.typehead p { margin:2px 0 0 0; font-size:12pt; }
+.exbox { background:#F1F5F9; border-left:4px solid #94A3B8; border-radius:6px; padding:9px 13px; font-size:13pt; font-style:italic; margin:12px 0; }
+.exbox .exlabel { font-style:normal; font-weight:700; font-size:9.5pt; text-transform:uppercase; letter-spacing:0.05em; color:var(--muted-color); display:block; margin-bottom:3px; }
+
 /* Mini stat chips */
 .ministat { background:#FDECEC; border:1px solid #F1B9B9; border-radius:10px; padding:10px 12px; text-align:center; }
 .ministat b { display:block; font-size:19pt; font-weight:700; color:var(--red-color); line-height:1.05; }
@@ -348,27 +356,33 @@
       </section>
 
       <section id="slide-halluc">
-        <h2>Hallucination, concretely</h2>
+        <h2>Two kinds of hallucination</h2>
         <div class="content" style="justify-content:center;">
-          <div style="display:grid; grid-template-columns:1.1fr 1fr; gap:26px; align-items:center;">
-            <div class="chat">
-              <div class="bubble bubble-user"><p class="bubble-label">Clinician</p><p style="margin:0;">What is the maintenance dose of magnesium sulphate for eclampsia prophylaxis?</p></div>
-              <div class="bubble bubble-ai bad"><p class="bubble-label c-red">Plain LLM</p><p style="margin:0;">The maintenance dose is <strong>2 g/hour</strong> by IV infusion for 24 hours (see <em>NICE NG133, Table 4.2</em>).</p></div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:stretch;">
+            <div class="card" style="border-top:5px solid var(--amber-color);">
+              <div class="typehead">
+                <div class="typenum" style="background:var(--amber-color);">1</div>
+                <div><h3 class="c-amber">Faulty reasoning</h3><p class="text-muted">the facts are right, the logic is wrong</p></div>
+              </div>
+              <div class="exbox"><span class="exlabel">What it looks like</span>Lists the correct red flags for pre-eclampsia, then concludes it is safe to delay review.</div>
+              <p style="font-size:13pt; margin:0;">Often the <strong>dominant</strong> failure: hallucination is <strong>reasoning-driven, not a knowledge gap</strong>. Chain-of-thought cut it in 86% of tests.</p>
+              <p class="evsrc" style="margin-top:8px;">Medical Hallucination in Foundation Models. Kim et al., 2025</p>
             </div>
-            <div>
-              <p class="card-title c-red">Three things just went wrong</p>
-              <ul>
-                <li><strong>Wrong number.</strong> The dose should be 1 g/hour, not 2.</li>
-                <li><strong>Invented citation.</strong> That table reference does not exist.</li>
-                <li><strong>No way to tell.</strong> It sounds fluent and confident, so the error hides in plain sight.</li>
-              </ul>
+            <div class="card" style="border-top:5px solid var(--red-color);">
+              <div class="typehead">
+                <div class="typenum" style="background:var(--red-color);">2</div>
+                <div><h3 class="c-red">Fabrication</h3><p class="text-muted">invents facts, studies or citations that never existed</p></div>
+              </div>
+              <div class="exbox"><span class="exlabel">What it looks like</span>Cites a guideline table or a journal article that simply cannot be found.</div>
+              <p style="font-size:13pt; margin:0;">Fabricated references ran from <strong>28%</strong> (GPT-4) to <strong>91%</strong> (Bard) when replicating systematic reviews.</p>
+              <p class="evsrc" style="margin-top:8px;">Hallucination Rates and Reference Accuracy. Chelli et al., 2024 (JMIR)</p>
             </div>
           </div>
           <div class="callout-amber callout" style="margin-top:18px; text-align:center;">
-            <p style="margin:0;" class="text-lg">We need answers that are <strong>grounded in a real source</strong> and <strong>show that source</strong>.</p>
+            <p style="margin:0;" class="text-lg">Both arrive as <strong>fluent, confident prose</strong>, so neither is obvious without a <strong>source to check</strong>.</p>
           </div>
         </div>
-        <aside class="notes">Let me make hallucination concrete. A clinician asks a simple, common question: the maintenance dose of magnesium sulphate for eclampsia prophylaxis. A plain language model answers fluently, and it is wrong in two ways at once. The dose it gives is double the correct one, and the citation it points to does not exist. The dangerous part is the third point: it reads as confident and well referenced, so unless you already know the answer, you cannot tell it is wrong. This is exactly why we need answers that are grounded in a real source and that show that source, so the clinician can check.</aside>
+        <aside class="notes">It helps to see that hallucination is not one failure but two. The first is faulty reasoning: the individual facts may be correct, but the logic connecting them is wrong. For example, a model lists the correct red flags for pre-eclampsia and then concludes it is safe to delay review. This is actually the dominant mode: the large foundation-model study by Kim and colleagues found medical hallucination is reasoning-driven rather than a knowledge gap, and forcing step-by-step reasoning cut it in 86 percent of their tests. The second kind is fabrication: the model invents facts, studies, or citations that never existed. When Chelli and colleagues had models reproduce systematic reviews, fabricated references ranged from 28 percent for GPT-4 up to 91 percent for Bard. The dangerous part is that both arrive as fluent, confident prose, so neither is obvious unless the answer shows a real source you can check. That is exactly what our approach is built to fix.</aside>
       </section>
 
       <section id="slide-conflict">
