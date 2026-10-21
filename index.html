@@ -1,129 +1,363 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-PT">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apresentações — Daniel Rodrigues</title>
+  <title>Apresentações · Daniel Rodrigues</title>
+  <meta name="description" content="Coleção de apresentações de Daniel Rodrigues sobre IA na saúde, sistemas de apoio à decisão clínica, ciência de dados e investigação.">
+  <meta property="og:title" content="Apresentações · Daniel Rodrigues">
+  <meta property="og:description" content="IA na saúde, apoio à decisão clínica, ciência de dados e investigação.">
+  <meta property="og:image" content="https://danielrodriguescode.github.io/Apresentacoes/thumbs/debate_siteu_ia_generativa_enfermagem.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23138D90'/%3E%3Cpath d='M18 22h28v4H18zm0 8h28v4H18zm0 8h18v4H18z' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #fafafa;
-      --fg: #1a1a1a;
-      --muted: #6b6b6b;
-      --accent: #0066cc;
-      --border: #e5e5e5;
+      --bg: #FBF9F4;
+      --surface: #FFFFFF;
+      --ink: #17323C;
+      --muted: #5E7480;
+      --line: #E7E1D5;
+      --teal: #138D90;
+      --teal-soft: #E1F3F0;
+      --coral: #E0563F;
+      --sun: #F4B942;
+      --shadow: 0 1px 2px rgba(23,50,60,.05), 0 8px 24px rgba(23,50,60,.08);
+      --shadow-hover: 0 2px 4px rgba(23,50,60,.06), 0 18px 40px rgba(23,50,60,.14);
+      --glow-a: rgba(19,141,144,.12);
+      --glow-b: rgba(244,185,66,.14);
     }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0F1D22;
+        --surface: #16282F;
+        --ink: #EAF2F2;
+        --muted: #9DB2B8;
+        --line: #24404A;
+        --teal: #4FC2C0;
+        --teal-soft: rgba(79,194,192,.14);
+        --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+        --shadow-hover: 0 2px 4px rgba(0,0,0,.35), 0 18px 40px rgba(0,0,0,.4);
+        --glow-a: rgba(79,194,192,.10);
+        --glow-b: rgba(244,185,66,.07);
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #0F1D22;
+      --surface: #16282F;
+      --ink: #EAF2F2;
+      --muted: #9DB2B8;
+      --line: #24404A;
+      --teal: #4FC2C0;
+      --teal-soft: rgba(79,194,192,.14);
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+      --shadow-hover: 0 2px 4px rgba(0,0,0,.35), 0 18px 40px rgba(0,0,0,.4);
+      --glow-a: rgba(79,194,192,.10);
+      --glow-b: rgba(244,185,66,.07);
+    }
+
     * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--fg);
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 3rem 1.5rem;
-      line-height: 1.6;
-    }
-    h1 {
-      font-size: 2rem;
-      margin: 0 0 0.5rem;
-    }
-    .subtitle {
-      color: var(--muted);
-      margin: 0 0 2.5rem;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
       margin: 0;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 100% 0%, var(--glow-a) 0, transparent 40%),
+        radial-gradient(circle at 0% 30%, var(--glow-b) 0, transparent 35%),
+        var(--bg);
+      background-attachment: fixed;
+      line-height: 1.55;
+      min-height: 100vh;
     }
-    li {
-      border-bottom: 1px solid var(--border);
+    a { color: inherit; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+    /* ---------- Cabeçalho ---------- */
+    header.hero { padding: 72px 0 40px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--teal);
     }
-    li:first-child { border-top: 1px solid var(--border); }
-    a {
-      display: block;
-      padding: 1rem 0;
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 1.05rem;
+    .eyebrow::before { content: ""; width: 28px; height: 4px; border-radius: 4px; background: var(--teal); }
+    h1 {
+      font-family: "Fraunces", Georgia, serif; font-weight: 700; letter-spacing: -0.02em;
+      font-size: clamp(40px, 7vw, 72px); line-height: 1.02; margin: 18px 0 18px;
     }
-    a:hover { text-decoration: underline; }
-    .date {
-      display: block;
-      color: var(--muted);
-      font-size: 0.85rem;
-      margin-top: 0.15rem;
+    h1 .accent { color: var(--teal); }
+    .bio { font-size: 18px; color: var(--muted); max-width: 640px; margin: 0; }
+    .bio b { color: var(--ink); font-weight: 600; }
+    .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+    .pill-link {
+      display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+      padding: 9px 16px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line);
+      font-size: 14px; font-weight: 600; box-shadow: var(--shadow); transition: transform .2s, border-color .2s;
     }
-    footer {
-      margin-top: 3rem;
-      color: var(--muted);
-      font-size: 0.85rem;
+    .pill-link:hover { transform: translateY(-2px); border-color: var(--teal); }
+    .pill-link svg { width: 16px; height: 16px; fill: currentColor; }
+
+    /* ---------- Barra de filtros ---------- */
+    .toolbar {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px;
+      padding: 18px 0 26px; border-top: 1px solid var(--line);
     }
-    footer a { display: inline; padding: 0; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip {
+      border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+      padding: 8px 14px; border-radius: 999px; font: 600 13px/1 "Inter", sans-serif; cursor: pointer;
+      transition: background .2s, color .2s, border-color .2s;
+    }
+    .chip:hover { border-color: var(--teal); }
+    .chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+    .chip .n { opacity: .55; margin-left: 4px; font-weight: 500; }
+    .search {
+      display: flex; align-items: center; gap: 8px; background: var(--surface); border: 1px solid var(--line);
+      border-radius: 999px; padding: 8px 16px; min-width: 240px; box-shadow: var(--shadow);
+    }
+    .search svg { width: 16px; height: 16px; fill: var(--muted); flex: none; }
+    .search input { border: 0; outline: 0; background: transparent; color: var(--ink); font: 500 14px "Inter", sans-serif; width: 100%; }
+    .search:focus-within { border-color: var(--teal); }
+
+    /* ---------- Destaque ---------- */
+    .featured {
+      display: grid; grid-template-columns: 1.35fr 1fr; gap: 0; text-decoration: none;
+      background: var(--surface); border: 1px solid var(--line); border-radius: 22px; overflow: hidden;
+      box-shadow: var(--shadow); transition: transform .25s ease, box-shadow .25s ease; margin-bottom: 28px;
+    }
+    .featured:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+    .featured .thumb { aspect-ratio: 16 / 9; }
+    .featured .body { padding: 34px 34px 30px; display: flex; flex-direction: column; justify-content: center; }
+    .featured h2 { font-family: "Fraunces", Georgia, serif; font-size: clamp(26px, 3vw, 34px); line-height: 1.12; margin: 12px 0 12px; letter-spacing: -0.01em; }
+    .featured p.desc { font-size: 16px; }
+    .badge-new {
+      align-self: flex-start; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      background: var(--sun); color: #17323C; padding: 5px 10px; border-radius: 999px;
+    }
+
+    /* ---------- Grelha ---------- */
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .card {
+      display: flex; flex-direction: column; text-decoration: none; background: var(--surface);
+      border: 1px solid var(--line); border-radius: 18px; overflow: hidden; box-shadow: var(--shadow);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s;
+    }
+    .card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); border-color: transparent; }
+    .card:focus-visible, .featured:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+    .thumb { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--line); }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
+    .card:hover .thumb img, .featured:hover .thumb img { transform: scale(1.04); }
+    .lang {
+      position: absolute; top: 12px; right: 12px; font-size: 11px; font-weight: 700; letter-spacing: .08em;
+      background: rgba(255,255,255,.92); color: #17323C; padding: 4px 8px; border-radius: 6px;
+    }
+    .card .body { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
+    .meta { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--muted); font-weight: 600; }
+    .meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--line); }
+    .card h3 { font-family: "Fraunces", Georgia, serif; font-size: 20px; line-height: 1.2; margin: 8px 0 8px; letter-spacing: -0.005em; }
+    p.desc { color: var(--muted); font-size: 14.5px; margin: 0 0 14px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+    .tag { font-size: 11.5px; font-weight: 600; color: var(--teal); background: var(--teal-soft); padding: 4px 10px; border-radius: 999px; }
+    .open { margin-top: 16px; font-size: 14px; font-weight: 700; color: var(--teal); display: inline-flex; align-items: center; gap: 6px; }
+    .open svg { width: 14px; height: 14px; fill: currentColor; transition: transform .2s; }
+    .featured:hover .open svg { transform: translateX(4px); }
+
+    .empty { display: none; text-align: center; color: var(--muted); padding: 48px 0; }
+    .hidden { display: none !important; }
+
+    footer { border-top: 1px solid var(--line); margin-top: 64px; padding: 28px 0 48px; color: var(--muted); font-size: 14px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+    footer a { color: var(--teal); text-decoration: none; font-weight: 600; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 960px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .featured { grid-template-columns: 1fr; }
+      .featured .body { padding: 24px; }
+    }
+    @media (max-width: 620px) {
+      .wrap { padding: 0 16px; }
+      header.hero { padding: 48px 0 28px; }
+      .grid { grid-template-columns: 1fr; }
+      .search { min-width: 0; width: 100%; }
+      .bio { font-size: 16px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
   </style>
 </head>
 <body>
-  <h1>Apresentações</h1>
-  <p class="subtitle">Coleção de apresentações em HTML.</p>
+  <div class="wrap">
+    <header class="hero">
+      <span class="eyebrow">Apresentações</span>
+      <h1>Daniel <span class="accent">Rodrigues</span></h1>
+      <p class="bio"><b>Research &amp; Innovation Manager</b> na VirtualCare e <b>PhD Candidate em Health Data Science</b> na FMUP. Apresentações sobre IA na saúde, apoio à decisão clínica, ciência de dados e investigação.</p>
+      <div class="links">
+        <a class="pill-link" href="https://www.linkedin.com/in/daniel-rodrigues-ies/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          LinkedIn
+        </a>
+        <a class="pill-link" href="https://github.com/danielrodriguescode/Apresentacoes" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.58v-2.02c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .3"/></svg>
+          GitHub
+        </a>
+      </div>
+    </header>
 
-  <ul>
-    <li>
-      <a href="debate_siteu_ia_generativa_enfermagem.html">
-        IA Generativa na Enfermagem: Debate SITEU
-        <span class="date">Outubro 2026</span>
-      </a>
-    </li>
-    <li>
-      <a href="hybrid_graph_vector_retrieval_obstetrics.html">
-        Hybrid Graph-and-Vector Retrieval for Trustworthy CDSS in Obstetrics — Estado da arte
-        <span class="date">Julho 2026</span>
-      </a>
-    </li>
-    <li>
-      <a href="100_anos_ciencia_computacao.html">
-        100 Anos de Ciência da Computação em 10 Artigos: Da máquina de Turing à IA generativa
-        <span class="date">Junho 2026</span>
-      </a>
-    </li>
-    <li>
-      <a href="heads_protocol_obstetric_graphrag.html">
-        Hybrid Retrieval for Trustworthy CDSS in Obstetrics — Protocolo de tese (HEADS)
-        <span class="date">Junho 2026</span>
-      </a>
-    </li>
-    <li>
-      <a href="icu_length_of_stay.html">
-        Modelação do Tempo de Internamento na UCI — STATS (regressão log-linear)
-        <span class="date">Junho 2026</span>
-      </a>
-    </li>
-    <li>
-      <a href="researchbridge_presentation_3.html">
-        ResearchBridge · Apresentação final (processo, protótipo e teste de usabilidade)
-        <span class="date">Junho 2026</span>
-      </a>
-    </li>
-    <li>
-      <a href="trustworthy_ml_healthcare.html">
-        Trustworthy Machine Learning on Healthcare Data — Síntese de seminários
-        <span class="date">Maio 2026</span>
-      </a>
-    </li>
-    <li>
-      <a href="researchbridge_presentation_2.html">
-        ResearchBridge — v2
-        <span class="date">Abril 2026</span>
-      </a>
-    </li>
-    <li>
-      <a href="researchbridge_presentation.html">
-        ResearchBridge — v1
-        <span class="date">Março 2026</span>
-      </a>
-    </li>
-  </ul>
+    <div class="toolbar">
+      <div class="chips" role="group" aria-label="Filtrar por tema">
+        <button class="chip" data-filter="all" aria-pressed="true">Todas<span class="n"></span></button>
+        <button class="chip" data-filter="saude" aria-pressed="false">IA na saúde<span class="n"></span></button>
+        <button class="chip" data-filter="doutoramento" aria-pressed="false">Doutoramento<span class="n"></span></button>
+        <button class="chip" data-filter="dados" aria-pressed="false">Ciência de dados<span class="n"></span></button>
+        <button class="chip" data-filter="projeto" aria-pressed="false">ResearchBridge<span class="n"></span></button>
+      </div>
+      <label class="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2a8 8 0 0 1 6.32 12.9l5.39 5.4-1.41 1.4-5.4-5.39A8 8 0 1 1 10 2zm0 2a6 6 0 1 0 0 12 6 6 0 0 0 0-12z"/></svg>
+        <input id="q" type="search" placeholder="Pesquisar…" aria-label="Pesquisar apresentações">
+      </label>
+    </div>
 
-  <footer>
-    <a href="https://github.com/danielrodriguescode/Apresentacoes">Repositório no GitHub</a>
-  </footer>
+    <main>
+      <a class="featured item" href="debate_siteu_ia_generativa_enfermagem.html" data-tags="saude" data-search="ia generativa na enfermagem debate siteu alucinação deskilling ética llm">
+        <div class="thumb"><img src="thumbs/debate_siteu_ia_generativa_enfermagem.jpg" alt="Capa: IA Generativa na Enfermagem" loading="eager"><span class="lang">PT</span></div>
+        <div class="body">
+          <span class="badge-new">Mais recente</span>
+          <div class="meta" style="margin-top:14px;"><span>Outubro 2026</span><span class="dot"></span><span>Debate SITEU</span></div>
+          <h2>IA Generativa na Enfermagem</h2>
+          <p class="desc">Fundamentos da IA generativa, casos de uso em enfermagem, alucinação e fabricação de referências, deskilling e ética, dados e responsabilidade.</p>
+          <div class="tags"><span class="tag">IA na saúde</span><span class="tag">Enfermagem</span><span class="tag">LLM</span></div>
+          <span class="open">Abrir apresentação <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.2 5.3 20 12l-6.8 6.7-1.4-1.4 4.3-4.3H4v-2h12.1l-4.3-4.3z"/></svg></span>
+        </div>
+      </a>
+
+      <div class="grid">
+        <a class="card item" href="hybrid_graph_vector_retrieval_obstetrics.html" data-tags="doutoramento saude" data-search="hybrid graph vector retrieval trustworthy clinical decision support obstetrics estado da arte cdss">
+          <div class="thumb"><img src="thumbs/hybrid_graph_vector_retrieval_obstetrics.jpg" alt="Capa: Hybrid Graph-and-Vector Retrieval" loading="lazy"><span class="lang">EN</span></div>
+          <div class="body">
+            <div class="meta"><span>Julho 2026</span><span class="dot"></span><span>Estado da arte</span></div>
+            <h3>Hybrid Graph-and-Vector Retrieval for Trustworthy CDSS in Obstetrics</h3>
+            <p class="desc">Recuperação híbrida, com grafos de conhecimento e vetores, para apoio à decisão clínica em obstetrícia.</p>
+            <div class="tags"><span class="tag">Doutoramento</span><span class="tag">Obstetrícia</span></div>
+          </div>
+        </a>
+
+        <a class="card item" href="100_anos_ciencia_computacao.html" data-tags="dados" data-search="100 anos ciência da computação 10 artigos turing ia generativa história">
+          <div class="thumb"><img src="thumbs/100_anos_ciencia_computacao.jpg" alt="Capa: 100 Anos de Ciência da Computação em 10 Artigos" loading="lazy"><span class="lang">PT</span></div>
+          <div class="body">
+            <div class="meta"><span>Junho 2026</span><span class="dot"></span><span>História da computação</span></div>
+            <h3>100 Anos de Ciência da Computação em 10 Artigos</h3>
+            <p class="desc">Da máquina de Turing à IA generativa, contada através de dez artigos.</p>
+            <div class="tags"><span class="tag">Computação</span><span class="tag">IA</span></div>
+          </div>
+        </a>
+
+        <a class="card item" href="heads_protocol_obstetric_graphrag.html" data-tags="doutoramento saude" data-search="heads protocolo de tese hybrid retrieval obstetrics obstetrícia graphrag cdss fmup apoio à decisão clínica">
+          <div class="thumb"><img src="thumbs/heads_protocol_obstetric_graphrag.jpg" alt="Capa: protocolo de tese HEADS" loading="lazy"><span class="lang">EN</span></div>
+          <div class="body">
+            <div class="meta"><span>Junho 2026</span><span class="dot"></span><span>Protocolo de tese</span></div>
+            <h3>Hybrid Retrieval for Trustworthy CDSS in Obstetrics</h3>
+            <p class="desc">Protocolo de tese apresentado no Programa Doutoral HEADS da FMUP.</p>
+            <div class="tags"><span class="tag">Doutoramento</span><span class="tag">HEADS</span></div>
+          </div>
+        </a>
+
+        <a class="card item" href="icu_length_of_stay.html" data-tags="dados saude" data-search="icu length of stay tempo de internamento uci stats regressão log-linear estatística">
+          <div class="thumb"><img src="thumbs/icu_length_of_stay.jpg" alt="Capa: Modelling Length of Stay in the ICU" loading="lazy"><span class="lang">EN</span></div>
+          <div class="body">
+            <div class="meta"><span>Junho 2026</span><span class="dot"></span><span>STATS</span></div>
+            <h3>Modelação do Tempo de Internamento na UCI</h3>
+            <p class="desc">Trabalho prático de estatística: regressão log-linear e justificação de cada decisão de modelação.</p>
+            <div class="tags"><span class="tag">Estatística</span><span class="tag">Medicina intensiva</span></div>
+          </div>
+        </a>
+
+        <a class="card item" href="researchbridge_presentation_3.html" data-tags="projeto" data-search="researchbridge apresentação final processo protótipo teste de usabilidade">
+          <div class="thumb"><img src="thumbs/researchbridge_presentation_3.jpg" alt="Capa: ResearchBridge, apresentação final" loading="lazy"><span class="lang">PT</span></div>
+          <div class="body">
+            <div class="meta"><span>Junho 2026</span><span class="dot"></span><span>Apresentação final</span></div>
+            <h3>ResearchBridge · Processo, protótipo e usabilidade</h3>
+            <p class="desc">Resumo do processo de design, protótipo e resultados do teste de usabilidade.</p>
+            <div class="tags"><span class="tag">ResearchBridge</span><span class="tag">UX</span></div>
+          </div>
+        </a>
+
+        <a class="card item" href="trustworthy_ml_healthcare.html" data-tags="doutoramento saude dados" data-search="trustworthy machine learning healthcare privacy bias drift interoperability seminários">
+          <div class="thumb"><img src="thumbs/trustworthy_ml_healthcare.jpg" alt="Capa: Trustworthy Machine Learning on Healthcare Data" loading="lazy"><span class="lang">EN</span></div>
+          <div class="body">
+            <div class="meta"><span>Maio 2026</span><span class="dot"></span><span>Síntese de seminários</span></div>
+            <h3>Trustworthy Machine Learning on Healthcare Data</h3>
+            <p class="desc">Privacidade, viés e drift em modelos de saúde, e interoperabilidade baseada em normas.</p>
+            <div class="tags"><span class="tag">Doutoramento</span><span class="tag">Machine learning</span></div>
+          </div>
+        </a>
+
+        <a class="card item" href="researchbridge_presentation_2.html" data-tags="projeto" data-search="researchbridge v2 user research persona cenários de interação">
+          <div class="thumb"><img src="thumbs/researchbridge_presentation_2.jpg" alt="Capa: ResearchBridge, apresentação 2" loading="lazy"><span class="lang">PT</span></div>
+          <div class="body">
+            <div class="meta"><span>Abril 2026</span><span class="dot"></span><span>Apresentação 2</span></div>
+            <h3>ResearchBridge · User research e persona</h3>
+            <p class="desc">User research, persona e cenários de interação.</p>
+            <div class="tags"><span class="tag">ResearchBridge</span><span class="tag">UX</span></div>
+          </div>
+        </a>
+
+        <a class="card item" href="researchbridge_presentation.html" data-tags="projeto" data-search="researchbridge v1 hi present good research deserves to be understood">
+          <div class="thumb"><img src="thumbs/researchbridge_presentation.jpg" alt="Capa: ResearchBridge, apresentação 1" loading="lazy"><span class="lang">EN</span></div>
+          <div class="body">
+            <div class="meta"><span>Março 2026</span><span class="dot"></span><span>Apresentação 1</span></div>
+            <h3>ResearchBridge · Apresentação do projeto</h3>
+            <p class="desc">Primeira apresentação do projeto: tornar a investigação mais fácil de compreender.</p>
+            <div class="tags"><span class="tag">ResearchBridge</span><span class="tag">HI.PRESENT</span></div>
+          </div>
+        </a>
+      </div>
+
+      <p class="empty" id="empty">Nenhuma apresentação corresponde à pesquisa.</p>
+    </main>
+
+    <footer>
+      <span>© 2026 Daniel Rodrigues · Apresentações em HTML, feitas com reveal.js</span>
+      <a href="https://github.com/danielrodriguescode/Apresentacoes">Repositório no GitHub</a>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var items = Array.prototype.slice.call(document.querySelectorAll('.item'));
+      var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+      var q = document.getElementById('q');
+      var empty = document.getElementById('empty');
+      var current = 'all';
+
+      chips.forEach(function (c) {
+        var f = c.getAttribute('data-filter');
+        var n = f === 'all' ? items.length : items.filter(function (i) { return i.getAttribute('data-tags').split(' ').indexOf(f) > -1; }).length;
+        c.querySelector('.n').textContent = n;
+        c.addEventListener('click', function () {
+          current = f;
+          chips.forEach(function (x) { x.setAttribute('aria-pressed', x === c ? 'true' : 'false'); });
+          apply();
+        });
+      });
+
+      function norm(s) { return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
+
+      function apply() {
+        var term = norm(q.value.trim());
+        var shown = 0;
+        items.forEach(function (i) {
+          var okTag = current === 'all' || i.getAttribute('data-tags').split(' ').indexOf(current) > -1;
+          var hay = norm(i.getAttribute('data-search') + ' ' + i.textContent);
+          var okText = !term || hay.indexOf(term) > -1;
+          var show = okTag && okText;
+          i.classList.toggle('hidden', !show);
+          if (show) shown++;
+        });
+        empty.style.display = shown ? 'none' : 'block';
+      }
+      q.addEventListener('input', apply);
+    })();
+  </script>
 </body>
 </html>
