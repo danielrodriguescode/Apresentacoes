@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>(In)Visible Health</title>
-  <meta name="description" content="(In)Visible Health, by the EFMI LEAD cohort: how three labs diagnose, design for and translate into European action the health context that information systems do not capture. A 20-minute summary of the website.">
+  <meta name="description" content="A Grand Challenge for Biomedical and Health Informatics: from making the invisible visible to making the visible actionable. By the EFMI LEAD cohort (yEFMI).">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
@@ -266,6 +266,52 @@
     .panel .steps i { width: 26px; height: 5px; border-radius: 3px; background: var(--line); }
     .panel .steps i.on { background: var(--ifal); }
     .wheel-step { display: none !important; }
+
+    /* ---------- Storyline slides (script v2) ---------- */
+    .reveal .slides section.dark { background: #17191E; }
+    .reveal .slides section.dark .eyebrow { color: rgba(255,255,255,.6) !important; }
+    .reveal .slides section.dark h2, .reveal .slides section.dark p { color: #F4F2EC; }
+    .chips-row { display: flex; flex-wrap: wrap; gap: 10px; }
+    .dchip { font-size: 15pt; font-weight: 500; color: #F4F2EC; padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,.28); background: rgba(255,255,255,.06); }
+    .unseen { color: transparent; -webkit-text-stroke: 1px rgba(244,242,236,.75); }
+    .reveal ul.ticks { list-style: none; margin: 0; padding: 0; }
+    .reveal ul.ticks li { font-size: 17pt; padding: 7px 0 7px 32px; position: relative; border-bottom: 1px solid var(--line); }
+    .reveal ul.ticks li:last-child { border-bottom: 0; }
+    .reveal ul.ticks li::before { content: "✓"; position: absolute; left: 4px; color: var(--ifal); font-weight: 700; }
+    .ghostcard { background: transparent; border: 2px dashed #B9B3A6; box-shadow: none; }
+    .reveal .ghostcard p.inv { font-size: 16pt; color: var(--muted); display: flex; align-items: center; gap: 10px; }
+    .badge.nob { background: transparent; color: var(--muted); border: 1px dashed #B9B3A6; }
+    .twin { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 10px 16px; text-align: center; box-shadow: var(--shadow); }
+    .reveal .twin p.t { font-size: 11pt; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+    .reveal .twin p.eq { font-family: var(--display); font-size: 34pt; line-height: 1; margin-top: 2px; }
+    .reveal p.num-sm { font-family: var(--display); font-weight: 700; font-size: 26pt; line-height: 1; margin: 4px 0 8px; }
+    .reveal .card p.arch { font-size: 10.5pt; color: var(--muted); margin-top: 10px; display: flex; gap: 6px; align-items: center; }
+    .reveal .card p.arch .badge { width: 18px; height: 18px; font-size: 9pt; }
+    .chain .step.lay::before { content: ""; display: block; width: 30px; height: 4px; border-radius: 2px; background: var(--c); margin-bottom: 8px; }
+    .reveal .chain .step.lay p.k { font-size: 16pt; }
+    .reveal .chain .step p.lq { font-size: 11pt; color: var(--muted); margin-top: 6px; display: flex; gap: 6px; align-items: baseline; }
+    .dotl { width: 8px; height: 8px; border-radius: 50%; background: var(--c); flex-shrink: 0; }
+    .oik { display: flex; align-items: center; gap: 18px; margin: 22px 0 18px; }
+    .oik .node { flex: 1; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px; text-align: center; box-shadow: var(--shadow); }
+    .reveal .oik .node p { font-family: var(--display); font-size: 26pt; font-weight: 600; }
+    .reveal .oik .node:nth-child(1) p { color: var(--muted); }
+    .reveal .oik .node:nth-child(5) p { color: var(--bvdl); }
+    .reveal .oik p.ar { font-size: 24pt; color: var(--muted); }
+    .card.eu { padding: 12px 16px; border-left: 0; }
+    .reveal .card.eu p { font-size: 14pt; font-weight: 500; }
+    .net { position: relative; width: 560px; height: 470px; }
+    .net svg { position: absolute; inset: 0; width: 560px; height: 470px; }
+    .reveal .net p.hub { position: absolute; left: 280px; top: 235px; transform: translate(-50%, -50%); width: 130px; text-align: center; color: #fff; font-family: var(--display); font-size: 13.5pt; line-height: 1.2; }
+    .reveal .net p.nd { position: absolute; transform: translate(-50%, -50%); background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 9px 14px; font-size: 12.5pt; font-weight: 600; text-align: center; max-width: 170px; line-height: 1.25; box-shadow: var(--shadow); }
+    .reveal .net p.nd.odh { background: color-mix(in srgb, var(--ifal) 12%, var(--surface)); border-color: var(--ifal); }
+    .mini-chain .step { padding: 7px 6px; }
+    .reveal .mini-chain .step p { font-size: 10.5pt; text-align: center; font-weight: 600; color: var(--muted); }
+    .mini-chain .arrow { padding: 0 3px; font-size: 10pt; }
+    .mini-chain .step.hot { background: var(--ink); border-color: var(--ink); }
+    .reveal .mini-chain .step.hot p { color: #fff; }
+    .vb { font-size: 21pt; padding: 13px 20px; margin-bottom: 12px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); color: var(--ink); }
+    .vb span { font-weight: 700; color: var(--ifal); }
+    .reveal .slides section.dark p.old { color: rgba(244,242,236,.55); text-decoration: line-through; text-decoration-thickness: 2px; }
   </style>
 </head>
 <body>
@@ -273,39 +319,78 @@
 <div class="slides">
 
 <!-- =====================================================
-     OPENING (about 3 minutes)
+     TITLE
      ===================================================== -->
 <section id="title" data-lab="all" style="justify-content:center;">
-  <div style="display:grid; grid-template-columns: 1fr 300px; gap:40px; align-items:center;">
+  <div style="display:grid; grid-template-columns: 1fr 280px; gap:40px; align-items:center;">
     <div>
-      <p class="eyebrow">The Grand Challenge · EFMI LEAD cohort · yEFMI</p>
-      <h1 style="font-size:66pt;">(In)Visible Health</h1>
-      <p class="serif text-muted" style="margin-top:12px; font-size:24pt;">Tracing the unseen layers of health ecosystems</p>
-      <div style="margin-top:40px;">
-        <span class="pill c-ifal">Diagnose · IFAL</span>
-        <span class="pill c-bvdl">Design · BVDL</span>
-        <span class="pill c-etl">Translate · ETL</span>
-      </div>
+      <p class="eyebrow">(In)Visible Health · The Grand Challenge of the EFMI LEAD cohort · yEFMI</p>
+      <h1 style="font-size:52pt; line-height:1.08;">A Grand Challenge for Biomedical and Health Informatics</h1>
+      <p class="serif text-muted" style="margin-top:16px; font-size:22pt;">Tracing the unseen layers of health ecosystems</p>
     </div>
-    <svg viewBox="0 0 32 32" style="width:260px; height:260px; color:var(--ink);" aria-hidden="true">
+    <svg viewBox="0 0 32 32" style="width:240px; height:240px; color:var(--ink);" aria-hidden="true">
       <circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2 2"/>
       <circle cx="16" cy="16" r="8.5" fill="none" stroke="currentColor" stroke-width="1.2"/>
       <circle cx="16" cy="16" r="3.2" fill="currentColor"/>
     </svg>
   </div>
-  <div class="footnote">A summary of the (In)Visible Health website · source: “EFMI LEAD – The Grand Challenge” (shared document, draft 2026-10-21)</div>
+  <div class="footnote">Built on the (In)Visible Health website and “EFMI LEAD – The Grand Challenge” (shared document, draft 2026-10-21)</div>
 </section>
 
-<section id="question" data-lab="all">
-  <p class="eyebrow">The Grand Challenge · Invisible Context</p>
-  <div class="content" style="justify-content:center; gap:34px;">
-    <h2 class="quote" style="font-size:34pt;">When health decisions fail, how much of the relevant context was never digitally or cognitively visible in the first place?</h2>
-    <p class="lede">Three labs of the EFMI LEAD cohort took on this question within One Digital Health (ODH): one <strong style="color:var(--ifal);">diagnoses</strong> what stays invisible, one <strong style="color:var(--bvdl);">designs</strong> how BMHI could make it visible, and one <strong style="color:var(--etl);">translates</strong> the result into European action.</p>
+<!-- =====================================================
+     1. OPENING PROVOCATION
+     ===================================================== -->
+<section id="provocation" class="dark" data-background-color="#17191E">
+  <p class="eyebrow">Opening provocation</p>
+  <div class="content" style="justify-content:center; gap:30px;">
+    <h2 style="font-size:46pt;">We have never had more health data.</h2>
+    <div class="chips-row">
+      <span class="dchip">Electronic health records</span>
+      <span class="dchip">Wearables</span>
+      <span class="dchip">Genomics</span>
+      <span class="dchip">AI-generated insights</span>
+      <span class="dchip">Population-level datasets</span>
+    </div>
+    <p class="fragment" style="font-size:24pt; margin-top:10px;">Yet many of the factors that shape health remain <span class="unseen">invisible</span>.</p>
+    <p class="fragment serif" style="font-size:32pt; line-height:1.25;">What health systems cannot see, they cannot improve.</p>
   </div>
 </section>
 
+<!-- =====================================================
+     2. WHAT DO HEALTH SYSTEMS ACTUALLY SEE?
+     ===================================================== -->
+<section id="see" data-lab="ifal">
+  <p class="eyebrow">What health systems see</p>
+  <h2>What do health systems actually see?</h2>
+  <div class="content" style="padding-top:20px;">
+    <div style="display:grid; grid-template-columns: 1fr 1.45fr; gap:26px;">
+      <div class="card" style="padding:22px 24px;">
+        <h3 class="kicker" style="color:var(--ink);">Visible</h3>
+        <ul class="ticks">
+          <li>Diagnoses</li><li>Laboratory results</li><li>Prescriptions</li><li>Hospital admissions</li><li>Clinical procedures</li>
+        </ul>
+      </div>
+      <div class="card ghostcard fragment" style="padding:22px 24px;">
+        <h3 class="kicker">Often invisible</h3>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px 18px;">
+          <p class="inv"><span class="badge c-a1">1</span>Housing insecurity</p>
+          <p class="inv"><span class="badge nob">·</span>Loneliness</p>
+          <p class="inv"><span class="badge c-a1">1</span>Food insecurity</p>
+          <p class="inv"><span class="badge c-a4">4</span>Caregiver burden</p>
+          <p class="inv"><span class="badge c-a2">2</span>Air pollution</p>
+          <p class="inv"><span class="badge c-a3">3</span>Digital exclusion</p>
+          <p class="inv"><span class="badge c-a2">2</span>Climate exposure</p>
+          <p class="inv"><span class="badge c-a5">5</span>Animal and ecosystem signals</p>
+        </div>
+      </div>
+    </div>
+    <p class="closing" style="margin-top:26px; font-size:20pt;">Many determinants of health exist outside the boundaries of healthcare itself.</p>
+  </div>
+  <div class="footnote">Numbers mark IFAL’s five archetypes of invisible context: 1 SDOH gap · 2 environmental blindness · 3 algorithmic data poverty · 4 patient narrative · 5 governance silos</div>
+</section>
+
 <section id="record" data-lab="all">
-  <p class="eyebrow">Illustrative example</p>
+  <p class="eyebrow">An illustrative example</p>
   <h2>The example record shows a discharge decision</h2>
   <div class="content" style="padding-top:16px;">
     <div class="record">
@@ -326,139 +411,171 @@
   <div class="footnote">Illustrative example combining decision failures described in the Context Invisibility Map (IFAL). It does not describe a real patient. · Sood et al. [4]; Chidambaram et al. [5]</div>
 </section>
 
-<section id="absence" data-lab="all">
-  <p class="eyebrow">The Grand Challenge · Invisible Context</p>
-  <h2>Context that never reaches the decision</h2>
-  <div class="content">
-    <p class="lede">The question is not whether context matters, which is well established, but how much relevant context was never made visible, and what kind of absence each gap is.</p>
-    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:34px; margin-top:24px; align-items:start;">
-      <div>
-        <h3 class="kicker">Five different kinds of absence</h3>
-        <div style="display:flex; flex-direction:column; gap:10px;">
-          <p class="text-md" style="display:flex; gap:12px; align-items:center;"><span class="lnum" style="--c:var(--l-informational);">1</span><span><strong>Informational</strong>: a determinant that is never recorded</span></p>
-          <p class="text-md" style="display:flex; gap:12px; align-items:center;"><span class="lnum" style="--c:var(--l-semantic);">2</span><span><strong>Semantic</strong>: a determinant recorded in a form other systems cannot interpret</span></p>
-          <p class="text-md" style="display:flex; gap:12px; align-items:center;"><span class="lnum" style="--c:var(--l-experiential); color:var(--ink);">3</span><span><strong>Experiential</strong>: a determinant for which no structured field of suitable shape exists</span></p>
-          <p class="text-md" style="display:flex; gap:12px; align-items:center;"><span class="lnum" style="--c:var(--l-governance);">4</span><span><strong>Governance</strong>: a determinant held in another sector’s well-governed database</span></p>
-          <p class="text-md" style="display:flex; gap:12px; align-items:center;"><span class="lnum" style="--c:var(--l-evaluative);">5</span><span><strong>Evaluative</strong>: a determinant that no outcome indicator measures</span></p>
-        </div>
-      </div>
-      <div style="display:flex; flex-direction:column; gap:14px;">
-        <div class="callout" style="--c:var(--ink);"><p class="text-md">Treating every gap as “missing data” keeps the problem in place, because each kind needs a different remedy and a different institutional actor.</p></div>
-        <div class="card tint"><p class="text-sm">In each case the clinical reasoning is sound. The decision still fails, because the determining context was neither digitally available nor cognitively present when it was made.</p></div>
-      </div>
+<!-- =====================================================
+     3. THE PROBLEM IS NOT ONLY MEDICAL
+     ===================================================== -->
+<section id="not-medical" data-lab="ifal">
+  <p class="eyebrow">Why outcomes differ</p>
+  <h2>The problem is not only medical</h2>
+  <div class="content" style="padding-top:14px;">
+    <div style="display:flex; align-items:center; gap:22px;">
+      <div class="twin"><p class="t">Same treatment</p><p class="eq">=</p></div>
+      <div class="twin"><p class="t">Different outcomes</p><p class="eq">≠</p></div>
+      <p class="text-lg" style="flex:1;">Two patients may receive exactly the same treatment and experience entirely different outcomes. <strong>Why?</strong> Because health is shaped by:</p>
     </div>
+    <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:12px; margin-top:18px;">
+      <div class="card top c-a1"><h3>Social context</h3><p class="num-sm" style="color:var(--a1);">18.2%</p><p>of providers who consider housing clinically vital document it consistently.</p><p class="arch"><span class="badge c-a1">1</span>SDOH Documentation Gap</p></div>
+      <div class="card top c-a2"><h3>Environmental conditions</h3><p class="num-sm" style="color:var(--a2);">&lt;5%</p><p>of providers consistently document any environmental determinant other than outbreaks.</p><p class="arch"><span class="badge c-a2">2</span>Environmental Determinant Blindness</p></div>
+      <div class="card top c-a4"><h3>Lived experiences</h3><p class="num-sm" style="color:var(--a4);">No field</p><p>Treatment preferences, lived experience and informal care arrangements have no suitable structured field.</p><p class="arch"><span class="badge c-a4">4</span>Patient Narrative Absence</p></div>
+      <div class="card top c-a3"><h3>Digital realities</h3><p class="num-sm" style="color:var(--a3);">11 to 19%</p><p>lower accuracy of recognition systems for Black women; pulse oximetry overestimates saturation in darker skin.</p><p class="arch"><span class="badge c-a3">3</span>Algorithmic Data Poverty</p></div>
+    </div>
+    <p class="fragment serif" style="font-size:24pt; margin-top:22px; line-height:1.3;">The differences are often not biological. <span style="color:var(--ifal);">They are informational.</span></p>
   </div>
-  <div class="footnote">Alizadeh et al. [1]; Benis et al. [2]; Champion et al. [3]</div>
+  <div class="footnote">Sood et al., 2024 [4]; Chidambaram et al., 2024 [5]; Alizadeh et al., 2025 [1]</div>
 </section>
 
-<section id="numbers" data-lab="all">
-  <p class="eyebrow">The Grand Challenge · Invisible Context</p>
-  <h2>The determinants that matter most are the least visible</h2>
-  <div class="content">
-    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:22px;">
-      <div class="card stat" style="--c:var(--a1); padding:24px;"><p class="num">1 to 2%</p><p class="lbl">of encounters have social determinants coded</p></div>
-      <div class="card stat" style="--c:var(--a2); padding:24px;"><p class="num">&lt;5%</p><p class="lbl">of providers consistently document any environmental determinant other than outbreaks</p></div>
-      <div class="card stat" style="--c:var(--a3); padding:24px;"><p class="num">Built in</p><p class="lbl">pulse oximetry overestimates oxygen saturation in darker skin; recognition systems are less accurate for Black women</p></div>
+<!-- =====================================================
+     4. WHAT MAKES SOMETHING INVISIBLE?
+     ===================================================== -->
+<section id="invisible" data-lab="ifal">
+  <p class="eyebrow">The five layers of invisibility</p>
+  <h2>What makes something invisible?</h2>
+  <div class="content" style="padding-top:16px;">
+    <p class="text-lg">A determinant can become invisible when:</p>
+    <div class="chain" style="margin-top:14px;">
+      <div class="step c-informational lay"><p class="k">It is not captured.</p><p class="lq"><span class="dotl"></span>Informational · Is it recorded at all?</p></div><div class="arrow">→</div>
+      <div class="step c-semantic lay"><p class="k">It is not structured.</p><p class="lq"><span class="dotl"></span>Semantic · Experiential · Is there a suitable, computable field?</p></div><div class="arrow">→</div>
+      <div class="step c-governance lay"><p class="k">It is not interoperable.</p><p class="lq"><span class="dotl"></span>Governance · Can it cross the sector boundary?</p></div><div class="arrow">→</div>
+      <div class="step c-evaluative lay"><p class="k">It is not measured.</p><p class="lq"><span class="dotl"></span>Evaluative · Is it measured?</p></div><div class="arrow">→</div>
+      <div class="step lay" style="--c:var(--ink);"><p class="k">It is not valued.</p><p class="lq">What is not measured is not requested, so the gap persists.</p></div>
     </div>
-    <p class="lede" style="margin-top:26px; font-size:15pt;">In a survey of 201 providers, consistent documentation was low even among providers who considered these determinants clinically vital. Smoking status, the only social determinant with a long-established structured EHR field, is documented consistently by a substantial majority of providers. This suggests that the gap reflects the <strong>structure of the record</strong> more than clinical awareness.</p>
+    <p class="text-sm text-muted" style="margin-top:14px;">IFAL’s self-reinforcing cycle: what is not captured cannot be standardised; what is not standardised cannot be reliably linked; what is not linked is hard to evaluate; and what is not evaluated is unlikely to become a priority.</p>
+    <div class="fragment" style="margin-top:22px;">
+      <p class="serif" style="font-size:26pt; line-height:1.3;">Invisibility is not only a property of reality.<br>It is also a property of <span style="color:var(--ifal);">our information systems</span>.</p>
+    </div>
   </div>
-  <div class="footnote">Guo et al. [58]; Sood et al. [4]; Chidambaram et al. [5]</div>
+  <div class="footnote">Five layers of invisibility (IFAL, Table 1) · Sood et al. [4]; Benis et al. [2]; Chidambaram et al. [5]; Fraser et al. [6]</div>
 </section>
 
-<section id="labs" data-lab="all">
-  <p class="eyebrow">How the cohort works</p>
-  <h2>Three labs</h2>
+<!-- =====================================================
+     5. MEDICAL INFORMATICS AS A SCIENCE OF VISIBILITY
+     ===================================================== -->
+<section id="science" data-lab="bvdl">
+  <p class="eyebrow">Biomedical and Health Informatics</p>
+  <h2>Medical informatics as a science of visibility</h2>
+  <div class="content" style="padding-top:14px;">
+    <p class="text-lg">Perhaps Biomedical and Health Informatics can be viewed as a <strong>discipline of visibility</strong>. Its role is to transform:</p>
+    <div class="oik">
+      <div class="node"><p>Observations</p></div><p class="ar">→</p>
+      <div class="node"><p>Information</p></div><p class="ar">→</p>
+      <div class="node"><p>Knowledge</p></div>
+    </div>
+    <h3 class="kicker" style="margin-top:4px;">Through</h3>
+    <div class="chips-row" style="gap:8px;">
+      <span class="pill c-bvdl">data capture</span><span class="pill c-bvdl">standards</span><span class="pill c-bvdl">interoperability</span>
+      <span class="pill c-bvdl">AI and analytics</span><span class="pill c-bvdl">decision support</span><span class="pill c-bvdl">cross-sector integration</span>
+    </div>
+    <div class="fragment" style="margin-top:24px; display:grid; grid-template-columns: 1fr 1fr; gap:24px; align-items:end;">
+      <p class="text-lg text-muted">The mission is not simply to digitize healthcare.</p>
+      <p class="serif" style="font-size:24pt; line-height:1.25;">The mission is to make <span style="color:var(--bvdl);">determinants visible</span>.</p>
+    </div>
+  </div>
+  <div class="footnote">The LEAD framework reads informatics as turning data into knowledge and, ultimately, wisdom.</div>
+</section>
+
+<section id="steps" data-lab="bvdl">
+  <p class="eyebrow">BVDL · BMHI Visibility Hypothesis Board</p>
+  <h2>Available is not the same as visible</h2>
   <div class="content" style="padding-top:12px;">
-    <p class="lede text-md" style="margin-bottom:16px;">The Grand Challenge was split across three sub-groups. Each lab hands its output to the next, and the last one sends questions back to the first, so the work can be refined in further iterations.</p>
-    <div style="display:grid; grid-template-columns: 1fr 36px 1fr 36px 1fr; gap:6px; align-items:stretch;">
-      <div class="card lab-card c-ifal">
-        <p class="verb">1 · Diagnose</p>
-        <h3 style="margin-top:4px;">Invisible Failure Analysis Lab</h3>
-        <p class="text-xs text-muted">IFAL · Diagnostic engine</p>
-        <p class="q">Which contextual determinants are most systematically invisible, and to whom?</p>
-        <p class="text-xs text-muted">Output: <strong style="color:var(--ink);">Context Invisibility Map</strong></p>
-      </div>
-      <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; color:var(--muted); font-size:16pt;">→</div>
-      <div class="card lab-card c-bvdl">
-        <p class="verb">2 · Design</p>
-        <h3 style="margin-top:4px;">BMHI Visibility Design Lab</h3>
-        <p class="text-xs text-muted">BVDL · Technical conversion engine</p>
-        <p class="q">What forms of BMHI visibility could capture them?</p>
-        <p class="text-xs text-muted">Output: <strong style="color:var(--ink);">BMHI Visibility Hypothesis Board</strong></p>
-      </div>
-      <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; color:var(--muted); font-size:16pt;">→</div>
-      <div class="card lab-card c-etl">
-        <p class="verb">3 · Translate</p>
-        <h3 style="margin-top:4px;">European Translation Lab</h3>
-        <p class="text-xs text-muted">ETL · Strategic proposal engine</p>
-        <p class="q">Why is this strategically European?</p>
-        <p class="text-xs text-muted">Output: <strong style="color:var(--ink);">European Opportunity</strong></p>
-      </div>
+    <p class="text-md">A determinant becomes visible only when it passes through every step below. Visibility therefore needs an end-to-end infrastructure, from data acquisition to action.</p>
+    <div class="chain" style="margin-top:14px;">
+      <div class="step"><p class="k">1 · Captured</p><p>The determinant enters a digital system.</p></div><div class="arrow">→</div>
+      <div class="step"><p class="k">2 · Represented</p><p>It is recorded in a defined, computable form.</p></div><div class="arrow">→</div>
+      <div class="step"><p class="k">3 · Exchanged</p><p>It can travel between systems and sectors.</p></div><div class="arrow">→</div>
+      <div class="step"><p class="k">4 · Interpreted</p><p>The receiving system understands what it means.</p></div><div class="arrow">→</div>
+      <div class="step"><p class="k">5 · Acted on</p><p>It reaches the decision it should inform.</p></div>
     </div>
-    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; margin-top:16px;">
-      <div class="callout c-ifal"><p class="text-xs text-muted">IFAL → BVDL</p><p><strong>Layers and archetypes of invisibility.</strong> IFAL passes on the five layers and five archetypes; BVDL gives each one a technical grounding.</p></div>
-      <div class="callout c-bvdl"><p class="text-xs text-muted">BVDL → ETL</p><p><strong>An implementable visibility infrastructure.</strong> BVDL passes on the data sources, mechanisms and standards; ETL tests whether they fit implementable European digital infrastructures.</p></div>
-      <div class="callout c-etl"><p class="text-xs text-muted">ETL → IFAL</p><p><strong>Which invisibilities matter for Europe?</strong> ETL returns prioritisation criteria so that IFAL’s next iteration can confirm, reframe or deprioritise each invisibility.</p></div>
+    <h3 class="kicker" style="margin-top:22px;">One BMHI response per layer</h3>
+    <div style="display:grid; grid-template-columns: repeat(5, 1fr); gap:10px;">
+      <div class="card top c-informational"><p class="text-xs text-muted" style="font-weight:600;">INFORMATIONAL</p><p>Open new data-acquisition channels: sensors, citizen-generated data, environmental monitoring.</p></div>
+      <div class="card top c-semantic"><p class="text-xs text-muted" style="font-weight:600;">SEMANTIC</p><p>Apply common terminologies, ontologies and standards such as SNOMED CT, LOINC and FHIR.</p></div>
+      <div class="card top c-experiential"><p class="text-xs text-muted" style="font-weight:600;">EXPERIENTIAL</p><p>Turn narratives, patient-reported outcomes and social context into computable information.</p></div>
+      <div class="card top c-governance"><p class="text-xs text-muted" style="font-weight:600;">GOVERNANCE</p><p>Establish the legal, organisational and technical mechanisms for exchange across sectors.</p></div>
+      <div class="card top c-evaluative"><p class="text-xs text-muted" style="font-weight:600;">EVALUATIVE</p><p>Create indicators that measure contextual determinants in routine monitoring.</p></div>
     </div>
+    <p class="closing" style="margin-top:18px; font-size:16pt;">The challenge is not the absence of data, but the absence of architectures that turn scattered contextual signals into actionable intelligence.</p>
   </div>
 </section>
 
 <!-- =====================================================
-     DIAGNOSE · IFAL (about 7 minutes)
+     6. WHY EUROPE?
      ===================================================== -->
-<section id="div-ifal" class="divider" data-background-color="#0F766E">
-  <p class="lab-n">Lab 1 · Diagnose</p>
-  <h1>Invisible Failure Analysis Lab</h1>
-  <p class="lab-role">IFAL · Diagnostic engine</p>
-  <p class="lab-q">Which contextual determinants are most systematically invisible, and to whom? IFAL’s output is the <strong style="color:#fff;">Context Invisibility Map</strong>: five layers of invisibility, five archetypes of decision failure, the people who carry the burden, and where each archetype sits on the ODH Steering Wheel.</p>
-  <p class="lab-meta">Alessandra Introvaia · Daniel Alexandre Relvas Rodrigues · Kirubel Biruk Shiferaw</p>
-</section>
-
-<section id="layers" data-lab="ifal">
-  <p class="eyebrow">IFAL · Five layers</p>
-  <h2>Five layers of invisibility</h2>
-  <div class="content" style="padding-top:12px;">
-    <p class="lede text-md">Each layer describes a different reason why a determinant is not available at the point of decision, and indicates which actor would be in a position to address it. Layers can overlap; the most persistent cases involve more than one.</p>
-    <div style="display:grid; grid-template-columns: repeat(5, 1fr); gap:12px; margin-top:16px;">
-      <div class="card top c-informational"><p class="text-xs text-muted" style="font-weight:600;">1 · INFORMATIONAL</p><p class="serif" style="font-size:16pt; line-height:1.25; margin:6px 0;">Is it recorded at all?</p><p>No practical way exists to record it.</p></div>
-      <div class="card top c-semantic"><p class="text-xs text-muted" style="font-weight:600;">2 · SEMANTIC</p><p class="serif" style="font-size:16pt; line-height:1.25; margin:6px 0;">Can other systems interpret it?</p><p>It is recorded, but not in a standard, computable form.</p></div>
-      <div class="card top c-experiential"><p class="text-xs text-muted" style="font-weight:600;">3 · EXPERIENTIAL</p><p class="serif" style="font-size:16pt; line-height:1.25; margin:6px 0;">Is there a suitable field for it?</p><p>Lived experience does not fit structured fields.</p></div>
-      <div class="card top c-governance"><p class="text-xs text-muted" style="font-weight:600;">4 · GOVERNANCE</p><p class="serif" style="font-size:16pt; line-height:1.25; margin:6px 0;">Can it cross the sector boundary?</p><p>The data exist, but in another sector’s system.</p></div>
-      <div class="card top c-evaluative"><p class="text-xs text-muted" style="font-weight:600;">5 · EVALUATIVE</p><p class="serif" style="font-size:16pt; line-height:1.25; margin:6px 0;">Is it measured?</p><p>No outcome indicator includes it.</p></div>
-    </div>
-    <h3 class="kicker" style="margin-top:22px;">How the layers reinforce each other</h3>
-    <div class="chain">
-      <div class="step"><p class="k" style="text-align:center;">Not captured</p></div><div class="arrow">→</div>
-      <div class="step"><p class="k" style="text-align:center;">Not standardised</p></div><div class="arrow">→</div>
-      <div class="step"><p class="k" style="text-align:center;">Not linked</p></div><div class="arrow">→</div>
-      <div class="step"><p class="k" style="text-align:center;">Not evaluated</p></div><div class="arrow">→</div>
-      <div class="step"><p class="k" style="text-align:center;">Not prioritised</p></div>
-    </div>
-    <p class="text-sm text-muted" style="margin-top:12px;">Invisible context is therefore a property of the information ecosystem as a whole, not a collection of isolated missing data points.</p>
-  </div>
-</section>
-
-<section id="archetypes" data-lab="ifal">
-  <p class="eyebrow">IFAL · Archetypes</p>
-  <h2>Five recurring patterns of missing context</h2>
+<section id="europe" data-lab="etl">
+  <p class="eyebrow">ETL · European Translation Lab</p>
+  <h2>Why Europe?</h2>
   <div class="content" style="padding-top:14px;">
-    <table class="tbl">
-      <thead><tr><th style="width:34px;"></th><th style="width:34%;">Archetype</th><th>Decisions that fail</th><th style="width:21%;">Why hidden</th></tr></thead>
-      <tbody>
-        <tr><td><span class="badge c-a1">1</span></td><td><strong>SDOH Documentation Gap</strong><br><span class="text-muted text-xs">Social circumstances not recorded</span></td><td>Discharge planning, insulin regimens and follow-up scheduling</td><td><span class="pill c-informational">Informational</span><span class="pill c-semantic">Semantic</span></td></tr>
-        <tr><td><span class="badge c-a2">2</span></td><td><strong>Environmental Determinant Blindness</strong><br><span class="text-muted text-xs">Environmental exposures not recorded</span></td><td>Paediatric asthma triage and perinatal counselling</td><td><span class="pill c-informational">Informational</span><span class="pill c-evaluative">Evaluative</span></td></tr>
-        <tr><td><span class="badge c-a3">3</span></td><td><strong>Algorithmic Data Poverty</strong><br><span class="text-muted text-xs">Groups under-represented in device and algorithm data</span></td><td>Treatment escalation, AI-assisted imaging and telemedicine triage</td><td><span class="pill c-semantic">Semantic</span><span class="pill c-evaluative">Evaluative</span></td></tr>
-        <tr><td><span class="badge c-a4">4</span></td><td><strong>Patient Narrative Absence</strong><br><span class="text-muted text-xs">Patient preferences and care context not captured</span></td><td>Intensive-care escalation and heart-failure care planning</td><td><span class="pill c-experiential">Experiential</span></td></tr>
-        <tr><td><span class="badge c-a5">5</span></td><td><strong>Cross-Sector Governance Silos</strong><br><span class="text-muted text-xs">Data held in other sectors</span></td><td>Zoonotic surveillance, cross-border immunisation and environmental alerts to primary care</td><td><span class="pill c-governance">Governance</span></td></tr>
-      </tbody>
-    </table>
-    <p class="text-sm text-muted" style="margin-top:14px;">The map is anchored on <strong style="color:var(--ink);">decisions</strong>: a determinant counts as invisible only in relation to a decision it should have informed. The five archetypes were chosen so that together they cover all five layers and all three ODH perspectives.</p>
+    <p class="text-lg">This challenge is particularly relevant in Europe. Europe combines:</p>
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:28px; margin-top:14px; align-items:start;">
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+        <div class="card eu"><p>Universal healthcare systems</p></div>
+        <div class="card eu"><p>Strong commitments to equity</p></div>
+        <div class="card eu"><p>Cross-border collaboration</p></div>
+        <div class="card eu"><p>The European Health Data Space</p></div>
+        <div class="card eu"><p>Mature interoperability initiatives</p></div>
+        <div class="card eu"><p>Leadership in digital governance</p></div>
+      </div>
+      <div class="callout c-etl fragment" style="padding:22px 24px;">
+        <p class="text-xs text-muted" style="font-weight:600; letter-spacing:.1em;">A UNIQUE OPPORTUNITY</p>
+        <p class="serif" style="font-size:20pt !important; line-height:1.35; margin-top:8px;">To become the first region capable of systematically integrating clinical, social, environmental and digital determinants into health intelligence.</p>
+      </div>
+    </div>
+    <h3 class="kicker" style="margin-top:22px;">ETL: a structural gap, reproduced across Europe</h3>
+    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:12px;">
+      <div class="card tint"><h3>Structural, not local</h3><p>The gap recurs in every European health system, whatever its funding model, language or geography.</p></div>
+      <div class="card tint"><h3>Determinants cross borders</h3><p>People migrate, pollution spreads and diseases pass between animals and people.</p></div>
+      <div class="card tint"><h3>A window that is open now</h3><p>The EHDS is a one-time opportunity to include standardised social and environmental context in routine health data.</p></div>
+    </div>
   </div>
+  <div class="footnote">OECD/EU [62]; Reg. (EU) 2022/2371 [63]; EHDS, Reg. (EU) 2025/327 [69]</div>
 </section>
 
-<!-- Interactive wheel: Learn the wheel (fragments), then Explore (click) -->
+<!-- =====================================================
+     7. FROM DIGITAL HEALTH TO VISIBLE HEALTH
+     ===================================================== -->
+<section id="visible-health" data-lab="all">
+  <p class="eyebrow">One Digital Health</p>
+  <h2>From Digital Health to Visible Health</h2>
+  <div class="content" style="padding-top:8px;">
+    <div style="display:grid; grid-template-columns: 560px 1fr; gap:34px; align-items:center; flex:1;">
+      <div class="net">
+        <svg viewBox="0 0 560 470" aria-hidden="true">
+          <g stroke="#B9B3A6" stroke-width="2" stroke-dasharray="6 6" fill="none">
+            <line x1="280" y1="235" x2="280" y2="60"/><line x1="280" y1="235" x2="452" y2="140"/><line x1="280" y1="235" x2="452" y2="330"/>
+            <line x1="280" y1="235" x2="280" y2="410"/><line x1="280" y1="235" x2="108" y2="330"/><line x1="280" y1="235" x2="108" y2="140"/>
+          </g>
+          <circle cx="280" cy="235" r="78" fill="#17191E"/>
+        </svg>
+        <p class="hub">What truly determines health</p>
+        <p class="nd" style="left:280px; top:60px;">Healthcare</p>
+        <p class="nd" style="left:452px; top:140px;">Social care</p>
+        <p class="nd" style="left:452px; top:330px;">Public health</p>
+        <p class="nd" style="left:280px; top:410px;">Environmental monitoring</p>
+        <p class="nd" style="left:108px; top:330px;">Citizen-generated data</p>
+        <p class="nd odh" style="left:108px; top:140px;">One Digital Health ecosystems</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:18px;">
+        <p class="text-lg">The next generation of health systems may need to connect healthcare, social care, public health, environmental monitoring, citizen-generated data and One Digital Health ecosystems.</p>
+        <p class="text-lg text-muted">The objective is not more information.</p>
+        <p class="serif" style="font-size:24pt; line-height:1.3;">The objective is better visibility of what truly determines health.</p>
+        <div class="callout" style="--c:var(--ink);"><p class="text-sm">In One Digital Health, missing context is a failure of connection between parts of the health ecosystem rather than a gap in a single system. Relevant information often exists elsewhere but does not reach the point where the decision is made.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="footnote">Benis et al., 2021 [2] · ODHness: the degree to which a digital ecosystem integrates human, animal and environmental data into a coherent framework for health intelligence</div>
+</section>
+
 <section id="wheel" data-lab="ifal">
-  <p class="eyebrow">IFAL · The Map</p>
+  <p class="eyebrow">One Digital Health · where the connections fail</p>
   <h2>The archetypes on the ODH Steering Wheel</h2>
   <div class="content" style="padding-top:8px;">
     <div style="display:grid; grid-template-columns: 500px 1fr; gap:30px; flex:1; min-height:0;">
@@ -496,285 +613,121 @@
   <div class="footnote">Wheel redrawn after Benis et al. 2021, Fig. 1 [2]; archetype placement and key links are this map’s interpretation · keys 1–5 select, 0 clears</div>
 </section>
 
-<section id="clusters" data-lab="ifal">
-  <p class="eyebrow">IFAL · Clusters and stakeholders</p>
-  <h2>Not in the record, or stuck behind a boundary</h2>
-  <div class="content" style="padding-top:16px;">
-    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
-      <div class="card">
-        <h3>Capture-surface invisibilities</h3>
-        <p class="text-md" style="margin:4px 0 10px;">The information is not entered in the record.</p>
-        <span class="pill c-a1">1 · SDOH Documentation Gap</span><span class="pill c-a2">2 · Environmental Determinant Blindness</span><span class="pill c-a4">4 · Patient Narrative Absence</span>
+<!-- =====================================================
+     MAKING THE INVISIBLE VISIBLE: THE THREE LABS
+     ===================================================== -->
+<section id="labs" data-lab="all">
+  <p class="eyebrow">The EFMI LEAD cohort</p>
+  <h2>Making the invisible visible: three labs</h2>
+  <div class="content" style="padding-top:12px; justify-content:center;">
+    <p class="text-md">The Grand Challenge was split across three sub-groups. Each lab hands its output to the next, and the last one sends questions back to the first, so the work can be refined in further iterations.</p>
+    <div style="display:grid; grid-template-columns: 1fr 36px 1fr 36px 1fr; gap:6px; align-items:stretch; margin-top:16px;">
+      <div class="card lab-card c-ifal">
+        <p class="verb">1 · Diagnose</p>
+        <h3 style="margin-top:4px;">Invisible Failure Analysis Lab</h3>
+        <p class="q">Which contextual determinants are most systematically invisible, and to whom?</p>
+        <p class="text-xs text-muted">Output: <strong style="color:var(--ink);">Context Invisibility Map</strong></p>
       </div>
-      <div class="card">
-        <h3>System-boundary invisibilities</h3>
-        <p class="text-md" style="margin:4px 0 10px;">The data exist in structured form but do not cross a boundary: the training data of an algorithm, or the governance arrangements of another sector.</p>
-        <span class="pill c-a3">3 · Algorithmic Data Poverty</span><span class="pill c-a5">5 · Cross-Sector Governance Silos</span>
+      <div style="display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:16pt;">→</div>
+      <div class="card lab-card c-bvdl">
+        <p class="verb">2 · Design</p>
+        <h3 style="margin-top:4px;">BMHI Visibility Design Lab</h3>
+        <p class="q">What forms of BMHI visibility could capture them?</p>
+        <p class="text-xs text-muted">Output: <strong style="color:var(--ink);">BMHI Visibility Hypothesis Board</strong></p>
+      </div>
+      <div style="display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:16pt;">→</div>
+      <div class="card lab-card c-etl">
+        <p class="verb">3 · Translate</p>
+        <h3 style="margin-top:4px;">European Translation Lab</h3>
+        <p class="q">Why is this strategically European?</p>
+        <p class="text-xs text-muted">Output: <strong style="color:var(--ink);">European Opportunity</strong></p>
       </div>
     </div>
-    <p class="text-sm text-muted" style="margin-top:10px;">A way of making context visible that is designed for one cluster will not, on its own, address the other.</p>
-    <h3 class="kicker" style="margin-top:22px;">Affected stakeholders · missing context is not evenly distributed</h3>
-    <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:12px;">
-      <div class="card tint"><h3>Patients and families</h3><p>The burden of missing context is concentrated among groups that are already disadvantaged.</p></div>
-      <div class="card tint"><h3>Clinicians</h3><p>For health professionals, missing context means making decisions with information they know to be incomplete.</p></div>
-      <div class="card tint"><h3>Institutions</h3><p>Institutions absorb the consequences as costs that are not attributed to missing context.</p></div>
-      <div class="card tint"><h3>Ecosystem</h3><p>Environmental, veterinary and public-health knowledge is maintained in parallel to clinical care, with few connections to it.</p></div>
-    </div>
+    <div class="callout c-etl" style="margin-top:16px;"><p><strong>ETL → IFAL: Which invisibilities matter for Europe?</strong> ETL returns prioritisation criteria so that IFAL’s next iteration can confirm, reframe or deprioritise each invisibility.</p></div>
   </div>
 </section>
 
 <!-- =====================================================
-     DESIGN · BVDL (about 5 minutes)
+     8. THE NEXT GRAND CHALLENGE
      ===================================================== -->
-<section id="div-bvdl" class="divider" data-background-color="#B4461B">
-  <p class="lab-n">Lab 2 · Design</p>
-  <h1>BMHI Visibility Design Lab</h1>
-  <p class="lab-role">BVDL · Technical conversion engine</p>
-  <p class="lab-q">What forms of BMHI visibility could capture them? BVDL turns IFAL’s diagnosis into design hypotheses: which data sources, standards and architectures could make hidden determinants visible, and what could go wrong when they do. Its output is the <strong style="color:#fff;">BMHI Visibility Hypothesis Board</strong>.</p>
-  <p class="lab-meta">Matthieu Bonjour · Ivan Cerovečki · Eliana Mendonça Almeida e Silva · Simon Luca Lewerenz</p>
-</section>
-
-<section id="visible" data-lab="bvdl">
-  <p class="eyebrow">BVDL · Overview</p>
-  <h2>Available is not the same as visible</h2>
-  <div class="content">
-    <p class="lede text-md">A determinant becomes visible only when it passes through every step below. Visibility therefore needs an end-to-end infrastructure, from data acquisition to action.</p>
-    <div class="chain" style="margin-top:20px;">
-      <div class="step"><p class="k">1 · Captured</p><p>The determinant enters a digital system.</p></div><div class="arrow">→</div>
-      <div class="step"><p class="k">2 · Represented</p><p>It is recorded in a defined, computable form.</p></div><div class="arrow">→</div>
-      <div class="step"><p class="k">3 · Exchanged</p><p>It can travel between systems and sectors.</p></div><div class="arrow">→</div>
-      <div class="step"><p class="k">4 · Interpreted</p><p>The receiving system understands what it means.</p></div><div class="arrow">→</div>
-      <div class="step"><p class="k">5 · Acted on</p><p>It reaches the decision it should inform.</p></div>
-    </div>
-    <p class="closing" style="margin-top:26px;">The challenge is not the absence of data, but the absence of architectures that turn scattered contextual signals into actionable intelligence.</p>
-    <h3 class="kicker" style="margin-top:24px;">Upstream of the clinical encounter</h3>
-    <p class="text-md">Health institutions, environmental agencies, social services, schools and public-order authorities all hold part of the picture, but traditional health systems rarely integrate their data.</p>
-  </div>
-  <div class="footnote">Denecke et al. [7]; Kelly &amp; Fussell [10]; Harrison &amp; Dean [11]</div>
-</section>
-
-<section id="responses" data-lab="bvdl">
-  <p class="eyebrow">BVDL · Visibility responses</p>
-  <h2>From diagnosis to visibility design</h2>
-  <div class="content" style="padding-top:12px;">
-    <p class="lede text-md">Each layer of invisibility names a different failure, so each needs a different BMHI response.</p>
-    <table class="tbl" style="margin-top:12px;">
-      <tbody>
-        <tr><td style="width:180px;"><span class="pill c-informational">Informational</span></td><td>Open new data-acquisition channels: sensors, citizen-generated data, environmental monitoring, public information systems and structured collection instruments.</td></tr>
-        <tr><td><span class="pill c-semantic">Semantic</span></td><td>Apply common terminologies, ontologies and interoperability standards such as SNOMED CT, LOINC and FHIR.</td></tr>
-        <tr><td><span class="pill c-experiential">Experiential</span></td><td>Turn narratives, patient-reported outcomes and social context into computable information, using structured forms and AI-assisted extraction.</td></tr>
-        <tr><td><span class="pill c-governance">Governance</span></td><td>Establish the legal, organisational and technical mechanisms that allow data to be exchanged across sectors.</td></tr>
-        <tr><td><span class="pill c-evaluative">Evaluative</span></td><td>Create indicators that measure contextual determinants and include them in routine monitoring frameworks.</td></tr>
-      </tbody>
-    </table>
-    <p class="text-sm text-muted" style="margin-top:14px;"><strong style="color:var(--ink);">The hardest layers to build for.</strong> Informational and experiential invisibility usually require new data items in health information systems, and therefore new input mechanisms. AI tools such as NLP and LLMs could reduce that burden, but their reliability requires continuous professional oversight.</p>
-  </div>
-</section>
-
-<section id="interventions" data-lab="bvdl">
-  <p class="eyebrow">BVDL · Visibility responses</p>
-  <h2>Visibility interventions for the five archetypes</h2>
-  <div class="content" style="padding-top:14px;">
-    <table class="tbl">
-      <thead><tr><th style="width:34px;"></th><th style="width:45%;">Proposed visibility intervention</th><th>Expected outcome</th></tr></thead>
-      <tbody>
-        <tr><td><span class="badge c-a1">1</span></td><td>Structured SDOH fields, citizen-reported data, and linkage with social-service information systems</td><td>Social determinants become available for care planning, population monitoring and service coordination.</td></tr>
-        <tr><td><span class="badge c-a2">2</span></td><td>Environmental sensor networks, monitoring platforms and geospatial linkage</td><td>Environmental exposures can be connected to individual, population, animal and ecosystem health signals.</td></tr>
-        <tr><td><span class="badge c-a3">3</span></td><td>Representative datasets, bias audits, performance stratification and model-transparency mechanisms</td><td>Under-representation and unequal model performance become identifiable and can be monitored.</td></tr>
-        <tr><td><span class="badge c-a4">4</span></td><td>PROMs, PREMs, structured narrative capture and NLP-assisted extraction</td><td>Lived experience, preferences, burdens and care circumstances become computable without losing their narrative context.</td></tr>
-        <tr><td><span class="badge c-a5">5</span></td><td>Federated architectures, standardised APIs, FHIR-enabled exchange and cross-sector data-sharing agreements</td><td>Relevant information can cross organisational boundaries while keeping its provenance, permissions and accountability.</td></tr>
-      </tbody>
-    </table>
-    <p class="text-sm text-muted" style="margin-top:12px;">These interventions depend on interoperable architectures that keep meaning, provenance, quality and trust across organisational and sector boundaries.</p>
-  </div>
-</section>
-
-<section id="interop" data-lab="bvdl">
-  <p class="eyebrow">BVDL · Overview and ODHness</p>
-  <h2>Three kinds of interoperability, and ODHness</h2>
-  <div class="content" style="padding-top:14px;">
-    <p class="text-md">If any one of them fails, invisibility returns, even when data capture works.</p>
-    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; margin-top:12px;">
-      <div class="card top"><p class="text-xs text-muted" style="font-weight:600; letter-spacing:.1em;">SHARED MEANING</p><h3 style="margin-top:2px;">Semantic interoperability</h3><p>Controlled terminologies and ontologies ensure that a hospital, a veterinary clinic and an environmental agency read the same indicator in the same way.</p></div>
-      <div class="card top"><p class="text-xs text-muted" style="font-weight:600; letter-spacing:.1em;">DATA EXCHANGE</p><h3 style="margin-top:2px;">Technical interoperability</h3><p>Protocols such as HL7 FHIR and RESTful APIs, with secure authorisation, let legacy health systems and IoT environmental sensors exchange data.</p></div>
-      <div class="card top"><p class="text-xs text-muted" style="font-weight:600; letter-spacing:.1em;">TRUSTED USE</p><h3 style="margin-top:2px;">Governance interoperability</h3><p>Process standards define how organisations collaborate, govern access and trigger coordinated responses.</p></div>
-    </div>
-    <div class="callout" style="margin-top:20px;">
-      <p><strong>ODHness as a visibility metric.</strong> ODHness is the degree to which a digital ecosystem integrates human, animal and environmental data into a coherent framework for health intelligence. The greater a system’s ability to identify, connect and act on invisible determinants across domains, the higher its ODHness.</p>
-    </div>
-    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; margin-top:12px;">
-      <p class="text-sm"><span class="pill plain">Human</span> <strong>Digital humanities</strong></p>
-      <p class="text-sm"><span class="pill plain">Animal</span> <strong>Digital animalities</strong></p>
-      <p class="text-sm"><span class="pill plain">Environment</span> <strong>Digital environmentalities</strong></p>
-    </div>
-  </div>
-  <div class="footnote">Bodenreider et al. [17]; WHO [15]; Vorisek et al. [18]; WHO [12, 19, 20]; Benis et al. [2, 8]</div>
-</section>
-
-<section id="issues" data-lab="bvdl">
-  <p class="eyebrow">BVDL · Issues and research</p>
-  <h2>Implementation issues, turned into research</h2>
-  <div class="content" style="padding-top:12px;">
-    <p class="lede text-md">Making context visible creates its own problems. BVDL treats each one as a researchable question, with a study design and the partners it would need.</p>
-    <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:12px; margin-top:14px;">
-      <div class="card"><p class="text-xs text-muted" style="font-weight:600; letter-spacing:.1em;">PRIVACY AND DATA PROTECTION</p><h3 style="margin-top:2px;">Invisible health inference without awareness</h3><p>Health determinants may become visible to institutions before they become visible to the people they describe.</p></div>
-      <div class="card"><p class="text-xs text-muted" style="font-weight:600; letter-spacing:.1em;">RESPONSIBILITY</p><h3 style="margin-top:2px;">Invisible accountability gaps</h3><p>When a health-relevant conclusion comes from several connected systems, responsibility for an error can become invisible.</p></div>
-      <div class="card"><p class="text-xs text-muted" style="font-weight:600; letter-spacing:.1em;">RESISTANCE TO CHANGE</p><h3 style="margin-top:2px;">Invisible determinants of organisational adoption</h3><p>Deeper causes stay hidden in organisational culture, informal workflows, professional identity and perceived threats to autonomy.</p></div>
-      <div class="card"><p class="text-xs text-muted" style="font-weight:600; letter-spacing:.1em;">SYSTEM REDUNDANCY</p><h3 style="margin-top:2px;">Useful versus harmful redundancy</h3><p>It is unclear when overlapping datasets improve performance and when they only add complexity, cost and burden.</p></div>
-    </div>
-    <p class="closing" style="margin-top:16px; font-size:15.5pt;">The greatest barriers to implementing ODH may not be visible technical limits but invisible interactions between data, institutions, technologies, governance structures and human behaviour.</p>
+<section id="next" data-lab="all">
+  <p class="eyebrow">The next Grand Challenge</p>
+  <div class="content" style="justify-content:center; gap:20px;">
+    <p class="serif" style="font-size:34pt; line-height:1.25;">For decades we focused on making the invisible visible.</p>
+    <p class="text-xl text-muted">That remains essential.</p>
+    <p class="fragment text-xl" style="margin-top:10px;">But a deeper challenge is emerging.</p>
+    <h2 class="fragment" style="font-size:48pt; margin-top:6px;">Visibility alone is not enough.</h2>
   </div>
 </section>
 
 <!-- =====================================================
-     TRANSLATE · ETL (about 4 minutes)
+     FINAL. CLOSING PROVOCATION
      ===================================================== -->
-<section id="div-etl" class="divider" data-background-color="#1F3A93">
-  <p class="lab-n">Lab 3 · Translate</p>
-  <h1>European Translation Lab</h1>
-  <p class="lab-role">ETL · Strategic proposal engine</p>
-  <p class="lab-q">Why is this strategically European? ETL argues that Invisible Context is not a local shortfall but a structural feature of European health systems, measurable, shared and cross-border, and it maps the European routes to act on it.</p>
-  <p class="lab-meta">Konstantinos Karitis · Janne Kommusaar · Maria Parra Rodriguez-Armijo · with thanks to Josefin Hagström</p>
-</section>
-
-<section id="why" data-lab="etl">
-  <p class="eyebrow">ETL · Why Europe</p>
-  <h2>A structural gap, reproduced across Europe</h2>
-  <div class="content">
-    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:30px;">
-      <div style="display:flex; flex-direction:column; gap:10px;">
-        <h3 class="kicker">European by nature</h3>
-        <div class="card"><h3>Structural, not local</h3><p>The gap recurs in every European health system, whatever its funding model, language or geography.</p></div>
-        <div class="card"><h3>Determinants cross borders</h3><p>People migrate, pollution spreads and diseases pass between animals and people.</p></div>
-        <div class="card"><h3>Workforce beyond national capacity</h3><p>WHO warns of a growing health-worker shortage alongside a widening digital-skills gap.</p></div>
+<section id="provocation-2" data-lab="all">
+  <p class="eyebrow">Closing provocation</p>
+  <h2>We often assume that visibility solves the problem. It does not.</h2>
+  <div class="content" style="padding-top:16px; justify-content:center;">
+    <div style="display:grid; grid-template-columns: 1fr 1.1fr; gap:34px; align-items:start;">
+      <div>
+        <p class="serif" style="font-size:24pt; line-height:1.3;">Health systems already contain vast amounts of visible data that never influence decisions.</p>
+        <p class="text-md text-muted" style="margin-top:22px;">BVDL’s last step is the one that matters:</p>
+        <div class="chain mini-chain" style="margin-top:8px;">
+          <div class="step"><p>Captured</p></div><div class="arrow">→</div>
+          <div class="step"><p>Represented</p></div><div class="arrow">→</div>
+          <div class="step"><p>Exchanged</p></div><div class="arrow">→</div>
+          <div class="step"><p>Interpreted</p></div><div class="arrow">→</div>
+          <div class="step hot"><p>Acted on</p></div>
+        </div>
+        <p class="text-sm text-muted" style="margin-top:8px;">Acted on: it reaches the decision it should inform.</p>
       </div>
-      <div style="display:flex; flex-direction:column; gap:10px;">
-        <h3 class="kicker">A window that is open now</h3>
-        <div class="card"><h3>Fairer health</h3><p>Neither EU health-equity objectives nor the UN Sustainable Development Goals can be met while social and environmental context stays invisible.</p></div>
-        <div class="card"><h3>Health AI governance</h3><p>The AI Act classifies most medical AI as high-risk and requires high-quality, representative data with human oversight.</p></div>
-        <div class="card"><h3>The European Health Data Space</h3><p>A one-time opportunity to include standardised social and environmental context in routine health data across member states.</p></div>
-      </div>
-    </div>
-  </div>
-  <div class="footnote">OECD/EU [62]; Reg. (EU) 2022/2371 [63]; WHO Europe [64, 65]; UN [66]; AI Act [67]; EHDS [69]</div>
-</section>
-
-<section id="matrix" data-lab="etl">
-  <p class="eyebrow">ETL · Opportunity Matrix</p>
-  <h2>Where each ODH dimension is invisible</h2>
-  <div class="content" style="padding-top:12px;">
-    <table class="tbl dense">
-      <thead><tr><th style="width:17%;">ODH dimension</th><th style="width:30%;">Stays invisible</th><th style="width:27%;">European added value</th><th>European anchor</th></tr></thead>
-      <tbody>
-        <tr><td class="k">Citizens’ engagement</td><td>Lived experience, informal care and social circumstances stay outside structured records.</td><td>Models must keep local meaning while staying interoperable.</td><td>The EHDS gives individuals the right to insert information and request rectification.</td></tr>
-        <tr><td class="k">Education</td><td>Clinicians and informaticians are not trained to recognise or capture socio-environmental context.</td><td>The workforce and digital-skills gap exceeds what any one country can address.</td><td>Erasmus+ Cooperation Partnerships or COST Actions.</td></tr>
-        <tr><td class="k">Environment</td><td>Exposures sit in environmental systems and do not reach clinical decisions.</td><td>Pollution and exposures cross borders.</td><td>The EU framework on serious cross-border threats to health.</td></tr>
-        <tr><td class="k">Human and Veterinary Healthcare</td><td>Human, animal and environmental data are held by separate systems and authorities.</td><td>Zoonotic and cross-species risks ignore borders.</td><td>EFSA and ECDC One Health zoonoses reporting.</td></tr>
-        <tr><td class="k">Healthcare Industry (4.0)</td><td>EHR systems lack fields for contextual data; models trained on context-poor data replicate invisibility.</td><td>Common requirements are needed before context-blind AI becomes entrenched.</td><td>The EHDS, AI Act Articles 10 and 14, and the GDPR.</td></tr>
-      </tbody>
-    </table>
-    <p class="text-sm text-muted" style="margin-top:10px;">The matrix is a first exploratory framework, not a final solution.</p>
-  </div>
-  <div class="footnote">EHDS [69]; Denecke et al. [7]; WHO Europe [64]; Erasmus+ [71]; Wild [59]; Reg. 2022/2371 [63]; EFSA &amp; ECDC [70]; AI Act [67]; GDPR [72]</div>
-</section>
-
-<section id="gates" data-lab="etl">
-  <p class="eyebrow">ETL · Two gates</p>
-  <h2>ETL’s two gates</h2>
-  <div class="content" style="padding-top:12px;">
-    <p class="lede text-md">ETL connects the cohort’s loop: it receives one question from BVDL and passes another to IFAL.</p>
-    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:22px; margin-top:14px;">
-      <div class="card top c-bvdl">
-        <p class="text-xs" style="font-weight:700; letter-spacing:.1em; color:var(--bvdl);">FROM BVDL</p>
-        <p class="serif text-lg" style="margin:6px 0 0;">“Is the strategic relevance compatible with implementable digital infrastructures?”</p>
-        <p class="text-sm text-muted" style="margin-top:10px;">ETL asks itself six questions from the European side, and names what it needs from BVDL for each.</p>
-      </div>
-      <div class="card top c-ifal">
-        <p class="text-xs" style="font-weight:700; letter-spacing:.1em; color:var(--ifal);">TO IFAL</p>
-        <p class="serif text-lg" style="margin:6px 0 10px;">“Which invisibilities are large enough to justify European collaboration?”</p>
-        <ol class="nums" style="--c:var(--ifal); display:grid; grid-template-columns:1fr 1fr; gap:0 14px;">
-          <li>Health impact</li><li>Persistence across systems</li><li>Cross-sector or cross-border character</li><li>BMHI tractability</li><li>ODH relevance</li><li>European added value</li>
-        </ol>
+      <div>
+        <p class="text-md" style="margin-bottom:10px;">A determinant may be:</p>
+        <div class="vb fragment"><span>visible</span> but ignored</div>
+        <div class="vb fragment"><span>visible</span> but not trusted</div>
+        <div class="vb fragment"><span>visible</span> but not actionable</div>
+        <div class="vb fragment"><span>visible</span> but disconnected from policy</div>
+        <div class="vb fragment"><span>visible</span> but incapable of changing outcomes</div>
       </div>
     </div>
-    <p class="text-sm text-muted" style="margin-top:14px;">Not every invisibility becomes a European Grand Challenge. IFAL then returns each invisibility as confirmed, reframed or deprioritised. These criteria have not yet been applied to the five archetypes; that is the task of IFAL’s next iteration.</p>
   </div>
 </section>
 
-<section id="pathways" data-lab="etl">
-  <p class="eyebrow">ETL · European pathways</p>
-  <h2>European pathways</h2>
-  <div class="content" style="padding-top:12px;">
-    <p class="text-md">A COST Action builds interdisciplinary research networks that design data-collection methods and conceptual frameworks. An Erasmus+ Cooperation Partnership connects that research with educational institutions and communities, through training programmes, digital tools and workshops.</p>
-    <table class="tbl dense" style="margin-top:14px;">
-      <thead><tr><th style="width:16%;"></th><th style="width:42%;">COST Action</th><th>Erasmus+ Cooperation Partnership</th></tr></thead>
-      <tbody>
-        <tr><td class="k">Best for</td><td>Building a European network, developing shared knowledge and coordinating a research agenda.</td><td>Turning existing knowledge into educational solutions and scaling them across institutions.</td></tr>
-        <tr><td class="k">Duration</td><td>Four years.</td><td>12 to 36 months.</td></tr>
-        <tr><td class="k">Minimum consortium</td><td>At least seven COST member or cooperating countries, at least half of them Inclusiveness Target Countries.</td><td>At least three organisations from three EU member states or associated countries.</td></tr>
-        <tr><td class="k">Limits</td><td>Does not fund infrastructure development or pilots.</td><td>Not a vehicle for developing data infrastructure or standards.</td></tr>
-      </tbody>
-    </table>
-    <p class="text-sm" style="margin-top:12px;">Together, hidden disparities can be measured through collaborative science and addressed through awareness and capacity building.</p>
+<section id="actionable" class="dark" data-background-color="#17191E">
+  <p class="eyebrow">The next Grand Challenge for Biomedical and Health Informatics</p>
+  <div class="content" style="justify-content:center; gap:16px;">
+    <p class="text-lg" style="opacity:.7;">So perhaps the next grand challenge is not:</p>
+    <p class="serif old" style="font-size:30pt;">How do we make the invisible visible?</p>
+    <p class="text-lg fragment" style="opacity:.7; margin-top:8px;">but rather:</p>
+    <h2 class="fragment" style="font-size:52pt; line-height:1.1;">How do we make the visible <span style="color:#7FD8CD;">actionable</span>?</h2>
+    <p class="fragment" style="font-size:17pt; line-height:1.5; margin-top:18px; max-width:1040px; opacity:.88;">Perhaps the future of our discipline will be judged not by how much data we collect, but by whether newly visible knowledge leads to better decisions, better policies, and better health.</p>
   </div>
-  <div class="footnote">Erasmus+ programme guide [71]; COST Association [73] · consortium rules for the 2024 to 2025 COST calls</div>
 </section>
 
 <!-- =====================================================
-     CLOSE (about 1 minute)
+     CREDITS
      ===================================================== -->
-<section id="statement" data-lab="all">
-  <p class="eyebrow">The three labs, converging</p>
-  <h2>One shared problem statement</h2>
-  <div class="content" style="padding-top:12px;">
-    <p class="text-md text-muted">The labs work towards a single sentence. The first three slots come from the diagnosis and the design; the last is ETL’s proposed European response. Here it is filled in for Archetype 1.</p>
-    <p class="serif" style="font-size:18pt; line-height:1.6; margin-top:14px;">
-      We have identified a European Invisible Context problem that BMHI currently underserves, defined by
-      <span class="slot slot-ifal">housing stability, food security and transportation access</span>,
-      whose invisibility results from
-      <span class="slot slot-ifal">informational and semantic invisibility</span>,
-      affects
-      <span class="slot slot-ifal">discharge planning, insulin regimens and follow-up scheduling</span>,
-      and requires
-      <span class="slot slot-etl">structured SDOH fields, citizen-reported data, and linkage with social-service information systems, within a European ODH approach</span>
-      to become visible and actionable.
-    </p>
-    <h3 class="kicker" style="margin-top:18px;">A European ODH approach, in five pillars</h3>
-    <div style="display:grid; grid-template-columns: repeat(5, 1fr); gap:10px;">
-      <div class="card top c-etl"><p>Common contextual data models and terminologies aligned with the EHDS</p></div>
-      <div class="card top c-etl"><p>Governed cross-sector and cross-border linkage</p></div>
-      <div class="card top c-etl"><p>Context-aware requirements for health AI</p></div>
-      <div class="card top c-etl"><p>Shared indicators and evaluation approaches</p></div>
-      <div class="card top c-etl"><p>An ODH-literate workforce</p></div>
-    </div>
-  </div>
-  <div class="footnote">Assembled on the website from the three labs’ tables for this archetype. It has not yet been validated by the labs, and ETL’s prioritisation criteria have not yet been applied to it.</div>
-</section>
-
-<section id="closing" data-lab="all">
+<section id="credits" data-lab="all">
   <p class="eyebrow">(In)Visible Health · EFMI LEAD cohort · yEFMI</p>
-  <div class="content" style="justify-content:space-between;">
-    <div>
-      <h2 class="quote" style="font-size:28pt;">Relevant information often exists elsewhere but does not reach the point where the decision is made.</h2>
-      <p class="lede text-md" style="margin-top:16px;">In the One Digital Health (ODH) framework, missing context is understood as a failure of connection between parts of the health ecosystem (people, communities, animals, environments and institutions) rather than as a gap in a single system.</p>
+  <h2>Thank you</h2>
+  <div class="content">
+    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:16px;">
+      <div class="card top c-ifal"><p class="text-xs" style="font-weight:700; letter-spacing:.1em; color:var(--ifal);">IFAL · DIAGNOSE</p><p style="margin-top:6px;">Alessandra Introvaia · Daniel Alexandre Relvas Rodrigues · Kirubel Biruk Shiferaw</p></div>
+      <div class="card top c-bvdl"><p class="text-xs" style="font-weight:700; letter-spacing:.1em; color:var(--bvdl);">BVDL · DESIGN</p><p style="margin-top:6px;">Matthieu Bonjour · Ivan Cerovečki · Eliana Mendonça Almeida e Silva · Simon Luca Lewerenz</p></div>
+      <div class="card top c-etl"><p class="text-xs" style="font-weight:700; letter-spacing:.1em; color:var(--etl);">ETL · TRANSLATE</p><p style="margin-top:6px;">Konstantinos Karitis · Janne Kommusaar · Maria Parra Rodriguez-Armijo · with thanks to Josefin Hagström</p></div>
     </div>
-    <div style="display:grid; grid-template-columns: 1.3fr 1fr; gap:30px; align-items:end;">
+    <div style="display:grid; grid-template-columns: 1.3fr 1fr; gap:30px; margin-top:30px;">
       <div>
         <h3 class="kicker">Seed literature</h3>
-        <p class="text-xs" style="line-height:1.6;">
-          [1] Alizadeh et al., 2025 · [2] Benis et al., 2021 · [3] Champion et al., 2019<br>
-          [4] Sood et al., 2024 · [5] Chidambaram et al., 2024 · [6] Fraser et al., 2023<br>
-          All 73 references are listed on the website.
-        </p>
+        <p class="text-sm" style="line-height:1.7;">[1] Alizadeh et al., 2025 · [2] Benis et al., 2021 · [3] Champion et al., 2019<br>[4] Sood et al., 2024 · [5] Chidambaram et al., 2024 · [6] Fraser et al., 2023<br><span class="text-muted">All 73 references are listed on the (In)Visible Health website.</span></p>
       </div>
       <div>
         <h3 class="kicker">Acknowledgements</h3>
-        <p class="text-xs" style="line-height:1.6;">The cohort thanks Lars Lindsköld for generous support, and Oscar Tamburis and Mihaela Crişan-Vida for guidance and mentorship.</p>
+        <p class="text-sm" style="line-height:1.6;">The cohort thanks Lars Lindsköld for generous support, and Oscar Tamburis and Mihaela Crişan-Vida for guidance and mentorship.</p>
       </div>
     </div>
   </div>
-  <div class="footnote">Benis et al., 2021 [2]</div>
 </section>
+
 
 </div>
 </div>
