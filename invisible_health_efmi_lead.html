@@ -312,6 +312,10 @@
     .vb { font-size: 21pt; padding: 13px 20px; margin-bottom: 12px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); color: var(--ink); }
     .vb span { font-weight: 700; color: var(--ifal); }
     .reveal .slides section.dark p.old { color: rgba(244,242,236,.55); text-decoration: line-through; text-decoration-thickness: 2px; }
+    .qr-card { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 18px; text-decoration: none; color: inherit; }
+    .qr-card .qr { width: 190px; height: 190px; display: block; }
+    .reveal .qr-card p.qr-t { font-family: var(--display); font-size: 15pt; font-weight: 600; margin-top: 12px; }
+    .reveal .qr-card p.qr-u { font-size: 11pt; color: var(--muted); margin-top: 2px; }
   </style>
 </head>
 <body>
@@ -322,17 +326,15 @@
      TITLE
      ===================================================== -->
 <section id="title" data-lab="all" style="justify-content:center;">
-  <div style="display:grid; grid-template-columns: 1fr 280px; gap:40px; align-items:center;">
-    <div>
-      <p class="eyebrow">(In)Visible Health · The Grand Challenge of the EFMI LEAD cohort · yEFMI</p>
-      <h1 style="font-size:52pt; line-height:1.08;">A Grand Challenge for Biomedical and Health Informatics</h1>
-      <p class="serif text-muted" style="margin-top:16px; font-size:22pt;">Tracing the unseen layers of health ecosystems</p>
+  <div style="max-width:1060px;">
+    <p class="eyebrow">(In)Visible Health · The Grand Challenge of the EFMI LEAD cohort · yEFMI</p>
+    <h1 style="font-size:56pt; line-height:1.06;">A Grand Challenge for Biomedical and Health Informatics</h1>
+    <p class="serif text-muted" style="margin-top:18px; font-size:24pt;">Tracing the unseen layers of health ecosystems</p>
+    <div style="margin-top:40px;">
+      <span class="pill c-ifal">Diagnose · IFAL</span>
+      <span class="pill c-bvdl">Design · BVDL</span>
+      <span class="pill c-etl">Translate · ETL</span>
     </div>
-    <svg viewBox="0 0 32 32" style="width:240px; height:240px; color:var(--ink);" aria-hidden="true">
-      <circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2 2"/>
-      <circle cx="16" cy="16" r="8.5" fill="none" stroke="currentColor" stroke-width="1.2"/>
-      <circle cx="16" cy="16" r="3.2" fill="currentColor"/>
-    </svg>
   </div>
   <div class="footnote">Built on the (In)Visible Health website and “EFMI LEAD – The Grand Challenge” (shared document, draft 2026-10-21)</div>
 </section>
@@ -715,15 +717,20 @@
       <div class="card top c-bvdl"><p class="text-xs" style="font-weight:700; letter-spacing:.1em; color:var(--bvdl);">BVDL · DESIGN</p><p style="margin-top:6px;">Matthieu Bonjour · Ivan Cerovečki · Eliana Mendonça Almeida e Silva · Simon Luca Lewerenz</p></div>
       <div class="card top c-etl"><p class="text-xs" style="font-weight:700; letter-spacing:.1em; color:var(--etl);">ETL · TRANSLATE</p><p style="margin-top:6px;">Konstantinos Karitis · Janne Kommusaar · Maria Parra Rodriguez-Armijo · with thanks to Josefin Hagström</p></div>
     </div>
-    <div style="display:grid; grid-template-columns: 1.3fr 1fr; gap:30px; margin-top:30px;">
+    <div style="display:grid; grid-template-columns: 1.25fr 1fr 250px; gap:28px; margin-top:26px; align-items:start;">
       <div>
         <h3 class="kicker">Seed literature</h3>
-        <p class="text-sm" style="line-height:1.7;">[1] Alizadeh et al., 2025 · [2] Benis et al., 2021 · [3] Champion et al., 2019<br>[4] Sood et al., 2024 · [5] Chidambaram et al., 2024 · [6] Fraser et al., 2023<br><span class="text-muted">All 73 references are listed on the (In)Visible Health website.</span></p>
+        <p class="text-sm" style="line-height:1.7;">[1] Alizadeh et al., 2025 · [2] Benis et al., 2021<br>[3] Champion et al., 2019 · [4] Sood et al., 2024<br>[5] Chidambaram et al., 2024 · [6] Fraser et al., 2023<br><span class="text-muted">All 73 references are listed on the website.</span></p>
       </div>
       <div>
         <h3 class="kicker">Acknowledgements</h3>
         <p class="text-sm" style="line-height:1.6;">The cohort thanks Lars Lindsköld for generous support, and Oscar Tamburis and Mihaela Crişan-Vida for guidance and mentorship.</p>
       </div>
+      <a class="qr-card card" href="https://invisible-health.vercel.app/" target="_blank" rel="noopener">
+        <svg class="qr" viewBox="0 0 29 29" shape-rendering="crispEdges" role="img" aria-label="QR code for invisible-health.vercel.app"><path fill="#17191E" d="M0 0h7v1h-7zM8 0h1v1h-1zM10 0h3v1h-3zM14 0h1v1h-1zM22 0h7v1h-7zM0 1h1v1h-1zM6 1h1v1h-1zM10 1h1v1h-1zM16 1h1v1h-1zM19 1h2v1h-2zM22 1h1v1h-1zM28 1h1v1h-1zM0 2h1v1h-1zM2 2h3v1h-3zM6 2h1v1h-1zM9 2h1v1h-1zM11 2h1v1h-1zM13 2h1v1h-1zM17 2h1v1h-1zM20 2h1v1h-1zM22 2h1v1h-1zM24 2h3v1h-3zM28 2h1v1h-1zM0 3h1v1h-1zM2 3h3v1h-3zM6 3h1v1h-1zM8 3h2v1h-2zM12 3h1v1h-1zM14 3h1v1h-1zM16 3h1v1h-1zM18 3h2v1h-2zM22 3h1v1h-1zM24 3h3v1h-3zM28 3h1v1h-1zM0 4h1v1h-1zM2 4h3v1h-3zM6 4h1v1h-1zM8 4h1v1h-1zM13 4h3v1h-3zM17 4h2v1h-2zM22 4h1v1h-1zM24 4h3v1h-3zM28 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h2v1h-2zM11 5h4v1h-4zM18 5h2v1h-2zM22 5h1v1h-1zM28 5h1v1h-1zM0 6h7v1h-7zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h7v1h-7zM8 7h4v1h-4zM14 7h4v1h-4zM0 8h1v1h-1zM4 8h1v1h-1zM6 8h3v1h-3zM10 8h1v1h-1zM12 8h3v1h-3zM16 8h10v1h-10zM28 8h1v1h-1zM3 9h1v1h-1zM7 9h3v1h-3zM11 9h2v1h-2zM15 9h4v1h-4zM21 9h8v1h-8zM2 10h3v1h-3zM6 10h1v1h-1zM10 10h1v1h-1zM12 10h5v1h-5zM18 10h1v1h-1zM20 10h3v1h-3zM28 10h1v1h-1zM1 11h1v1h-1zM3 11h1v1h-1zM5 11h1v1h-1zM9 11h5v1h-5zM15 11h3v1h-3zM20 11h1v1h-1zM23 11h3v1h-3zM27 11h2v1h-2zM4 12h3v1h-3zM8 12h2v1h-2zM11 12h1v1h-1zM13 12h1v1h-1zM16 12h2v1h-2zM19 12h3v1h-3zM27 12h1v1h-1zM0 13h1v1h-1zM2 13h2v1h-2zM7 13h2v1h-2zM10 13h7v1h-7zM22 13h7v1h-7zM0 14h1v1h-1zM5 14h5v1h-5zM12 14h1v1h-1zM15 14h1v1h-1zM18 14h1v1h-1zM21 14h1v1h-1zM23 14h4v1h-4zM28 14h1v1h-1zM2 15h2v1h-2zM8 15h1v1h-1zM10 15h1v1h-1zM14 15h4v1h-4zM22 15h1v1h-1zM27 15h2v1h-2zM0 16h1v1h-1zM5 16h3v1h-3zM13 16h2v1h-2zM17 16h1v1h-1zM20 16h2v1h-2zM23 16h1v1h-1zM27 16h1v1h-1zM0 17h1v1h-1zM2 17h1v1h-1zM5 17h1v1h-1zM8 17h2v1h-2zM11 17h2v1h-2zM15 17h2v1h-2zM18 17h1v1h-1zM22 17h4v1h-4zM27 17h2v1h-2zM2 18h5v1h-5zM9 18h2v1h-2zM13 18h6v1h-6zM20 18h5v1h-5zM26 18h1v1h-1zM28 18h1v1h-1zM2 19h1v1h-1zM4 19h2v1h-2zM8 19h2v1h-2zM13 19h1v1h-1zM17 19h2v1h-2zM20 19h2v1h-2zM24 19h1v1h-1zM27 19h2v1h-2zM0 20h2v1h-2zM3 20h1v1h-1zM6 20h2v1h-2zM9 20h2v1h-2zM13 20h1v1h-1zM15 20h1v1h-1zM17 20h1v1h-1zM20 20h6v1h-6zM28 20h1v1h-1zM8 21h2v1h-2zM11 21h1v1h-1zM13 21h3v1h-3zM19 21h2v1h-2zM24 21h1v1h-1zM28 21h1v1h-1zM0 22h7v1h-7zM8 22h3v1h-3zM15 22h2v1h-2zM19 22h2v1h-2zM22 22h1v1h-1zM24 22h3v1h-3zM28 22h1v1h-1zM0 23h1v1h-1zM6 23h1v1h-1zM9 23h3v1h-3zM14 23h2v1h-2zM17 23h1v1h-1zM20 23h1v1h-1zM24 23h1v1h-1zM27 23h2v1h-2zM0 24h1v1h-1zM2 24h3v1h-3zM6 24h1v1h-1zM8 24h2v1h-2zM11 24h5v1h-5zM17 24h1v1h-1zM19 24h7v1h-7zM27 24h1v1h-1zM0 25h1v1h-1zM2 25h3v1h-3zM6 25h1v1h-1zM10 25h4v1h-4zM15 25h2v1h-2zM18 25h1v1h-1zM20 25h2v1h-2zM28 25h1v1h-1zM0 26h1v1h-1zM2 26h3v1h-3zM6 26h1v1h-1zM9 26h1v1h-1zM12 26h1v1h-1zM14 26h2v1h-2zM19 26h1v1h-1zM21 26h1v1h-1zM25 26h4v1h-4zM0 27h1v1h-1zM6 27h1v1h-1zM12 27h1v1h-1zM15 27h1v1h-1zM17 27h2v1h-2zM20 27h1v1h-1zM25 27h1v1h-1zM27 27h2v1h-2zM0 28h7v1h-7zM8 28h1v1h-1zM10 28h2v1h-2zM13 28h2v1h-2zM17 28h1v1h-1zM20 28h1v1h-1zM25 28h1v1h-1zM27 28h1v1h-1z"/></svg>
+        <p class="qr-t">Explore the website</p>
+        <p class="qr-u">invisible-health.vercel.app</p>
+      </a>
     </div>
   </div>
 </section>
