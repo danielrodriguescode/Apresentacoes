@@ -320,6 +320,24 @@
     .hero-foot { margin-top: 60px; padding-top: 22px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
     .reveal .hero-foot p { font-size: 16pt; color: var(--muted); }
     .reveal .hero-foot p strong { color: var(--ink); }
+    .dcard { border: 1px solid rgba(255,255,255,.22); border-radius: 14px; padding: 16px 20px; background: rgba(255,255,255,.05); }
+    .reveal .slides section.dark .dcard p { font-size: 15pt; line-height: 1.45; color: rgba(244,242,236,.88); }
+    .hop { display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 16pt; }
+    .loopback { position: relative; margin-top: 4px; }
+    .loopback svg { display: block; width: 100%; height: 46px; }
+    .reveal .loopback p { text-align: center; font-size: 12.5pt; font-weight: 600; color: var(--etl); margin-top: 6px; }
+    .m7 { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+    .mcol { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 11px; box-shadow: var(--shadow); display: flex; flex-direction: column; position: relative; }
+    .mcol::before { content: ""; display: block; width: 28px; height: 4px; border-radius: 2px; background: var(--c); margin-bottom: 8px; }
+    .reveal .mcol p.mn { font-family: var(--display); font-size: 22pt; font-weight: 700; line-height: 1; color: var(--c); }
+    .reveal .mcol p.mt { font-size: 11.5pt; font-weight: 700; line-height: 1.25; text-transform: uppercase; letter-spacing: .04em; color: var(--c); margin: 6px 0 8px; min-height: 42px; }
+    .reveal .mcol p.mq { font-family: var(--display); font-size: 17pt; line-height: 1.25; font-style: italic; margin-bottom: 10px; }
+    .reveal .mcol p.mx { font-size: 12.5pt; line-height: 1.4; }
+    .reveal .mcol ul { list-style: none; margin: 0; padding: 0; }
+    .reveal .mcol li { font-size: 12pt; line-height: 1.25; padding: 5px 0; border-top: 1px solid var(--line); display: flex; gap: 7px; align-items: baseline; }
+    .reveal .mcol li i { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; transform: translateY(-1px); }
+    .reveal .mcol p.mtool { font-size: 12.5pt; line-height: 1.35; padding: 8px 0; border-top: 1px solid var(--line); }
+    .reveal .mcol p.mtool strong { color: var(--c); }
   </style>
 </head>
 <body>
@@ -420,7 +438,7 @@
     <div style="display:flex; align-items:center; gap:22px;">
       <div class="twin"><p class="t">Same treatment</p><p class="eq">=</p></div>
       <div class="twin"><p class="t">Different outcomes</p><p class="eq">≠</p></div>
-      <p class="text-lg" style="flex:1;">Two patients may receive exactly the same treatment and experience entirely different outcomes. <strong>Why?</strong> Because health is shaped by:</p>
+      <p class="text-lg" style="flex:1;"><strong>Health data miss real life.</strong> Two patients may receive exactly the same treatment and experience entirely different outcomes. <strong>Why?</strong> Because health is shaped by:</p>
     </div>
     <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:12px; margin-top:18px;">
       <div class="card top c-a1"><h3>Social context</h3><p class="num-sm" style="color:var(--a1);">18.2%</p><p>of providers who consider housing clinically vital document it consistently.</p></div>
@@ -509,29 +527,34 @@
   <p class="eyebrow">ETL · European Translation Lab</p>
   <h2>Why Europe?</h2>
   <div class="content" style="padding-top:14px;">
-    <p class="text-lg">This challenge is particularly relevant in Europe. Europe combines:</p>
-    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:28px; margin-top:14px; align-items:start;">
-      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
-        <div class="card eu"><p>Universal healthcare systems</p></div>
-        <div class="card eu"><p>Strong commitments to equity</p></div>
-        <div class="card eu"><p>Cross-border collaboration</p></div>
-        <div class="card eu"><p>The European Health Data Space</p></div>
-        <div class="card eu"><p>Mature interoperability initiatives</p></div>
-        <div class="card eu"><p>Leadership in digital governance</p></div>
-      </div>
-      <div class="callout c-etl fragment" style="padding:22px 24px;">
-        <p class="text-xs text-muted" style="font-weight:600; letter-spacing:.1em;">A UNIQUE OPPORTUNITY</p>
-        <p class="serif" style="font-size:20pt !important; line-height:1.35; margin-top:8px;">To become the first region capable of systematically integrating clinical, social, environmental and digital determinants into health intelligence.</p>
-      </div>
+    <p class="text-md">This challenge is particularly relevant in Europe. Europe combines universal healthcare systems, strong commitments to equity, cross-border collaboration, the European Health Data Space, mature interoperability initiatives and leadership in digital governance.</p>
+    <div class="callout c-etl" style="padding:18px 22px; margin-top:16px;">
+      <p class="text-xs text-muted" style="font-weight:600; letter-spacing:.1em;">A UNIQUE OPPORTUNITY</p>
+      <p class="serif" style="font-size:20pt !important; line-height:1.35; margin-top:6px;">To become the first region capable of systematically integrating clinical, social, environmental and digital determinants into health intelligence.</p>
     </div>
-    <h3 class="kicker" style="margin-top:22px;">ETL: a structural gap, reproduced across Europe</h3>
-    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:12px;">
-      <div class="card tint"><h3>Structural, not local</h3><p>The gap recurs in every European health system, whatever its funding model, language or geography.</p></div>
-      <div class="card tint"><h3>Determinants cross borders</h3><p>People migrate, pollution spreads and diseases pass between animals and people.</p></div>
-      <div class="card tint"><h3>A window that is open now</h3><p>The EHDS is a one-time opportunity to include standardised social and environmental context in routine health data.</p></div>
+    <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:12px; margin-top:18px;">
+      <div class="card top c-etl"><h3>The causes cross borders</h3><p>People migrate, pollution spreads and diseases pass between animals and people.</p></div>
+      <div class="card top c-etl"><h3>The skills gap is too big for one country</h3><p>WHO warns of a growing health-worker shortage alongside a widening digital-skills gap.</p></div>
+      <div class="card top c-etl"><h3>Fair health goals depend on it</h3><p>Neither EU health-equity objectives nor the UN Sustainable Development Goals can be met while social and environmental context stays invisible.</p></div>
+      <div class="card top c-etl"><h3>The timing is right</h3><p>The EHDS sets a common framework for health records; the AI Act requires representative data with human oversight.</p></div>
     </div>
   </div>
-  <div class="footnote">OECD/EU [62]; Reg. (EU) 2022/2371 [63]; EHDS, Reg. (EU) 2025/327 [69]</div>
+  <div class="footnote">Reg. (EU) 2022/2371 [63]; WHO Europe [64, 65]; UN [66]; AI Act [67]; EHDS, Reg. (EU) 2025/327 [69]</div>
+</section>
+
+<!-- =====================================================
+     MOST URGENT (group 3)
+     ===================================================== -->
+<section id="urgent" class="dark" data-background-color="#17191E">
+  <p class="eyebrow">ETL · Most urgent</p>
+  <div class="content" style="justify-content:center; gap:30px;">
+    <h2 style="font-size:50pt; line-height:1.1;">Act before context-blind systems become the norm.</h2>
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:22px; max-width:1100px;">
+      <div class="dcard"><p>The AI Act classifies most medical AI as high-risk and requires high-quality, representative data with human oversight.</p></div>
+      <div class="dcard"><p>EHR systems lack fields for contextual data, and models trained on context-poor data replicate invisibility.</p></div>
+    </div>
+  </div>
+  <div class="footnote" style="color:rgba(244,242,236,.55);">Sjoding et al. [60]; Obermeyer et al. [61]; AI Act, Reg. (EU) 2024/1689 [67]</div>
 </section>
 
 <!-- =====================================================
@@ -567,9 +590,9 @@
 </section>
 
 <section id="wheel" data-lab="ifal">
-  <p class="eyebrow">IFAL · Context Invisibility Map</p>
-  <h2>The archetypes on the ODH Steering Wheel</h2>
-  <div class="content" style="padding-top:8px;">
+  <h2>Our tools: One Digital Health</h2>
+  <p class="text-md" style="margin-top:4px;"><strong>The compass.</strong> Our lens for seeing the whole picture: 2 keys, 3 perspectives and 5 dimensions, with IFAL’s five archetypes on the technology ring.</p>
+  <div class="content" style="padding-top:6px;">
     <div style="display:grid; grid-template-columns: 500px 1fr; gap:30px; flex:1; min-height:0;">
       <div style="display:flex; flex-direction:column; gap:6px;">
         <div id="wheelHost"></div>
@@ -609,30 +632,63 @@
      MAKING THE INVISIBLE VISIBLE: THE THREE LABS
      ===================================================== -->
 <section id="labs" data-lab="all">
-  <h2>Making the invisible visible: three labs</h2>
-  <div class="content" style="padding-top:12px; justify-content:center;">
-    <p class="text-md">The Grand Challenge was split across three sub-groups. Each lab hands its output to the next, and the last one sends questions back to the first, so the work can be refined in further iterations.</p>
-    <div style="display:grid; grid-template-columns: 1fr 36px 1fr 36px 1fr; gap:6px; align-items:stretch; margin-top:16px;">
+  <h2>Our tools: LEAD</h2>
+  <p class="text-md" style="margin-top:4px;"><strong>The map.</strong> Young researchers across Europe working in three labs that challenge each other: from invisible context to collective action.</p>
+  <div class="content" style="padding-top:22px; justify-content:center;">
+    <div style="display:grid; grid-template-columns: 1fr 36px 1fr 36px 1fr; gap:6px; align-items:stretch;">
       <div class="card lab-card c-ifal">
         <p class="verb">1 · Diagnose</p>
         <h3 style="margin-top:4px;">Invisible Failure Analysis Lab</h3>
         <p class="q">Which contextual determinants are most systematically invisible, and to whom?</p>
         <p class="text-xs text-muted">Output: <strong style="color:var(--ink);">Context Invisibility Map</strong></p>
       </div>
-      <div style="display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:16pt;">→</div>
+      <div class="hop">→</div>
       <div class="card lab-card c-bvdl">
         <p class="verb">2 · Design</p>
         <h3 style="margin-top:4px;">BMHI Visibility Design Lab</h3>
         <p class="q">What forms of BMHI visibility could capture them?</p>
         <p class="text-xs text-muted">Output: <strong style="color:var(--ink);">BMHI Visibility Hypothesis Board</strong></p>
       </div>
-      <div style="display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:16pt;">→</div>
+      <div class="hop">→</div>
       <div class="card lab-card c-etl">
         <p class="verb">3 · Translate</p>
         <h3 style="margin-top:4px;">European Translation Lab</h3>
         <p class="q">Why is this strategically European?</p>
         <p class="text-xs text-muted">Output: <strong style="color:var(--ink);">European Opportunity</strong></p>
       </div>
+    </div>
+    <div class="loopback" aria-label="ETL sends questions back to IFAL">
+      <svg viewBox="0 0 1152 46" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M 960 2 V 28 H 192 V 8" fill="none" stroke="#1F3A93" stroke-width="2.5" stroke-dasharray="7 6"/>
+        <path d="M 184 14 L 192 2 L 200 14" fill="none" stroke="#1F3A93" stroke-width="2.5" stroke-linejoin="round"/>
+      </svg>
+      <p>ETL → IFAL · Which invisibilities matter for Europe?</p>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     EUROPEAN OPPORTUNITY MATRIX v.02 (group 3)
+     ===================================================== -->
+<section id="matrix" data-lab="etl">
+  <p class="eyebrow">ETL · European Opportunity Matrix (v.02)</p>
+  <h2>From local failures to European action</h2>
+  <div class="content" style="padding-top:16px;">
+    <div class="m7">
+      <div class="mcol" style="--c:#1F3A93;"><p class="mn">1</p><p class="mt">The challenge</p><p class="mq">When health decisions lack context</p><p class="mx">Key social, environmental and other determinants remain invisible in digital health systems.</p></div>
+      <div class="mcol fragment" style="--c:#2E8B4A;"><p class="mn">2</p><p class="mt">Five layers of invisibility</p>
+        <ul><li><i style="background:var(--l-informational)"></i>Informational</li><li><i style="background:var(--l-semantic)"></i>Semantic</li><li><i style="background:var(--l-experiential)"></i>Experiential</li><li><i style="background:var(--l-governance)"></i>Governance</li><li><i style="background:var(--l-evaluative)"></i>Evaluative</li></ul></div>
+      <div class="mcol fragment" style="--c:#C77410;"><p class="mn">3</p><p class="mt">One Digital Health dimensions</p>
+        <ul><li>Citizens’ engagement</li><li>Education</li><li>Environment</li><li>Human &amp; veterinary healthcare</li><li>Healthcare Industry 4.0</li></ul></div>
+      <div class="mcol fragment" style="--c:#1F5FBF;"><p class="mn">4</p><p class="mt">Why this is a European opportunity</p>
+        <ul><li>Cross-border determinants</li><li>Systemic nature across all Member States</li><li>Interoperability gaps</li><li>Need for fair and equitable healthcare</li><li>Workforce and digital-skills gaps</li><li>Timely policy framework (EHDS and AI Act)</li></ul></div>
+      <div class="mcol fragment" style="--c:#0F766E;"><p class="mn">5</p><p class="mt">Translational European value</p>
+        <ul><li>Improve public health outcomes</li><li>Reduce health inequalities</li><li>Increase contextual awareness in healthcare</li><li>Strengthen education and workforce capacity</li><li>Foster interdisciplinary and cross-sector collaboration</li></ul></div>
+      <div class="mcol fragment" style="--c:#7A4FC0;"><p class="mn">6</p><p class="mt">Possible European pathways</p>
+        <ul><li>COST Action</li><li>Erasmus+</li><li>Related initiatives</li></ul></div>
+      <div class="mcol fragment" style="--c:#C23A6B;"><p class="mn">7</p><p class="mt">Our tools for action</p>
+        <p class="mtool"><strong>One Digital Health</strong><br>The compass: provides the conceptual framework.</p>
+        <p class="mtool"><strong>yEFMI LEAD</strong><br>The map: guides the path from ideas to action.</p></div>
     </div>
   </div>
 </section>
